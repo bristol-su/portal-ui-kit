@@ -1,10 +1,8 @@
 <template>
   <div>
-    <keep-alive>
-        <div v-for="formInput in schema">
-            <p v-text="formInput.title"></p>
-        </div>
-    </keep-alive>
+    <div v-for="formInput in schema" :key="formInput.id">
+      {{ formInput }}
+    </div>
   </div>
 </template>
 
