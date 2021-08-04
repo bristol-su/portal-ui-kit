@@ -1,0 +1,22 @@
+{
+  "name": "@elbowspaceuk/atlas-ui-kit",
+  "version": "0.0.1",
+  "description": "Portal UI Kit which holds all Vue Components for the Portal project. Open Source",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Portal",
+    "UI Kit",
+    "Vue.js"
+  ],
+  "author": "Aidan Laycock (aidan@elbowspace.co.uk)",
+  "license": "open-source",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {
+    "vue": "^2.6.12"
+  }
+}
