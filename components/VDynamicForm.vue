@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "VDynamicForm.vue",
+  name: "VDynamicForm",
   props: {
     "schema": { type: Array, required: true },
     "settings": { type: Object, required: false, default: () => { return {'form_format': 'single'}; }}

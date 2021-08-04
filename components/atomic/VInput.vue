@@ -15,9 +15,9 @@ export default {
     "disabled": { type: Boolean, required: false, default: false },
     "help": { type: String, required: true },
     "tooltip": { type: String, required: true },
-    "validation": { type: Array, required: false, default: [] },
+    "validation": { type: Array, required: false, default: () => { return []; } },
     "errors": { type: String, required: false, default: '' },
-    "style": { type: Object, required: false, default: {} }
+    "style": { type: Object, required: false, default: () => { return {}; } }
   }
 }
 </script>
