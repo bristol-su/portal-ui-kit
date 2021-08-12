@@ -1,6 +1,18 @@
 <template>
   <div>
-    <input>
+    <v-form-label v-bind="$props">
+      <div class="mt-1 flex rounded-md shadow-sm">
+        <input
+            type="text"
+            :name=title
+            :id=id
+            :placeholder=help
+            :value=value
+            required
+            @blur="$emit('updated', { id: id, value: $event.target.value })"
+            class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+      </div>
+    </v-form-label>
   </div>
 </template>
 
@@ -10,14 +22,14 @@ export default {
   props: {
     "id": { type: String, required: true },
     "title": { type: String, required: true },
-    "default_value": { type: String, required: false },
+    "value": { type: String, required: false },
     "read_only": { type: Boolean, required: false, default: false },
     "disabled": { type: Boolean, required: false, default: false },
     "help": { type: String, required: true },
     "tooltip": { type: String, required: true },
-    "validation": { type: Array, required: false, default: () => { return []; } },
+    "compValidation": { type: Array, required: false, default: () => { return []; } },
     "errors": { type: String, required: false, default: '' },
-    "style": { type: Object, required: false, default: () => { return {}; } }
+    "compStyle": { type: Object, required: false, default: () => { return {}; } }
   }
 }
 </script>

@@ -1,8 +1,13 @@
 <template>
-  <div>
-      <h4 v-text="labelTitle"></h4>
+  <div class="relative mt-4">
+      <label :for=title class="text-base leading-7 text-blueGray-500">
+          {{ labelTitle }}
+      </label>
       <slot></slot>
-      <p v-text="help"></p>
+      <v-help-text :help=help ></v-help-text>
+      <div v-if="errors" v-for="error in errors" :key="error.id">
+          <v-error :error=error ></v-error>
+      </div>
   </div>
 </template>
 
