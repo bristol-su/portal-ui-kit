@@ -2,8 +2,6 @@
   <div>
     <h1>To Do List:</h1>
     <ul>
-      <li>Pull Styling properly from previous design,</li>
-      <li>Build up other component types,</li>
       <li>Resolve Tooltip! -> Probably just pull in a package to handle this!</li>
       <li>Resolve the ability to put the Slot on FormLabel in the Label element or to put it underneath (For Radio/Checkbox Buttons)</li>
       <li>Build up some example forms that are the same as previously discussed</li>
