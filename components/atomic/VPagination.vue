@@ -1,10 +1,10 @@
 <template>
   <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
     <div class="flex-1 flex justify-between sm:hidden">
-      <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+      <a href="#" v-if="page > 1" @click.prevent="updatePage(page - 1)" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
         Previous
       </a>
-      <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+      <a href="#" v-if="pageShowing.to < pageShowing.total" @click.prevent="updatePage(page + 1)" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
         Next
       </a>
     </div>
@@ -81,7 +81,7 @@ export default {
   name: "VPagination",
   props: {
     "totalCount": { type: Number, required: true },
-    "pageSize": { type: Number, required: true },
+    "pageSize": { type: [String, Number], required: true },
     "page": {type: Number, required: true }
   },
   methods: {
@@ -99,8 +99,8 @@ export default {
     pageShowing()
     {
       return {
-        'start': this.page > 1 ? this.page * this.pageSize : this.page,
-        'to': this.page > 1 ? (this.page + 1) * this.pageSize : this.pageSize + 1,
+        'start': this.page > 1 ? this.page * Number(this.pageSize) : this.page,
+        'to': this.page > 1 ? (this.page + 1) * Number(this.pageSize) : Number(this.pageSize) + 1,
         'total': this.totalCount
       };
     }

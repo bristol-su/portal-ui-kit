@@ -38,7 +38,7 @@
       :totalCount=totalCount
       :pageSize=pageSize
       :page=page
-      v-on:updatePageSize="pageSize = value"
+      v-on:updatePageSize="updatePageSize"
       v-on:changePage="updatePage"
   ></v-pagination>
   </div>
@@ -75,6 +75,10 @@ export default {
       }
       // Set to clicked Column:
       this.sort.by = column;
+    },
+    updatePageSize(e)
+    {
+        this.pageSize = e;
     },
     updatePage(e)
     {
