@@ -19,22 +19,22 @@ export default {
             // Get component config
             const componentConfig = requireComponent(fileName)
 
-            // Get PascalCase name of component
-            const componentName = upperFirst(
+            // Get PascalCase name of component, and swap V for P
+            const componentName = 'P' +
               camelCase(
                 // Gets the file name regardless of folder depth
                 fileName
                   .split('/')
                   .pop()
                   .replace(/\.\w+$/, '')
+                  .slice(1)
               )
-            )
 
+            console.log(componentName);
 
             // Register component globally
             Vue.component(
-              // Swap the first letter from V to P
-              'P' + componentName.slice(1),
+              componentName,
               // Look for the component options on `.default`, which will
               // exist if the component was exported with `export default`,
               // otherwise fall back to module's root.
