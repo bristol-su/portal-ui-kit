@@ -30,8 +30,6 @@ export default {
               )
             )
 
-            console.log(componentName);
-
             // Register component globally
             Vue.component(
               // Swap the first letter from V to P
