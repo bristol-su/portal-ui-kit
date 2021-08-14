@@ -3,6 +3,8 @@ import camelCase from 'lodash/camelCase'
 
 export default {
     install(Vue, options) {
+        console.log('Hello');
+        console.log('options');
 
         const requireComponent = require.context(
           // The relative path of the components folder
