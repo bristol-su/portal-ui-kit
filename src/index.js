@@ -3,8 +3,6 @@ import camelCase from 'lodash/camelCase'
 
 export default {
     install(Vue, options) {
-        console.log('Hello');
-        console.log('options');
 
         const requireComponent = require.context(
           // The relative path of the components folder
@@ -19,9 +17,10 @@ export default {
             // Get component config
             const componentConfig = requireComponent(fileName)
 
-            // Get PascalCase name of component, and swap V for P
-            const componentName = 'P' +
+            // Get PascalCase name of component
+            const componentName = upperFirst(
               camelCase(
+                'P' +
                 // Gets the file name regardless of folder depth
                 fileName
                   .split('/')
@@ -29,11 +28,13 @@ export default {
                   .replace(/\.\w+$/, '')
                   .slice(1)
               )
+            )
 
             console.log(componentName);
 
             // Register component globally
             Vue.component(
+              // Swap the first letter from V to P
               componentName,
               // Look for the component options on `.default`, which will
               // exist if the component was exported with `export default`,
