@@ -8,7 +8,7 @@ export default {
           // The relative path of the components folder
           './components',
           // Whether or not to look in subfolders
-          false,
+          true,
           // The regular expression used to match base component filenames. V*.vue
           /V[A-Z]\w+\.(vue|js)$/
         )
