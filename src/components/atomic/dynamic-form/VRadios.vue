@@ -3,7 +3,7 @@
         <v-form-label v-bind="labelProps">
             <div v-for="radio in radios">
                 <input
-                  type="checkbox"
+                  type="radio"
                   :id="radio.id"
                   :value="radio.id"
                   :checked="optionIsChecked(radio)"
