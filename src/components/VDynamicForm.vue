@@ -47,7 +47,7 @@ import VTextInput from './atomic/dynamic-form/VTextInput';
 export default {
     name: "VDynamicForm",
     props: {
-        schema: {type: Object, required: true, validator: (val) => this.validateFormSchema(val)}
+        schema: {type: Object, required: true, validator: (val) => true}
     },
     data() {
         return {
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         validateFormSchema(val) {
-            return false;
+            // TODO
         },
         initialiseFormData() {
             this.form.groups.map((g) => g.fields.map((f) => this.$set(this.formData, f.id, f.value)));
