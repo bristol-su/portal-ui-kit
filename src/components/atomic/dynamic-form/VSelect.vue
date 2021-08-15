@@ -25,9 +25,7 @@ export default {
         selectOptions: {
             required: true,
             type: Array,
-            validator: function(val) {
-                return val.length() > 0 && val.filter((option) => !option.hasOwnProperty('id') || !option.hasOwnProperty('value')).count() === 0;
-            }
+            validator: (val) => val.length() > 0 && val.filter((option) => !option.hasOwnProperty('id') || !option.hasOwnProperty('value')).count() === 0
         }
     },
     mixins: [FormInputMixin]
