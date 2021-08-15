@@ -1,29 +1,31 @@
 export default class {
 
     constructor() {
-        this.title = null;
-        this.subtitle = null;
-        this.description = null;
-        this.groups = [];
+        this.schema = {
+            title: null,
+            subtitle: null,
+            description: null,
+            groups: []
+        };
     }
 
     title(title) {
-        this.title = title;
+        this.schema.title = title;
         return this;
     }
 
     subtitle(subtitle) {
-        this.subtitle = subtitle;
+        this.schema.subtitle = subtitle;
         return this;
     }
 
     description(description) {
-        this.description = description;
+        this.schema.description = description;
         return this;
     }
 
     pushGroup(group) {
-        this.groups.push(group);
+        this.schema.groups.push(group);
     }
 
 }

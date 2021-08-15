@@ -1,23 +1,25 @@
 export default class {
 
     constructor() {
-        this.title = null;
-        this.subtitle = null;
-        this.fields = [];
+        this.schema = {
+            title: null,
+            subtitle: null,
+            fields: null
+        };
     }
 
     title(title) {
-        this.title = title;
+        this.schema.title = title;
         return this;
     }
 
     subtitle(subtitle) {
-        this.subtitle = subtitle;
+        this.schema.subtitle = subtitle;
         return this;
     }
 
     pushField(field) {
-        this.fields.push = field;
+        this.schema.fields.push = field;
     }
 
 }
