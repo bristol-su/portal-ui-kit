@@ -21,7 +21,7 @@ console.log(form.asJson());
 
 export default {
     generator: new FormGenerator,
-    form: form.toJson()
+    form: form.asJson()
 }
 
 //   .withGroup((groupGenerator) => groupGenerator.newGroup('Title', 'Subtitle')
