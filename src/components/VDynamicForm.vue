@@ -41,8 +41,14 @@
 </template>
 
 <script>
-import VRadio from './atomic/dynamic-form/VRadio';
+import VRadio from './atomic/dynamic-form/VRadios';
 import VTextInput from './atomic/dynamic-form/VTextInput';
+import VSelect from './atomic/dynamic-form/VSelect';
+import VTextarea from './atomic/dynamic-form/VTextarea';
+import VSwitch from './atomic/dynamic-form/VSwitch';
+import VFileUpload from './atomic/dynamic-form/VFileUpload';
+import VChecklist from './atomic/dynamic-form/VChecklist';
+import VCheckbox from './atomic/dynamic-form/VCheckbox';
 
 export default {
     name: "VDynamicForm",
@@ -53,8 +59,14 @@ export default {
         return {
             formData: {},
             componentRegistration: {
+                checkbox: VCheckbox,
+                checklist: VChecklist,
+                file: VFileUpload,
                 radios: VRadio,
-                'text-input': VTextInput
+                select: VSelect,
+                switch: VSwitch,
+                textArea: VTextarea,
+                text: VTextInput
             }
         }
     },

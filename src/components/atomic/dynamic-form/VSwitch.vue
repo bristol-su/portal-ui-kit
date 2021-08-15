@@ -8,6 +8,7 @@
                   :name="name"
                   v-model="dynamicValue"
                   class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
+                <label :for="id">{{switchText}}</label>
             </div>
         </v-form-label>
     </div>
@@ -18,7 +19,16 @@ import FormInputMixin from './FormInputMixin';
 
 export default {
     name: "VSwitch",
-    mixins: [FormInputMixin]
+    mixins: [FormInputMixin],
+    props: {
+        onText: {required: false, type: String, default: 'On'},
+        offText: {required: false, type: String, default: 'Off'},
+    },
+    computed: {
+        switchText() {
+            return this.value ? this.onText : this.offText;
+        }
+    }
 }
 </script>
 
