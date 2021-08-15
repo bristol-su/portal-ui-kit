@@ -20,7 +20,7 @@ export default class {
                 return field;
             })
 
-            group.fields = fields;
+            group.schema.fields = fields;
 
             return group;
         })
