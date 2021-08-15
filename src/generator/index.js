@@ -18,8 +18,6 @@ let form = FormGenerator.newForm('Title', 'Subtitle', 'Description')
     ))
   .generate();
 
-console.log(form.asJson());
-
 let factory = new FormFactory();
 factory.fromJson(form.asJson());
 

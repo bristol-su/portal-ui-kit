@@ -34,6 +34,10 @@ export default class {
         return this;
     }
 
+    setGroups(groups) {
+        this.schema.groups = groups;
+    }
+
     asJson() {
         let schema = Object.assign({}, this.schema);
         schema.groups = schema.groups.map(group => group.asJson());

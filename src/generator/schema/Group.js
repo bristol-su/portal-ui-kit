@@ -29,6 +29,10 @@ export default class {
         return this;
     }
 
+    setFields(fields) {
+        this.schema.fields = fields;
+    }
+
     asJson() {
         let schema = Object.assign({}, this.schema);
         schema.fields = schema.fields.map(field => field.asJson());
