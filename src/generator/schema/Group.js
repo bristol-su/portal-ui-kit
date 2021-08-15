@@ -4,7 +4,7 @@ export default class {
         this.schema = {
             title: null,
             subtitle: null,
-            fields: null
+            fields: []
         };
     }
 
