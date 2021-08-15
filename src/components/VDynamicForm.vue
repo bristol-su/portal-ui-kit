@@ -15,13 +15,13 @@
               class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2">
                 <div class="lg:text-center">
                     <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-                       v-if="schema.title" v-text="schema.title"></p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" v-if="schema.subtitle"
-                       v-text="schema.subtitle"></p>
-                    <p v-if="schema.description" v-text="schema.description"></p>
+                       v-if="form.title" v-text="form.title"></p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" v-if="form.subtitle"
+                       v-text="form.subtitle"></p>
+                    <p v-if="form.description" v-text="form.description"></p>
                 </div>
                 <form ref="form">
-                    <div v-for="group in schema.groups">
+                    <div v-for="group in form.groups">
                         <div v-for="formInput in group.fields" :key="formInput.id">
                             <keep-alive>
                                 <component
@@ -41,18 +41,13 @@
 </template>
 
 <script>
-import VRadio from './atomic/VRadio';
-import VTextInput from './atomic/VTextInput';
+import VRadio from './atomic/dynamic-form/VRadio';
+import VTextInput from './atomic/dynamic-form/VTextInput';
 
 export default {
     name: "VDynamicForm",
     props: {
-        "schema": {type: Object, required: true},
-        "settings": {
-            type: Object, required: false, default: () => {
-                return {'form_format': 'single'};
-            }
-        }
+        schema: {type: Object, required: true, validator: (val) => this.validateFormSchema(val)}
     },
     data() {
         return {
@@ -64,12 +59,14 @@ export default {
         }
     },
     mounted() {
-        this.formInit();
+        this.initialiseFormData();
     },
     methods: {
-        formInit() {
-            let self = this;
-            self.schema.groups.map((g) => g.fields.map((f) => self.$set(self.formData, f.id, f.value)));
+        validateFormSchema() {
+            return false;
+        },
+        initialiseFormData() {
+            this.form.groups.map((g) => g.fields.map((f) => this.$set(this.formData, f.id, f.value)));
         },
         updateFormData(e) {
             this.$set(this.formData, e.id, e.value);
@@ -92,6 +89,15 @@ export default {
                 return this.componentRegistration[type];
             }
             return type;
+        }
+    },
+    computed: {
+        groupFormat() {
+            return this.schema.groupFormat;
+        },
+        form() {
+            return this.schema.form;
+            // TODO We need to update the value of the field `value` key in the schema to match new values!
         }
     }
 }

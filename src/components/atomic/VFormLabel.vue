@@ -13,11 +13,13 @@
 
 <script>
 import VHelpText from './VHelpText';
+import VError from './VError';
 
 export default { // Wrapper Component for Inputs which shows Tooltip and Help text, also will need to handle errors
     name: "VFormLabel",
     components: {
-        VHelpText
+        VHelpText,
+        VError
     },
     props: {
         title: {type: String, required: true},
