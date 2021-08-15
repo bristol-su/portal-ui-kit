@@ -26,7 +26,7 @@
                             <keep-alive>
                                 <component
                                   :is="getComponentFromType(formInput.type)"
-                                  v-bind="formInput"
+                                  :schema="formInput"
                                   @updated="updateFormData"
                                   @submit="triggerSubmit"
                                 >
