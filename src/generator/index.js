@@ -22,6 +22,5 @@ let factory = new FormFactory();
 factory.fromJson(form.asJson());
 
 export default {
-    generator: new FormGenerator,
-    form: form.asJson()
+    generator: new FormGenerator
 }
