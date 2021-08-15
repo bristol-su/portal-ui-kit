@@ -1,4 +1,4 @@
-import Radio from '../fields/Radio';
+import Radios from '../fields/Radios';
 import Field from '../schema/Field';
 import Checklist from '../fields/Checklist';
 import Select from '../fields/Select';
@@ -11,7 +11,7 @@ export default class {
     }
 
     static radios(id) {
-        return new Radio(id);
+        return new Radios(id);
     }
 
     static checkbox(id) {
