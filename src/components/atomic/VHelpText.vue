@@ -6,7 +6,7 @@
 export default {
   name: "VHelpText",
   props: {
-    "help": { type:String, required: true }
+      help: {type: String, required: true}
   }
 }
 </script>

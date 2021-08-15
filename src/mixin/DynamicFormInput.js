@@ -13,6 +13,9 @@ export default {
         id() {
             return this.schema.id;
         },
+        name() {
+            return this.id;
+        },
         label() {
             return this.schema.title;
         },
