@@ -1,8 +1,9 @@
 export default class {
 
-    constructor(id) {
+    constructor(type, id) {
         this.schema = {
             id: id,
+            type: type,
             label: null,
             value: null,
             visible: true,
@@ -53,16 +54,8 @@ export default class {
         return this;
     }
 
-    addSchemaValue(key, value) {
-        this.schema[key] = value;
-        return this;
-    }
-
-    getSchemaValue(key, defaultOption) {
-        if(this.schema.hasOwnProperty(key)) {
-            return this.schema[key];
-        }
-        return defaultOption;
+    toJson() {
+        return this.schema;
     }
 
 }

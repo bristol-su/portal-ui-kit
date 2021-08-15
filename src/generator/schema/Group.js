@@ -22,4 +22,10 @@ export default class {
         this.schema.fields.push = field;
     }
 
+    toJson() {
+        let schema = Object.assign({}, this.schema);
+        schema.fields = schema.fields.map(field => field.toJson());
+        return this.schema;
+    }
+
 }

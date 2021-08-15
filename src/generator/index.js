@@ -16,11 +16,11 @@ let form = FormGenerator.newForm('Title', 'Subtitle', 'Description')
         .withOption('three', 'Three')
     ))
 
-console.log(form);
+console.log(form.toJson());
 
 export default {
     generator: new FormGenerator,
-    form: form
+    form: form.toJson()
 }
 
 //   .withGroup((groupGenerator) => groupGenerator.newGroup('Title', 'Subtitle')

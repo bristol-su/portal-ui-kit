@@ -28,4 +28,10 @@ export default class {
         this.schema.groups.push(group);
     }
 
+    toJson() {
+        let schema = Object.assign({}, this.schema);
+        schema.groups = schema.groups.map(group => group.toJson());
+        return this.schema;
+    }
+
 }
