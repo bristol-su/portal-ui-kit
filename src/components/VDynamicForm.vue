@@ -62,7 +62,7 @@ export default {
         this.initialiseFormData();
     },
     methods: {
-        validateFormSchema() {
+        validateFormSchema(val) {
             return false;
         },
         initialiseFormData() {
