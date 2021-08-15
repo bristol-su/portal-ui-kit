@@ -25,7 +25,7 @@ export default class {
         if(field instanceof FieldGenerator) {
             field = field.generate();
         }
-        this.schema.fields.push = field;
+        this.schema.fields.push(field);
         return this;
     }
 
