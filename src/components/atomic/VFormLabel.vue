@@ -1,6 +1,6 @@
 <template>
     <div class="relative mt-4">
-        <label :for=title class="text-base leading-7 text-blueGray-500">
+        <label :for=title class="text-base leading-7 text-blueGray-500" v-if="title">
             {{ title }} <span v-if="required">* <span class="sr-only">Required</span></span>
         </label>
         <slot></slot>
@@ -22,7 +22,7 @@ export default { // Wrapper Component for Inputs which shows Tooltip and Help te
         VError
     },
     props: {
-        title: {type: String, required: true},
+        title: {type: String, required: false},
         required: {type: Boolean, required: false, default: false},
         help: {type: String, required: false},
         tooltip: {type: String, required: false},

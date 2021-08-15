@@ -3,11 +3,12 @@ import VFormLabel from '../VFormLabel';
 export default {
     props: {
         id: {type: String, required: true},
-        label: {type: String, required: true},
-        required: {type: Boolean, required: false, default: false},
-        visible: {type: Boolean, required: false, default: true},
-        hint: {type: String, required: false},
-        tooltip: {type: String, required: false},
+        label: {validator: (val) => val === null || val instanceof String, required: true},
+        required: {type: Boolean, required: true},
+        visible: {type: Boolean, required: true},
+        hint: {validator: (val) => val === null || val instanceof String, required: true},
+        tooltip: {validator: (val) => val === null || val instanceof String, required: true},
+        value: {required: true, default: null}
     },
     components: {
         VFormLabel
@@ -42,12 +43,13 @@ export default {
             }
         },
         labelProps() {
-            return {
+            let props = {
                 title: this.title,
                 required: this.required,
                 help: this.help,
                 tooltip: this.tooltip
             }
+            return Object.keys(props).forEach((key) => props[key] == null && delete props[key]);
         }
     }
 }
