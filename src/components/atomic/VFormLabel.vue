@@ -23,7 +23,7 @@ export default { // Wrapper Component for Inputs which shows Tooltip and Help te
     },
     props: {
         title: {type: String, required: true},
-        required: {type: Bool, required: false, default: false},
+        required: {type: Boolean, required: false, default: false},
         help: {type: String, required: false},
         tooltip: {type: String, required: false},
         errors: {type: String, required: false, default: ''}
