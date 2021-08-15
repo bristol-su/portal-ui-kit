@@ -53,7 +53,10 @@ import VCheckbox from './atomic/dynamic-form/VCheckbox';
 export default {
     name: "VDynamicForm",
     props: {
-        schema: {type: Object, required: true, validator: (val) => true}
+        schema: {
+            required: true,
+            validator: (val) => typeof val === 'object' && val !== null
+        }
     },
     data() {
         return {
