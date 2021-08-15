@@ -15,6 +15,7 @@ let form = FormGenerator.newForm('Title', 'Subtitle', 'Description')
         .withOption('two', 'Two')
         .withOption('three', 'Three')
     ))
+  .generate();
 
 console.log(form.toJson());
 

@@ -26,12 +26,16 @@ export default class {
 
     pushGroup(group) {
         this.schema.groups.push(group);
+        return this;
     }
 
-    toJson() {
+    asJson() {
         let schema = Object.assign({}, this.schema);
-        schema.groups = schema.groups.map(group => group.toJson());
-        return this.schema;
+        schema.groups = schema.groups.map(group => group.asJson());
+        return {
+            form: this.schema,
+            groupFormat: 'single'
+        };
     }
 
 }

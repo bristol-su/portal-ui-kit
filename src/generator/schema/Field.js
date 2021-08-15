@@ -54,7 +54,7 @@ export default class {
         return this;
     }
 
-    toJson() {
+    asJson() {
         return this.schema;
     }
 

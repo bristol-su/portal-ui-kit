@@ -20,11 +20,12 @@ export default class {
 
     pushField(field) {
         this.schema.fields.push = field;
+        return this;
     }
 
-    toJson() {
+    asJson() {
         let schema = Object.assign({}, this.schema);
-        schema.fields = schema.fields.map(field => field.toJson());
+        schema.fields = schema.fields.map(field => field.asJson());
         return this.schema;
     }
 

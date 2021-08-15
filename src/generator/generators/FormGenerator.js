@@ -27,4 +27,8 @@ export default class {
         return this;
     }
 
+    generate() {
+        return this.form;
+    }
+
 }
