@@ -1,6 +1,7 @@
 import FormGenerator from './generators/FormGenerator';
 import GroupGenerator from './generators/GroupGenerator';
 import FieldGenerator from './generators/FieldGenerator';
+import FormFactory from './factory/FormFactory';
 
 
 
@@ -19,17 +20,10 @@ let form = FormGenerator.newForm('Title', 'Subtitle', 'Description')
 
 console.log(form.asJson());
 
+let factory = new FormFactory();
+factory.fromJson(form.asJson());
+
 export default {
     generator: new FormGenerator,
     form: form.asJson()
 }
-
-//   .withGroup((groupGenerator) => groupGenerator.newGroup('Title', 'Subtitle')
-//     .withField((fieldGenerator) => fieldGenerator.radios('radio_id')
-//       .name('name')
-//       .required(false)
-//     )
-//   ).withField((fieldGenerator) => fieldGenerator.radios('radio_id')
-//   .name('name')
-//   .required(false)
-// )

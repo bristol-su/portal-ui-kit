@@ -42,4 +42,7 @@ export default class {
         return new Switch(id);
     }
 
+    generate() {
+        return this.field;
+    }
 }

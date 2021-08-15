@@ -1,3 +1,5 @@
+import GroupGenerator from '../generators/GroupGenerator';
+
 export default class {
 
     constructor() {
@@ -25,6 +27,9 @@ export default class {
     }
 
     pushGroup(group) {
+        if(group instanceof GroupGenerator) {
+            group = group.generate();
+        }
         this.schema.groups.push(group);
         return this;
     }

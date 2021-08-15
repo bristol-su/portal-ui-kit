@@ -31,4 +31,8 @@ export default class {
         return this.form;
     }
 
+    asJson() {
+        return this.generate().asJson();
+    }
+
 }

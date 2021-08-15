@@ -1,3 +1,6 @@
+import GroupGenerator from '../generators/GroupGenerator';
+import FieldGenerator from '../generators/FieldGenerator';
+
 export default class {
 
     constructor() {
@@ -19,6 +22,9 @@ export default class {
     }
 
     pushField(field) {
+        if(field instanceof FieldGenerator) {
+            field = field.generate();
+        }
         this.schema.fields.push = field;
         return this;
     }
