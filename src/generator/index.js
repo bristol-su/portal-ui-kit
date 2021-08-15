@@ -17,7 +17,7 @@ let form = FormGenerator.newForm('Title', 'Subtitle', 'Description')
     ))
   .generate();
 
-console.log(form.toJson());
+console.log(form.asJson());
 
 export default {
     generator: new FormGenerator,
