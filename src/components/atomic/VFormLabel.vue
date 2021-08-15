@@ -30,7 +30,7 @@ export default { // Wrapper Component for Inputs which shows Tooltip and Help te
     },
     computed: {
         hasHelp() {
-            return this.help !== null;
+            return !!this.help;
         }
     }
 }
