@@ -25,7 +25,7 @@ export default {
         selectOptions: {
             required: true,
             type: Array,
-            validator: (val) => Array.isArray(val) && val.length > 0 && val.filter((option) => !option.hasOwnProperty('id') || !option.hasOwnProperty('value')).count() === 0
+            validator: (val) => Array.isArray(val) && val.length > 0 && val.filter((option) => !option.hasOwnProperty('id') || !option.hasOwnProperty('value')).length === 0
         }
     },
     mixins: [FormInputMixin]

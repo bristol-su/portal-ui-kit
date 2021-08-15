@@ -26,7 +26,7 @@ export default {
         radios: {
             required: true,
             type: Array,
-            validator: (val) => Array.isArray(val) && val.length > 0 && val.filter((option) => !option.hasOwnProperty('id') || !option.hasOwnProperty('text')).count() === 0
+            validator: (val) => Array.isArray(val) && val.length > 0 && val.filter((option) => !option.hasOwnProperty('id') || !option.hasOwnProperty('text')).length === 0
         }
     },
     methods: {
