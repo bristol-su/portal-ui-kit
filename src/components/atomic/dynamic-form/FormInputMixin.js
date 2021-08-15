@@ -49,6 +49,7 @@ export default {
                 help: this.help,
                 tooltip: this.tooltip
             }
+            console.log(Object.keys(props).forEach((key) => props[key] == null && delete props[key]));
             return Object.keys(props).forEach((key) => props[key] == null && delete props[key]);
         }
     }
