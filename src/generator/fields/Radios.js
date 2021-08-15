@@ -9,7 +9,7 @@ export default class extends Field {
 
     withOption(id, text) {
         let options = this.schema.radios;
-        options.push = {id: id, text: text};
+        options.push({id: id, text: text});
         this.schema.radios = options;
         return this;
     }

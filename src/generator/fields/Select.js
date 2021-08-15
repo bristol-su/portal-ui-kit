@@ -9,7 +9,7 @@ export default class extends Field {
 
     withOption(id, value) {
         let options = this.schema.selectOptions;
-        options.push = {id: id, value: value};
+        options.push({id: id, value: value});
         this.schema.selectOptions = options;
         return this;
     }
