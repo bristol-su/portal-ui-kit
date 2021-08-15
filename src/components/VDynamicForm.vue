@@ -42,6 +42,7 @@
 
 <script>
 import VRadio from './atomic/VRadio';
+import VTextInput from './atomic/VTextInput';
 
 export default {
     name: "VDynamicForm",
@@ -58,6 +59,7 @@ export default {
             formData: {},
             componentRegistration: {
                 radios: VRadio,
+                'text-input': VTextInput
             }
         }
     },
