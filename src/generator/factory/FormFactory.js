@@ -9,21 +9,19 @@ export default class {
         form.subtitle(json.form.subtitle);
         form.description(json.form.description);
 
-        form.groups = json.form.groups.map(groupSchema => {
+        form.setGroups(json.form.groups.map(groupSchema => {
             let group = new Group();
             group.title( groupSchema.title);
             group.subtitle(  groupSchema.subtitle);
 
-            let fields = groupSchema.fields.map(fieldSchema => {
+            group.setFields(groupSchema.fields.map(fieldSchema => {
                 let field = new Field(fieldSchema.type, fieldSchema.id);
                 field.schema = fieldSchema;
                 return field;
-            })
-
-            group.schema.fields = fields;
+            }))
 
             return group;
-        })
+        }))
 console.log(form);
         return form;
     }
