@@ -38,7 +38,7 @@ export default class {
         let schema = Object.assign({}, this.schema);
         schema.groups = schema.groups.map(group => group.asJson());
         return {
-            form: this.schema,
+            form: schema,
             groupFormat: 'single'
         };
     }
