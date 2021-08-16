@@ -27,7 +27,7 @@
                                 <component
                                   :is="getComponentFromType(formInput.type)"
                                   v-bind="formInput"
-                                  @updated="updateFormData"
+                                  @input="updateFormData"
                                   @submit="triggerSubmit"
                                 >
                                 </component>
@@ -61,6 +61,11 @@ export default {
         groupFormat: {
             required: false,
             validator: (val) => val === null || (typeof val === 'string' && ['single'].indexOf(val) !== -1)
+        },
+        data: {
+            required: false,
+            type: Object,
+            default: () => {}
         }
     },
     data() {
@@ -86,10 +91,14 @@ export default {
             // TODO
         },
         initialiseFormData() {
-            this.form.groups.map((g) => g.fields.map((f) => this.$set(this.formData, f.id, f.value)));
+            let formData = Object.assign({}, this.formData);
+            this.form.groups.forEach((g) => g.fields.map((f) => formData[f.id] = f.value));
+            this.formData = formData;
         },
         updateFormData(e) {
-            this.$set(this.formData, e.id, e.value);
+            let formData = Object.assign({}, this.formData);
+            formData[e.id] = e.value;
+            this.formData = formData;
         },
         triggerSubmit() {
             // Trigger HTML5 Validation:
@@ -118,6 +127,14 @@ export default {
             }
             return this.schema;
             // TODO We need to update the value of the field `value` key in the schema to match new values!
+        },
+        formData: {
+            get() {
+                return this.data;
+            },
+            set(value) {
+                this.$emit('input', value);
+            }
         }
     }
 }

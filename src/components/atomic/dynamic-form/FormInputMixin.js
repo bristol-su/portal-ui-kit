@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         setValue(value) {
-            this.$emit('updated', {id: this.id, value: value});
+            this.$emit('input', {id: this.id, value: value});
         }
     },
     computed: {
