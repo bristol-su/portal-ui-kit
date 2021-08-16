@@ -22,7 +22,7 @@ export default class {
 
             return group;
         }))
-console.log(form);
+
         return form;
     }
 }
