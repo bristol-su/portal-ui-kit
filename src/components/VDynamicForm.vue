@@ -83,16 +83,12 @@ export default {
         },
         initialiseFormData() {
             let data = Object.assign({}, this.data);
-            console.log('basic form data', data);
             this.form.groups.forEach((g) => g.fields.forEach((f) => (data.hasOwnProperty(f.id) ? '' : data[f.id] = f.value)));
-            console.log('Updated form data', data);
             this.data = data;
         },
         updateFormData(e) {
             let data = Object.assign({}, this.data);
-            console.log('basic form data start from', data);
             data[e.id] = e.value;
-            console.log('udpated form data for updating', data);
             this.data = data;
         },
         triggerSubmit() {
@@ -128,6 +124,7 @@ export default {
                 return this.value;
             },
             set(value) {
+                console.log(value);
                 this.$emit('input', value);
             }
         }

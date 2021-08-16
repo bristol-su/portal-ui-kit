@@ -105,7 +105,6 @@ export default {
     },
     methods: {
         updatePageSize(e) {
-            console.log(e);
             this.$emit('updatePageSize', e.value)
         },
         updatePage(number) {
