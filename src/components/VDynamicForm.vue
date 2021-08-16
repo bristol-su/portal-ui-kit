@@ -64,6 +64,7 @@ export default {
                 checkbox: VCheckbox,
                 checklist: VChecklist,
                 file: VFileUpload,
+                number: VNumber,
                 radios: VRadio,
                 select: VSelect,
                 switch: VSwitch,
