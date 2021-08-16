@@ -19,7 +19,7 @@
 import FormInputMixin from './FormInputMixin';
 
 export default {
-    name: "VInput",
+    name: "VTextInput",
     mixins: [FormInputMixin]
 }
 </script>

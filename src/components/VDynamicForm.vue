@@ -40,6 +40,7 @@ import VFileUpload from './atomic/dynamic-form/VFileUpload';
 import VChecklist from './atomic/dynamic-form/VChecklist';
 import VCheckbox from './atomic/dynamic-form/VCheckbox';
 import Form from '../generator/schema/Form';
+import VNumber from './atomic/dynamic-form/VNumber';
 
 export default {
     name: "VDynamicForm",
