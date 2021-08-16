@@ -70,7 +70,6 @@ export default {
     },
     data() {
         return {
-            formData: {},
             componentRegistration: {
                 checkbox: VCheckbox,
                 checklist: VChecklist,
