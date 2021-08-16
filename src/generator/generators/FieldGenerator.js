@@ -3,6 +3,7 @@ import Field from '../schema/Field';
 import Checklist from '../fields/Checklist';
 import Select from '../fields/Select';
 import Switch from '../fields/Switch';
+import File from '../fields/File';
 
 export default class {
 
@@ -19,7 +20,7 @@ export default class {
     }
 
     static file(id) {
-        return new Field('file', id);
+        return new File(id);
     }
 
     static textArea(id) {
