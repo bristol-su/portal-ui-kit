@@ -56,6 +56,10 @@ export default {
         schema: {
             required: true,
             validator: (val) => typeof val === 'object' && val !== null
+        },
+        groupFormat: {
+            required: true,
+            validator: (val) => val === null || (typeof val === 'string' && ['single'].indexOf(val) !== -1)
         }
     },
     data() {
@@ -107,11 +111,8 @@ export default {
         }
     },
     computed: {
-        groupFormat() {
-            return this.schema.groupFormat;
-        },
         form() {
-            return this.schema.form;
+            return this.schema;
             // TODO We need to update the value of the field `value` key in the schema to match new values!
         }
     }
