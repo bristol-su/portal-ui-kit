@@ -36,7 +36,7 @@ export default class {
     asJson() {
         let schema = Object.assign({}, this.schema);
         schema.fields = schema.fields.map(field => field.asJson());
-        return this.schema;
+        return schema;
     }
 
 }
