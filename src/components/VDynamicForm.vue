@@ -58,7 +58,7 @@ export default {
             validator: (val) => typeof val === 'object' && val !== null
         },
         groupFormat: {
-            required: true,
+            required: false,
             validator: (val) => val === null || (typeof val === 'string' && ['single'].indexOf(val) !== -1)
         }
     },
