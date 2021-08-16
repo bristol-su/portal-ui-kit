@@ -1,15 +1,5 @@
 <template>
     <div>
-        <h1>To Do List:</h1>
-        <ul>
-            <li>Resolve Tooltip! -> Probably just pull in a package to handle this!</li>
-            <li>Resolve the ability to put the Slot on FormLabel in the Label element or to put it underneath (For
-                Radio/Checkbox Buttons)
-            </li>
-            <li>Build up some example forms that are the same as previously discussed</li>
-        </ul>
-
-        <hr>
         <div class="container items-center px-5 py-12 lg:px-20">
             <div
               class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2">
