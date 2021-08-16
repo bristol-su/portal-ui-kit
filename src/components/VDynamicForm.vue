@@ -49,6 +49,7 @@ import VSwitch from './atomic/dynamic-form/VSwitch';
 import VFileUpload from './atomic/dynamic-form/VFileUpload';
 import VChecklist from './atomic/dynamic-form/VChecklist';
 import VCheckbox from './atomic/dynamic-form/VCheckbox';
+import Form from '../generator/schema/Form';
 
 export default {
     name: "VDynamicForm",
@@ -112,6 +113,9 @@ export default {
     },
     computed: {
         form() {
+            if(this.schema instanceof Form) {
+                return this.schema.asJson();
+            }
             return this.schema;
             // TODO We need to update the value of the field `value` key in the schema to match new values!
         }
