@@ -47,6 +47,10 @@ export default class {
         return new Switch(id);
     }
 
+    static tags(id) {
+        return new Field('tags', id);
+    }
+
     generate() {
         return this.field;
     }

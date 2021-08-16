@@ -10,16 +10,17 @@
                        v-text="form.subtitle"></p>
                     <p v-if="form.description" v-text="form.description"></p>
                 </div>
-                <form ref="form">
+                <form
+                  ref="form"
+                  :action="formUrl"
+                  :method="formMethod">
                     <div v-for="group in form.groups">
                         <div v-for="formInput in group.fields" :key="formInput.id">
                             <keep-alive>
                                 <component
                                   :is="getComponentFromType(formInput.type)"
                                   v-bind="formInput"
-                                  @input="updateFormData"
-                                  @submit="triggerSubmit"
-                                >
+                                  @input="updateFormData">
                                 </component>
                             </keep-alive>
                         </div>
@@ -41,6 +42,7 @@ import VChecklist from './atomic/dynamic-form/VChecklist';
 import VCheckbox from './atomic/dynamic-form/VCheckbox';
 import Form from '../generator/schema/Form';
 import VNumber from './atomic/dynamic-form/VNumber';
+import VTags from './atomic/dynamic-form/VTags';
 
 export default {
     name: "VDynamicForm",
@@ -56,8 +58,12 @@ export default {
         value: {
             required: false,
             type: Object,
-            default: () => {}
-        }
+            default: () => {
+            }
+        },
+        formUrl: {required: false, type: String, default: '#'},
+        formMethod: {required: false, type: String, default: 'POST'},
+
     },
     data() {
         return {
@@ -69,6 +75,7 @@ export default {
                 radios: VRadio,
                 select: VSelect,
                 switch: VSwitch,
+                tags: VTags,
                 textArea: VTextarea,
                 text: VTextInput
             }
@@ -78,34 +85,26 @@ export default {
         this.initialiseFormData();
     },
     methods: {
-        validateFormSchema(val) {
-            // TODO
-        },
         initialiseFormData() {
-            let data = Object.assign({}, this.data);
-            this.form.groups.forEach((g) => g.fields.forEach((f) => (data.hasOwnProperty(f.id) ? '' : data[f.id] = f.value)));
-            this.data = data;
+            let data = Object.assign({}, this.formData);
+            this.form.groups.forEach((g) => g.fields.forEach((f) => (data.hasOwnProperty(f.id) ? null : data[f.id] = f.value)));
+            this.formData = data;
         },
         updateFormData(e) {
-            let data = Object.assign({}, this.data);
+            let data = Object.assign({}, this.formData);
             data[e.id] = e.value;
-            this.data = data;
+            this.formData = data;
         },
-        triggerSubmit() {
+        checkValidity() {
             // Trigger HTML5 Validation:
             if (this.$refs.form.checkValidity()) {
-                // Process Submit Process:
-                this.processSubmit();
-            } else {
-                // Notify User of incorrect Input:
-                this.$refs.form.reportValidity();
+                return true;
             }
-        },
-        processSubmit() {
-            // Process Form Submission to API:
+            this.$refs.form.reportValidity();
+            return false;
         },
         getComponentFromType(type) {
-            if(this.componentRegistration.hasOwnProperty(type)) {
+            if (this.componentRegistration.hasOwnProperty(type)) {
                 return this.componentRegistration[type];
             }
             return type;
@@ -113,18 +112,17 @@ export default {
     },
     computed: {
         form() {
-            if(this.schema instanceof Form) {
+            if (this.schema instanceof Form) {
                 return this.schema.asJson();
             }
             return this.schema;
-            // TODO We need to update the value of the field `value` key in the schema to match new values!
+            // TODO We need to update the value of each fields `value` key in the schema to match new values as per this.formData!
         },
-        data: {
+        formData: {
             get() {
                 return this.value;
             },
             set(value) {
-                console.log(value);
                 this.$emit('input', value);
             }
         }
