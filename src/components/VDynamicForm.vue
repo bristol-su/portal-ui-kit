@@ -62,7 +62,7 @@ export default {
             required: false,
             validator: (val) => val === null || (typeof val === 'string' && ['single'].indexOf(val) !== -1)
         },
-        data: {
+        value: {
             required: false,
             type: Object,
             default: () => {}
@@ -90,14 +90,18 @@ export default {
             // TODO
         },
         initialiseFormData() {
-            let formData = Object.assign({}, this.formData);
-            this.form.groups.forEach((g) => g.fields.forEach((f) => (formData.hasOwnProperty(f.id) ? '' : formData[f.id] = f.value)));
-            this.formData = formData;
+            let data = Object.assign({}, this.data);
+            console.log('basic form data', data);
+            this.form.groups.forEach((g) => g.fields.forEach((f) => (data.hasOwnProperty(f.id) ? '' : data[f.id] = f.value)));
+            console.log('Updated form data', data);
+            this.data = data;
         },
         updateFormData(e) {
-            let formData = Object.assign({}, this.formData);
-            formData[e.id] = e.value;
-            this.formData = formData;
+            let data = Object.assign({}, this.data);
+            console.log('basic form data start from', data);
+            data[e.id] = e.value;
+            console.log('udpated form data for updating', data);
+            this.data = data;
         },
         triggerSubmit() {
             // Trigger HTML5 Validation:
@@ -127,9 +131,9 @@ export default {
             return this.schema;
             // TODO We need to update the value of the field `value` key in the schema to match new values!
         },
-        formData: {
+        data: {
             get() {
-                return this.data;
+                return this.value;
             },
             set(value) {
                 this.$emit('input', value);
