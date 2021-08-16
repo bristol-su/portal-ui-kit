@@ -91,7 +91,7 @@ export default {
         },
         initialiseFormData() {
             let formData = Object.assign({}, this.formData);
-            this.form.groups.forEach((g) => g.fields.map((f) => formData[f.id] = f.value));
+            this.form.groups.forEach((g) => g.fields.forEach((f) => (formData.hasOwnProperty(f.id) ? '' : formData[f.id] = f.value)));
             this.formData = formData;
         },
         updateFormData(e) {
