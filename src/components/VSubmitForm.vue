@@ -1,20 +1,29 @@
 <template>
     <div>
-        <p-dynamic-form
+        <v-dynamic-form
           :schema="schema"
           v-model="formData"
+          :form-url="formUrl"
+          :form-method="formMethod"
           refs="form"
         >
             <template v-slot:append>
-                <p-button buttonText="Submit" @click="checkValidity"></p-button>
+                <v-button buttonText="Submit" @click="checkValidity"></v-button>
             </template>
-        </p-dynamic-form>
+        </v-dynamic-form>
     </div>
 </template>
 
 <script>
+import VDynamicForm from './VDynamicForm';
+import VButton from './atomic/VButton';
+
 export default {
     name: "VSubmitForm",
+    components: {
+        VDynamicForm,
+        VButton
+    },
     data() {
         return {
             formData: {}
@@ -28,7 +37,9 @@ export default {
         groupFormat: {
             required: false,
             validator: (val) => val === null || (typeof val === 'string' && ['single'].indexOf(val) !== -1)
-        }
+        },
+        formUrl: {required: false, type: String, default: '#'},
+        formMethod: {required: false, type: String, default: 'POST'},
     },
     methods: {
         checkValidity() {
