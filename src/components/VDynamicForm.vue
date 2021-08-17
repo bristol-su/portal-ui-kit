@@ -25,6 +25,7 @@
                             </keep-alive>
                         </div>
                     </div>
+                    <slot name="append"></slot>
                 </form>
             </div>
         </div>
