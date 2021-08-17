@@ -38,7 +38,7 @@ export default {
   props: {
     userName: { type: String, required: false },
     actingAs: { type: String, required: false },
-    navItems: { type: Array, required: true }, // Expects array of Objects -> {title: '', route: '', icon: ''}
+    navItems: { type: Array, required: true }, // Expects array of Objects -> {title: '', route: ''} // icon to be added LT
     currentRoute: { type: String, required: false }
   }
 }
