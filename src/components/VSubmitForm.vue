@@ -5,7 +5,7 @@
           v-model="formData"
           :form-url="formUrl"
           :form-method="formMethod"
-          refs="form"
+          ref="form"
         >
             <template v-slot:append>
                 <v-button buttonText="Submit" @click="checkValidity"></v-button>

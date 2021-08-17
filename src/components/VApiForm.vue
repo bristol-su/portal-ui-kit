@@ -3,7 +3,7 @@
         <v-dynamic-form
           :schema="schema"
           v-model="formData"
-          refs="form"
+          ref="form"
         >
             <template v-slot:append>
                 <v-button buttonText="Submit" @click.prevent="submit"></v-button>
