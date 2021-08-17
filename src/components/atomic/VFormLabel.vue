@@ -1,6 +1,8 @@
 <template>
     <div class="relative mt-4">
-        <label :for=title class="text-base leading-7 text-blueGray-500" v-if="title">
+        <label :content=tooltip :for=title class="text-base leading-7 text-blueGray-500" v-if="title"
+               v-tippy="{ arrow: true, animation: 'fade', placement: 'top-start', arrow: true, interactive: true }"
+        >
             {{ title }} <span v-if="required">* <span class="sr-only">Required</span></span>
         </label>
         <slot></slot>
