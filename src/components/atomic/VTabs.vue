@@ -6,7 +6,7 @@
                     v-for='(tab, index) in $children'
                     :key='tab.title'
                     @click='selectTab(index)'
-                    :class='{" text-gray-500 bg-gray-200": (index !== selectedIndex)}'
+                    :class='{"text-gray-500 bg-gray-200": (index !== selectedIndex)}'
                 >
                     {{ tab.title }}
                 </li>
@@ -29,6 +29,7 @@ export default {
     },
     methods: {
         selectTab (i) {
+            console.log(this.$children);
             this.selectedIndex = i
 
             // loop over all the tabs
