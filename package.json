@@ -17,6 +17,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^3.2.8",
     "vue": "^2.6.12"
   },
   "devDependencies": {
