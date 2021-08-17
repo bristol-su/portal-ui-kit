@@ -43,7 +43,7 @@ export default {
     },
     methods: {
         checkValidity() {
-            if (!this.refs.$form.checkValidity()) {
+            if (!this.$refs.form.checkValidity()) {
                 e.preventDefault();
             }
         }
