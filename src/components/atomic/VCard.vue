@@ -1,6 +1,6 @@
 <template>
   <div class="w-full p-6 mx-auto lg:w-1/3">
-    <div class="shadow-xl  rounded-xl bg-blueGray-50">
+    <div class="shadow-xl rounded-xl bg-blueGray-50">
       <img class="object-cover object-center w-full lg:h-48 md:h-36 rounded-t-xl" v-if="img" :src="img" :alt="title + ' banner image'">
       <div class="p-4 lg:p-8 bg-blueGray-50">
         <h1 class="mx-auto mb-4 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font">{{ title }}</h1>
