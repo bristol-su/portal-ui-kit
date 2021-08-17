@@ -1,15 +1,11 @@
 <template>
     <div>
         <v-form-label v-bind="labelProps">
-            <div class="mt-1 flex rounded-md shadow-sm">
-                <input
-                  type="checkbox"
-                  :id="id"
-                  :name="name"
-                  v-model="dynamicValue"
-                  class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
-                <label :for="id">{{switchText}}</label>
-            </div>
+          <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+            <input type="checkbox" :name="name" :id="id" v-model="dynamicValue" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+            <label :for="id" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+          <label :for="id" class="text-xs text-gray-700">{{switchText}}</label>
         </v-form-label>
     </div>
 </template>
@@ -33,5 +29,13 @@ export default {
 </script>
 
 <style scoped>
-
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+  border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68D391;
+}
 </style>
