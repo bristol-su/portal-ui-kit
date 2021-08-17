@@ -3,8 +3,6 @@
         <v-dynamic-form
           :schema="schema"
           v-model="formData"
-          :form-url="formUrl"
-          :form-method="formMethod"
           refs="form"
         >
             <template v-slot:append>
