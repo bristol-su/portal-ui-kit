@@ -13,6 +13,7 @@
 
 <script>
 export default {
+    name: "VTab",
     props: {
         title: {
             type: String,

@@ -3,7 +3,7 @@
         <div style="border-bottom: 2px solid #eaeaea">
             <ul class="flex cursor-pointer">
                 <li class='py-2 px-6 bg-white rounded-t-lg'
-                    v-for='(tab, index) in tabs'
+                    v-for='(tab, index) in $children'
                     :key='tab.title'
                     @click='selectTab(index)'
                     :class='{" text-gray-500 bg-gray-200": (index !== selectedIndex)}'
@@ -22,11 +22,7 @@ export default {
     data () {
         return {
             selectedIndex: 0, // the index of the selected tab,
-            tabs: []         // all of the tabs
         }
-    },
-    created () {
-        this.tabs = this.$children
     },
     mounted () {
         this.selectTab(0)
@@ -36,7 +32,7 @@ export default {
             this.selectedIndex = i
 
             // loop over all the tabs
-            this.tabs.forEach((tab, index) => {
+            this.$children.forEach((tab, index) => {
                 tab.isActive = (index === i)
             })
         }
