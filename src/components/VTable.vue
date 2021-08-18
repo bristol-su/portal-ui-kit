@@ -45,9 +45,14 @@
 </template>
 
 <script>
+import VPagination from './atomic/VPagination';
+
 export default {
   name: "VTable",
-  props: {
+  components: {
+      VPagination
+  },
+    props: {
     data: { type: Array, required: true },
     columns: { type: Array, required: true },
     editable: { type: Boolean, default: false },
