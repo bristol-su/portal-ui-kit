@@ -12,12 +12,17 @@ export default {
     props: {
         title: {
             type: String,
-            default: 'VTab'
+            required: true
         }
     },
     data () {
         return {
             isActive: false
+        }
+    },
+    methods: {
+        setActiveStatus(status) {
+            this.isActive = status;
         }
     }
 }
