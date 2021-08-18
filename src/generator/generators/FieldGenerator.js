@@ -31,6 +31,10 @@ export default class {
         return new Field('text', id);
     }
 
+    static password(id) {
+        return new Field('password', id);
+    }
+
     static number(id) {
         return new Field('number', id);
     }
