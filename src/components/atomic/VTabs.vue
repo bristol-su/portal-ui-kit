@@ -19,6 +19,12 @@
 <script>
 export default {
     name: "VTabs",
+    props: {
+        tabs: {
+            required: true,
+            type: Array
+        }
+    },
     data () {
         return {
             selectedIndex: 0, // the index of the selected tab,
@@ -26,7 +32,7 @@ export default {
     },
     mounted () {
         this.selectTab(0);
-        console.log(this.getTabs().map(tab => tab.isActive));
+        console.log(this.getTabs());
     },
     methods: {
         selectTab (i) {
