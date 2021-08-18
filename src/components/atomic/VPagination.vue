@@ -96,8 +96,13 @@
 </template>
 
 <script>
+import VSelect from './dynamic-form/VSelect';
+
 export default {
     name: "VPagination",
+    components: {
+        VSelect
+    },
     props: {
         "totalCount": {type: Number, required: true},
         "pageSize": {type: [String, Number], required: true},
