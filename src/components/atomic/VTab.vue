@@ -22,7 +22,7 @@ export default {
     },
     created() {
         this.$uiEventBus.$on('tab-selected', function callback(i) {
-            if()
+            console.log(i);
         }, this);
     }
 }
