@@ -6,7 +6,7 @@
                     v-for='(tab, index) in tabs'
                     :key='tab.title'
                     @click='selectTab(index)'
-                    :class='{"text-gray-500 bg-gray-200": (index !== selectedIndex)}'
+                    :class='{"text-gray-500 bg-gray-200": (index != selectedIndex)}'
                 >
                     {{ tab.title }}
                 </li>
