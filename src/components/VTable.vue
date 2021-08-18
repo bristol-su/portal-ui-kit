@@ -8,7 +8,7 @@
             <th v-for="column in columns"
                 v-text="column"
                 @click="setSort(column)"
-                scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
             </th>
             <th scope="col" class="relative px-6 py-3" v-if="editable">
               <span class="sr-only">Edit</span>
@@ -20,7 +20,7 @@
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
           <tr v-for="row in filteredRows" :id="row.id">
-            <td class="px-6 py-4 whitespace-nowrap" v-for="(value, key, index) in row" v-if="columns.indexOf(key) > -1">
+            <td class="px-6 py-4 whitespace-nowrap" v-for="(value, key, index) in row" v-if="upperColumns.indexOf(key.toUpperCase()) > -1">
               <div class="text-sm text-gray-900">{{ value }}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium" v-if="editable">
@@ -34,13 +34,13 @@
         </table>
       </div>
     </div>
-  <v-pagination
-      :totalCount=totalCount
-      :pageSize=pageSize
-      :page=page
-      v-on:updatePageSize="updatePageSize"
-      v-on:changePage="updatePage"
-  ></v-pagination>
+    <v-pagination
+        :totalCount=totalCount
+        :pageSize=pageSize
+        :page=page
+        v-on:updatePageSize="updatePageSize"
+        v-on:changePage="updatePage"
+    ></v-pagination>
   </div>
 </template>
 
@@ -50,9 +50,9 @@ import VPagination from './atomic/VPagination';
 export default {
   name: "VTable",
   components: {
-      VPagination
+    VPagination
   },
-    props: {
+  props: {
     data: { type: Array, required: true },
     columns: { type: Array, required: true },
     editable: { type: Boolean, default: false },
@@ -83,7 +83,7 @@ export default {
     },
     updatePageSize(e)
     {
-        this.pageSize = e;
+      this.pageSize = e;
     },
     updatePage(e)
     {
@@ -102,7 +102,10 @@ export default {
       // Order Data:
 
       return rows;
-
+    },
+    upperColumns()
+    {
+      return this.columns.map(col => col.toUpperCase());
     }
 
   }
