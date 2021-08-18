@@ -23,6 +23,7 @@ export default {
     methods: {
         setActiveStatus(status) {
             this.isActive = status;
+            this.$forceUpdate();
         }
     }
 }
