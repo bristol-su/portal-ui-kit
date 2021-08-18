@@ -33,7 +33,7 @@ export default {
 
             // loop over all the tabs
             this.getTabs().forEach((tab, index) => {
-                console.log(tab.title, ': Does ' + index + ' equal ' + i + ', ' + (index === i ? 'yes' : 'no'));
+                this.$set(tab, 'isActive', (index === i));
                 tab.isActive = (index == i)
             })
         },
