@@ -30,7 +30,7 @@ export default {
     methods: {
         selectTab (i) {
             this.selectedIndex = i
-console.log(this.getTabs());
+
             // loop over all the tabs
             this.getTabs().forEach((tab, index) => {
                 tab.setActiveStatus(index === i);
@@ -38,7 +38,7 @@ console.log(this.getTabs());
         },
         getTabs() {
             if (this.$slots.default) {
-                return this.$slots.default;
+                return this.$slots.default.filter(comp => comp.componentOptions)
             }
             return []
         }
