@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         selectTab (i) {
-            this.$uiEventBus.emit('tab-selected', i);
+            this.$uiEventBus.$emit('tab-selected', i);
         },
         getTabs() {
             if (this.$slots.default) {

@@ -21,7 +21,7 @@ export default {
         }
     },
     created() {
-        this.$uiEventBus.on('tab-selected', function callback(i) {
+        this.$uiEventBus.$on('tab-selected', function callback(i) {
             console.log(i);
         }, this);
     }
