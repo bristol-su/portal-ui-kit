@@ -29,6 +29,7 @@ export default {
     },
     methods: {
         selectTab (i) {
+            this.selectedIndex = i;
             this.$uiEventBus.$emit('tab-selected', this.getTabs()[i]);
         },
         getTabs() {
