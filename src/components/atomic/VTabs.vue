@@ -33,8 +33,7 @@ export default {
 
             // loop over all the tabs
             this.getTabs().forEach((tab, index) => {
-                tab.setActiveStatus(index === i);
-                this.$forceUpdate();
+                tab.isActive = (index === i);
             })
         },
         getTabs() {

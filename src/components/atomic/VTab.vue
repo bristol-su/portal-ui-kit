@@ -19,12 +19,6 @@ export default {
         return {
             isActive: false
         }
-    },
-    methods: {
-        setActiveStatus(status) {
-            this.isActive = status;
-            this.$forceUpdate();
-        }
     }
 }
 </script>
