@@ -3,12 +3,12 @@
         <div style="border-bottom: 2px solid #eaeaea">
             <ul class="flex cursor-pointer">
                 <li class='py-2 px-6 bg-white rounded-t-lg'
-                    v-for='(tab, index) in getTabs()'
-                    :key='tab.title'
+                    v-for='(title, index) in getTabs()'
+                    :key='title'
                     @click='selectTab(index)'
                     :class='{"text-gray-500 bg-gray-200": (index != selectedIndex)}'
                 >
-                    {{ tab.title }}
+                    {{ title }}
                 </li>
             </ul>
         </div>
@@ -19,12 +19,6 @@
 <script>
 export default {
     name: "VTabs",
-    props: {
-        tabs: {
-            required: true,
-            type: Array
-        }
-    },
     data () {
         return {
             selectedIndex: 0, // the index of the selected tab,
@@ -32,15 +26,16 @@ export default {
     },
     mounted () {
         this.selectTab(0);
-        console.log(this.getTabs());
     },
     methods: {
         selectTab (i) {
-            this.$uiEventBus.$emit('tab-selected', i);
+            this.$uiEventBus.$emit('tab-selected', this.getTabs()[i]);
         },
         getTabs() {
             if (this.$slots.default) {
-                return this.$slots.default.filter(comp => comp.componentOptions)
+                return this.$slots.default
+                  .filter(comp => comp.componentOptions)
+                    .map(comp => comp.componentOptions.propsData.title);
             }
             return []
         }
