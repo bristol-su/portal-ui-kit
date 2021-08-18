@@ -22,7 +22,11 @@ export default {
     },
     created() {
         this.$uiEventBus.$on('tab-selected', function callback(i) {
-            console.log(i);
+            if(this.title === i) {
+                this.isActive = true;
+            } else {
+                this.isActive = false;
+            }
         }, this);
     }
 }
