@@ -1,14 +1,15 @@
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import VueTippy, { TippyComponent } from "vue-tippy";
+import Vue from 'vue';
 
 export default {
-    install(Vue, options) {
+    install(VueInstance, options) {
 
-        Vue.use(VueTippy);
-        Vue.component("tippy", TippyComponent);
+        VueInstance.use(VueTippy);
+        VueInstance.component("tippy", TippyComponent);
 
-        Vue.prototype.$uiEventBus = new Vue({});
+        VueInstance.prototype.$uiEventBus = new Vue({});
 
         const requireComponent = require.context(
           // The relative path of the components folder
@@ -37,7 +38,7 @@ export default {
             )
 
             // Register component globally
-            Vue.component(
+            VueInstance.component(
               // Swap the first letter from V to P
               componentName,
               // Look for the component options on `.default`, which will
