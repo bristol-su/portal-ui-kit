@@ -3,7 +3,7 @@
         <div style="border-bottom: 2px solid #eaeaea">
             <ul class="flex cursor-pointer">
                 <li class='py-2 px-6 bg-white rounded-t-lg'
-                    v-for='(tab, index) in tabs'
+                    v-for='(tab, index) in getTabs()'
                     :key='tab.title'
                     @click='selectTab(index)'
                     :class='{"text-gray-500 bg-gray-200": (index != selectedIndex)}'
@@ -32,18 +32,20 @@ export default {
             this.selectedIndex = i
 
             // loop over all the tabs
-            this.tabs.forEach((tab, index) => {
+            this.getTabs().forEach((tab, index) => {
+                console.log(tab.title, ': Does ' + index + ' equal ' + i + ', ' + (index === i ? 'yes' : 'no'));
                 tab.isActive = (index == i)
             })
-        }
-    },
-    computed: {
-        tabs() {
+        },
+        getTabs() {
             if (this.$slots.default) {
                 return this.$slots.default.filter(comp => comp.componentOptions)
             }
             return []
         }
+    },
+    computed: {
+
     }
 }
 </script>
