@@ -26,7 +26,7 @@ export default {
     },
     mounted () {
         this.selectTab(0);
-        console.log(this.getTabs().map(tab => tab.propsData));
+        console.log(this.getTabs().map(tab => tab.$vnode.data));
     },
     methods: {
         selectTab (i) {
