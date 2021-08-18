@@ -19,7 +19,16 @@ export default {
         return {
             isActive: false
         }
-    }
+    },
+    mounted() {
+        this.$parent.addTab(this);
+    },
+    destroyed () {
+        if (this.$el && this.$el.parentNode) {
+            this.$el.parentNode.removeChild(this.$el);
+        }
+        this.$parent.removeTab(this);
+    },
 }
 </script>
 

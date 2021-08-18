@@ -22,26 +22,30 @@ export default {
     data () {
         return {
             selectedIndex: 0, // the index of the selected tab,
+            tabs: []
         }
     },
     mounted () {
         this.selectTab(0)
     },
     methods: {
+        removeTab(tab) {
+            const tabs = this.tabs;
+            const index = tabs.indexOf(tab);
+            if (index > -1) {
+                tabs.splice(index, 1);
+            }
+        },
         selectTab (i) {
             this.selectedIndex = i
 
             // loop over all the tabs
-            this.getTabs().forEach((tab, index) => {
+            this.tabs.forEach((tab, index) => {
                 tab.isActive = (index === i);
-                tab.$forceUpdate();
             })
         },
-        getTabs() {
-            if (this.$slots.default) {
-                return this.$slots.default.filter(comp => comp.componentOptions)
-            }
-            return []
+        addTab(tab) {
+            this.tabs.push(tab);
         }
     },
     computed: {
