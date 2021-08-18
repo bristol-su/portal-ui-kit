@@ -3,12 +3,12 @@ import VFormLabel from '../VFormLabel';
 export default {
     props: {
         id: {type: String, required: true},
-        label: {validator: (val) => val === null || typeof val === 'string', required: true},
-        required: {type: Boolean, required: true},
-        visible: {type: Boolean, required: true},
-        hint: {validator: (val) => val === null || typeof val === 'string', required: true},
-        tooltip: {validator: (val) => val === null || typeof val === 'string', required: true},
-        value: {required: true, default: null}
+        label: {validator: (val) => val === null || typeof val === 'string', required: false},
+        required: {type: Boolean, required: false},
+        visible: {type: Boolean, required: false},
+        hint: {validator: (val) => val === null || typeof val === 'string', required: false},
+        tooltip: {validator: (val) => val === null || typeof val === 'string', required: false},
+        value: {required: false, default: null}
     },
     components: {
         VFormLabel
