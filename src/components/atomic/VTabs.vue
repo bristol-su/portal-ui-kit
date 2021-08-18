@@ -33,6 +33,8 @@ export default {
 
             // loop over all the tabs
             this.tabs.forEach((tab, index) => {
+                console.log('Checking if '  + index + ' equals ' + i);
+                tab.isActive = false;
                 tab.isActive = (index === i)
             })
         }
