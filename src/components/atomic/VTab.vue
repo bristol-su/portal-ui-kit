@@ -1,6 +1,8 @@
 <template>
-    <div v-if="isActive">
-        <slot></slot>
+    <div>
+        <div v-if="isActive">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
