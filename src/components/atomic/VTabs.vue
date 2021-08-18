@@ -26,7 +26,7 @@ export default {
     },
     mounted () {
         this.selectTab(0);
-        console.log(this.getTabs().map(tab => tab.$vnode.data));
+        console.log(this.getTabs().map(tab => tab.isActive));
     },
     methods: {
         selectTab (i) {
