@@ -1,6 +1,7 @@
 <template>
     <div>
         <v-text-input
+          v-bind="$props"
           v-on:enter="addTag"
         >
         </v-text-input>
