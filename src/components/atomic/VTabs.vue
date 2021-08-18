@@ -29,7 +29,6 @@ export default {
     },
     methods: {
         selectTab (i) {
-            console.log(this.$children);
             this.selectedIndex = i
 
             // loop over all the tabs
