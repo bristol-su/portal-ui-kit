@@ -7,6 +7,9 @@
           :form-method="formMethod"
           ref="form"
         >
+            <template v-slot:prepend>
+                <input type="hidden" v-if="hasCsrf" name="_token" :value="csrf"/>
+            </template>
             <template v-slot:append>
                 <v-button buttonText="Submit" @click="checkValidity"></v-button>
             </template>
@@ -46,6 +49,14 @@ export default {
             if (!this.$refs.form.checkValidity()) {
                 e.preventDefault();
             }
+        }
+    },
+    computed: {
+        csrf() {
+            return document.head.querySelector('meta[name="csrf-token"]').content
+        },
+        hasCsrf() {
+            return !!document.head.querySelector('meta[name="csrf-token"]')
         }
     }
 }

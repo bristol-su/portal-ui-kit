@@ -14,6 +14,7 @@
                   ref="form"
                   :action="formUrl"
                   :method="formMethod">
+                    <slot name="prepend"></slot>
                     <div v-for="group in form.groups">
                         <div v-for="formInput in group.fields" :key="formInput.id">
                             <keep-alive>
