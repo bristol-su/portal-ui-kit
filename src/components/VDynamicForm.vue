@@ -44,6 +44,7 @@ import VCheckbox from './atomic/dynamic-form/VCheckbox';
 import Form from '../generator/schema/Form';
 import VNumber from './atomic/dynamic-form/VNumber';
 import VTags from './atomic/dynamic-form/VTags';
+import VPassword from './atomic/dynamic-form/VPassword';
 
 export default {
     name: "VDynamicForm",
@@ -78,7 +79,8 @@ export default {
                 switch: VSwitch,
                 tags: VTags,
                 textArea: VTextarea,
-                text: VTextInput
+                text: VTextInput,
+                password: VPassword
             }
         }
     },
