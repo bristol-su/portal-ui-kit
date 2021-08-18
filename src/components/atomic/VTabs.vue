@@ -26,7 +26,7 @@ export default {
     },
     mounted () {
         this.selectTab(0);
-        console.log(this.getTabs().$vnode);
+        console.log(this.getTabs().map(tab => tab.propsData));
     },
     methods: {
         selectTab (i) {
@@ -34,7 +34,7 @@ export default {
         },
         getTabs() {
             if (this.$slots.default) {
-                return this.$slots.default.filter(comp => comp.componentOptions.propsData)
+                return this.$slots.default.filter(comp => comp.componentOptions)
             }
             return []
         }
