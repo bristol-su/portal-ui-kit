@@ -25,7 +25,8 @@ export default {
         }
     },
     mounted () {
-        this.selectTab(0)
+        this.selectTab(0);
+        console.log(this.getTabs());
     },
     methods: {
         selectTab (i) {
