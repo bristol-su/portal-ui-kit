@@ -8,6 +8,8 @@ export default {
         Vue.use(VueTippy);
         Vue.component("tippy", TippyComponent);
 
+        Vue.prototype.$uiEventBus = new Vue({});
+
         const requireComponent = require.context(
           // The relative path of the components folder
           './components',

@@ -20,15 +20,11 @@ export default {
             isActive: false
         }
     },
-    mounted() {
-        this.$parent.addTab(this);
-    },
-    destroyed () {
-        if (this.$el && this.$el.parentNode) {
-            this.$el.parentNode.removeChild(this.$el);
-        }
-        this.$parent.removeTab(this);
-    },
+    created() {
+        this.$uiEventBus.on('tab-selected', function callback(i) {
+            console.log(i);
+        }, this);
+    }
 }
 </script>
 

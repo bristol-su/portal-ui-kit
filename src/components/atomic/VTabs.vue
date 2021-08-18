@@ -3,7 +3,7 @@
         <div style="border-bottom: 2px solid #eaeaea">
             <ul class="flex cursor-pointer">
                 <li class='py-2 px-6 bg-white rounded-t-lg'
-                    v-for='(tab, index) in tabs'
+                    v-for='(tab, index) in getTabs()'
                     :key='tab.title'
                     @click='selectTab(index)'
                     :class='{"text-gray-500 bg-gray-200": (index != selectedIndex)}'
@@ -22,30 +22,20 @@ export default {
     data () {
         return {
             selectedIndex: 0, // the index of the selected tab,
-            tabs: []
         }
     },
     mounted () {
         this.selectTab(0)
     },
     methods: {
-        removeTab(tab) {
-            const tabs = this.tabs;
-            const index = tabs.indexOf(tab);
-            if (index > -1) {
-                tabs.splice(index, 1);
-            }
-        },
         selectTab (i) {
-            this.selectedIndex = i
-
-            // loop over all the tabs
-            this.tabs.forEach((tab, index) => {
-                tab.isActive = (index === i);
-            })
+            this.$uiEventBus.emit('tab-selected', i);
         },
-        addTab(tab) {
-            this.tabs.push(tab);
+        getTabs() {
+            if (this.$slots.default) {
+                return this.$slots.default.filter(comp => comp.componentOptions)
+            }
+            return []
         }
     },
     computed: {
