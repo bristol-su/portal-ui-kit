@@ -1,15 +1,27 @@
 <template>
-    <a
-      @click.prevent="clickButton"
-      v-on="$listeners"
-      type="submit"
-      class="w-full px-16 py-2 my-2 mr-2 text-base text-white transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
-      :class="styles"
-    >
-        <slot>
-            {{ buttonText }}
-        </slot>
-    </a>
+    <span>
+        <a v-if="href" :href="href">
+        <button
+          type="button"
+          class="w-full px-16 py-2 my-2 mr-2 text-base text-white transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+          :class="styles"
+        >
+            <slot>
+                {{ buttonText }}
+            </slot>
+        </button>
+        </a>
+        <button v-else
+              v-on="$listeners"
+              type="submit"
+              class="w-full px-16 py-2 my-2 mr-2 text-base text-white transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+              :class="styles"
+            >
+            <slot>
+                {{ buttonText }}
+            </slot>
+        </button>
+    </span>
 </template>
 
 <script>
@@ -17,12 +29,12 @@ export default {
     name: "VButton",
     props: {
         buttonText: {type: String, required: false, default: 'Submit'},
-        href: { type: String, required: false },
-        type: { type: String, required: false, default: 'primary' }
+        href: {type: String, required: false},
+        type: {type: String, required: false, default: 'primary'}
     },
     methods: {
         clickButton() {
-            if(this.href) {
+            if (this.href) {
                 window.location.href = this.href;
             }
             this.$emit('click');
