@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import Csrf from './index';
 export default {
     name: "VCsrfToken",
     computed: {

@@ -8,7 +8,7 @@
           ref="form"
         >
             <template v-slot:prepend>
-                <input type="hidden" v-if="hasCsrf" name="_token" :value="csrf"/>
+                <v-csrf-token></v-csrf-token>
             </template>
             <template v-slot:append>
                 <v-button :buttonText="buttonText" @click="checkValidity"></v-button>
@@ -20,10 +20,12 @@
 <script>
 import VDynamicForm from './VDynamicForm';
 import VButton from './atomic/VButton';
+import VCsrfToken from './atomic/VCsrfToken';
 
 export default {
     name: "VSubmitForm",
     components: {
+        VCsrfToken,
         VDynamicForm,
         VButton
     },
