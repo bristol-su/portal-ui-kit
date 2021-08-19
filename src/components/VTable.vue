@@ -21,7 +21,9 @@
           <tbody class="bg-white divide-y divide-gray-200">
           <tr v-for="row in filteredRows" :id="row.id">
             <td class="px-6 py-4 whitespace-nowrap" v-for="(value, key, index) in row" v-if="upperColumns.indexOf(key.toUpperCase()) > -1">
-              <div class="text-sm text-gray-900">{{ value }}</div>
+              <slot :name="'col-' + key" v-bind:row="row">
+                <div class="text-sm text-gray-900">{{ value }} - Col Name: col-{{ key }}</div>
+              </slot>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium" v-if="editable">
               <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
@@ -104,7 +106,7 @@ export default {
       // Filter Data if all presented to FE:
       if(! this.totalCount) {
         let start = this.page > 1 ? this.page * this.pageSize : this.page;
-        rows.splice(start, this.pageSize);
+        rows = rows.splice(start, this.pageSize);
       }
 
 
