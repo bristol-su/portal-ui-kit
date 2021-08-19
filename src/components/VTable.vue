@@ -101,7 +101,12 @@ export default {
       // Omit any Data not included in Columns array:
       let rows = this.data;
 
-      //// Filter out search: // Omitted at the moment //
+      // Filter Data if all presented to FE:
+      if(this.totalCount) {
+        let start = this.page > 1 ? this.page * this.pageSize : this.page;
+        rows.splice(start, this.pageSize);
+      }
+
 
       // Order Data:
 
