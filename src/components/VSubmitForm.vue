@@ -3,15 +3,15 @@
         <v-dynamic-form
           :schema="schema"
           v-model="formData"
-          :form-url="formUrl"
-          :form-method="formMethod"
+          :form-url="action"
+          :form-method="method"
           ref="form"
         >
             <template v-slot:prepend>
                 <input type="hidden" v-if="hasCsrf" name="_token" :value="csrf"/>
             </template>
             <template v-slot:append>
-                <v-button buttonText="Submit" @click="checkValidity"></v-button>
+                <v-button :buttonText="buttonText" @click="checkValidity"></v-button>
             </template>
         </v-dynamic-form>
     </div>
@@ -41,8 +41,9 @@ export default {
             required: false,
             validator: (val) => val === null || (typeof val === 'string' && ['single'].indexOf(val) !== -1)
         },
-        formUrl: {required: false, type: String, default: '#'},
-        formMethod: {required: false, type: String, default: 'POST'},
+        action: {required: false, type: String, default: '#'},
+        method: {required: false, type: String, default: 'POST'},
+        buttonText: {required: false, type: String, default: 'Submit'}
     },
     methods: {
         checkValidity() {
