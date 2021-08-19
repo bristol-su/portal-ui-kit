@@ -102,7 +102,7 @@ export default {
       let rows = this.data;
 
       // Filter Data if all presented to FE:
-      if(this.totalCount) {
+      if(! this.totalCount) {
         let start = this.page > 1 ? this.page * this.pageSize : this.page;
         rows.splice(start, this.pageSize);
       }
