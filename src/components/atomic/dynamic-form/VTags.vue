@@ -1,10 +1,18 @@
 <template>
   <div>
-    <v-text-input
-        v-bind="$props"
-        v-on:enter="addTag"
-    >
-    </v-text-input>
+    <v-form-label v-bind="labelProps">
+      <div class="mt-1 flex rounded-md shadow-sm">
+        <input
+            type="text"
+            :name="name"
+            :id="id"
+            :placeholder="help"
+            v-model="inputValue"
+            :required="required"
+            @keyup.enter.prevent="addTag"
+            class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2">
+      </div>
+    </v-form-label>
     <div class="mt-5 group">
       <div v-for="(tag, index) in tags"
            class="text-xs inline-flex items-center font-bold leading-sm px-3 py-1 bg-blue-200 text-blue-700 rounded-full">
@@ -31,14 +39,16 @@ export default {
   mixins: [FormInputMixin],
   data() {
     return {
+      inputValue: '',
       tags: []
     }
   },
   methods: {
-    addTag(e)
+    addTag()
     {
-      this.tags.push(e);
+      this.tags.push(this.inputValue);
       this.setValue(this.tags);
+      this.inputValue = '';
     },
     removeTag(index)
     {
