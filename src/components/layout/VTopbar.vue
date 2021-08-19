@@ -39,12 +39,13 @@
                     <div>
                         <button
                           class="flex text-sm bg-blueGray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blueGray-800 focus:ring-white"
-                          id="user-menu" aria-haspopup="true">
+                          id="user-menu" aria-haspopup="true" @click.prevent="userDropdown = !userDropdown">
                             <span class="sr-only">Open user menu</span>
                             <img class="w-8 h-8 rounded-full" src="https://i.pravatar.cc/150?img=12" alt="">
                         </button>
                     </div>
                     <div
+                      v-if="userDropdown"
                       class="absolute right-0 hidden w-48 px-4 py-2 mt-2 transition duration-500 ease-in-out origin-top-right transform bg-white border rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 e"
                       role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                         <div v-if="profileRoute">
@@ -92,6 +93,11 @@ export default {
         canAccessControl: {type: Boolean, required: false, default: false},
         canAccessSettings: {type: Boolean, required: false, default: false},
         siteName: {type: String, required: false}
+    },
+    data() {
+        return {
+            userDropdown: false
+        }
     },
     methods: {
         logout() {
