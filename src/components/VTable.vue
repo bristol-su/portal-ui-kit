@@ -35,7 +35,7 @@
       </div>
     </div>
     <v-pagination
-        :totalCount=totalCount
+        :totalCount=totalRowCount
         :pageSize=pageSize
         :page=page
         v-on:updatePageSize="updatePageSize"
@@ -57,7 +57,7 @@ export default {
     columns: { type: Array, required: true },
     editable: { type: Boolean, default: false },
     deletable: { type: Boolean, default: false },
-    totalCount: { type: Number, required: true }
+    totalCount: { type: Number, required: false }
   },
   data() {
     return {
@@ -84,11 +84,15 @@ export default {
     updatePageSize(e)
     {
       this.pageSize = e;
+      // Reset Page so it goes back to page 1:
+      this.page = 0;
     },
     updatePage(e)
     {
       this.page = e.page;
-      this.$emit('changePage', { 'page': this.page, 'size': this.pageSize });
+      if(this.totalCount) {
+        this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
+      }
     }
   },
   computed: {
@@ -106,7 +110,14 @@ export default {
     upperColumns()
     {
       return this.columns.map(col => col.toUpperCase());
+    },
+    totalRowCount() {
+      if(this.totalCount) {
+        return this.totalCount;
+      }
+      return this.data.length;
     }
+
 
   }
 }
