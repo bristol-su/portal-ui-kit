@@ -48,6 +48,11 @@
                       :class="{hidden: !showUserDropdown}"
                       class="absolute right-0 w-48 px-4 py-2 mt-2 transition duration-500 ease-in-out origin-top-right transform bg-white border rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 e z-50"
                       role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                        <div>
+                            <a :href=homeRoute
+                               class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
+                               role="menuitem">Home</a>
+                        </div>
                         <div v-if="profileRoute">
                             <a :href=profileRoute
                                class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
