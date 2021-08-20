@@ -45,7 +45,7 @@
                         </button>
                     </div>
                     <div
-                      v-if="userDropdown"
+                      :class="{hidden: userDropdown}"
                       class="absolute right-0 hidden w-48 px-4 py-2 mt-2 transition duration-500 ease-in-out origin-top-right transform bg-white border rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 e"
                       role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                         <div v-if="profileRoute">
