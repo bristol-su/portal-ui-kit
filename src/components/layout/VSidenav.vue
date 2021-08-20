@@ -36,6 +36,7 @@
                         <span class="ml-4" v-text="navItem.title"></span>
                     </a>
                     <ul v-else-if="navItem.children">
+                        {{navItem.title}}
                         <li v-for="child in navItem.children" :key="child.title">
                             <a :href="child.route"><span v-text="child.title"></span></a>
                         </li>
