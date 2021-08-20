@@ -7,7 +7,7 @@
         <h2 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font" v-if="subtitle">{{ subtitle }}</h2>
         <a :href=url class="inline-flex items-center mt-auto font-semibold text-blue-600 lg:mb-0 hover:text-black " :title="'Continue ' + title"> {{ urlText }} </a>
       </div>
-      <div class="px-6 py-4 rounded-b-xl" :class="progressStyling" v-if="progress">
+      <div class="px-6 py-4 rounded-b-xl" :class="progressStyling" v-if="progress && progress !== 0">
         <p class="inline-flex items-center mt-auto font-semibold text-gray-500 lg:mb-0 " title="Read Full Article"> Progress {{ progress }} Complete</p>
       </div>
     </div>
