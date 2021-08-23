@@ -3,7 +3,6 @@
         <div class="flex flex-col md:w-1/2 md:pl-12">
             <h2 class="title-font font-semibold text-gray-800 tracking-wider text-sm mb-3">{{ title }}</h2>
             <nav class="flex flex-wrap list-none -mb-1">
-                <slot></slot>
                 <li class="lg:w-1/3 mb-1 w-1/2" v-for="link in links">
                     <a
                       v-if="link.href"
