@@ -5,10 +5,24 @@
             <nav class="flex flex-wrap list-none -mb-1">
                 <slot></slot>
                 <li class="lg:w-1/3 mb-1 w-1/2" v-for="link in links">
-                    <a class="hover:text-gray-800" :class="[category === selectedCategory ? 'text-blue-600' : 'text-gray-600']" @click.prevent="selectedCategory = category">{{ category }}</a>
+                    <a
+                      v-if="link.href"
+                      :href="link.href"
+                      @click="click(link, false)"
+                      class="hover:text-gray-800"
+                      :class="[link === selectedLink ? 'text-blue-600' : 'text-gray-600']"
+                    >
+                        {{ link.text }}
+                    </a>
+                    <a
+                      v-else
+                      class="hover:text-gray-800"
+                      :class="[link === selectedLink ? 'text-blue-600' : 'text-gray-600']"
+                      @click.prevent="click(link, true)">{{ link.text }}</a>
                 </li>
             </nav>
         </div>
+    </div>
 </template>
 
 <script>
@@ -19,7 +33,27 @@ export default {
             required: false, type: String, default: ''
         },
         links: {
-            required: false, type: Object, default: () => {}
+            required: false, type: Object, default: () => {
+            }
+        }
+    },
+    methods: {
+        click(link, fireEvent) {
+            this.selectedLink = link;
+            if (fireEvent) {
+                this.$emit('click', link);
+            }
+            if (link.href) {
+                window.location.href = link.href;
+            }
+            if (link.onClick) {
+                link.onClick();
+            }
+        }
+    },
+    data() {
+        return {
+            selectedLink: null
         }
     }
 }
