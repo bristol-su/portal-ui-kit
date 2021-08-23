@@ -15,7 +15,7 @@
             </div>
             <div class="px-6 py-4 rounded-b-xl" :class="progressStyling" v-if="progress || progress === 0">
                 <p class="inline-flex items-center mt-auto font-semibold text-gray-500 lg:mb-0 "
-                   title="Read Full Article"> {{ progress }}% complete <span v-if="tasksComplete || tasksComplete === 0">({{tasksComplete}}/{{totalTasks}})</span></p>
+                   title="Read Full Article"> {{ progress }}% complete <span v-if="tasksComplete || tasksComplete === 0"> ({{tasksComplete}}/{{totalTasks}})</span></p>
             </div>
         </div>
     </div>
