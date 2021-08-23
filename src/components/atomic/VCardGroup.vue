@@ -1,5 +1,5 @@
 <template>
-    <div style="border: 2px;">
+    <div style="border: 2px solid black;">
         <h2>{{title}}</h2>
         <slot></slot>
     </div>
