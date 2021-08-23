@@ -8,7 +8,7 @@
             class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
         >
           <p class="font-semibold text-gray-800" v-if="title">{{ title }}</p>
-          <svg @click="open = ! open"
+          <svg @click="$emit('close')"
               class="w-6 h-6"
               fill="none"
               stroke="currentColor"
