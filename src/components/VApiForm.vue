@@ -6,7 +6,7 @@
           ref="form"
         >
             <template v-slot:append>
-                <v-button buttonText="Submit" @click.prevent="submit"></v-button>
+                <v-button @click.prevent="submit"><slot name="buttonText">Submit</slot></v-button>
             </template>
         </v-dynamic-form>
     </div>
