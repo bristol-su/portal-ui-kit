@@ -2,6 +2,7 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import VueTippy, { TippyComponent } from "vue-tippy";
 import Vue from 'vue';
+import VConfirmationModal from './components/atomic/VConfirmationModal';
 
 export default {
     install(VueInstance, options) {
@@ -10,6 +11,31 @@ export default {
         VueInstance.component("tippy", TippyComponent);
 
         VueInstance.prototype.$uiEventBus = new Vue({});
+
+        VueInstance.prototype.$confirm.delete = (title, message) => {
+
+            const confirmationModal = new VConfirmationModal({
+                parent: VueInstance,
+                propsData: {
+                    title: title,
+                    message: message
+                }
+            })
+
+            // Return a promise that resolves when hidden, or rejects on destroyed
+            return new Promise((resolve, reject) => {
+                confirmationModal.$on('confirmed', bvModalEvent => {
+                    resolve()
+                });
+                confirmationModal.$on('cancel', bvModalEvent => {
+                    reject()
+                });
+                // Create a mount point (a DIV) and mount the msgBo which will trigger it to show
+                const div = document.createElement('div')
+                document.body.appendChild(div)
+                confirmationModal.$mount(div)
+            })
+        };
 
         const requireComponent = require.context(
           // The relative path of the components folder
