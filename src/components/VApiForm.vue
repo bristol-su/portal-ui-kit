@@ -40,7 +40,15 @@ export default {
             required: false,
             type: String,
             default: 'Submit'
+        },
+        initialData: {
+            required: false,
+            default: () => {},
+            type: Object
         }
+    },
+    created() {
+        this.formData = this.initialData;
     },
     methods: {
         checkValidity() {
