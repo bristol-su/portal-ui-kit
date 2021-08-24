@@ -17,10 +17,9 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     <tr v-for="row in filteredRows" :id="row.id">
-                        <td class="px-6 py-4 whitespace-nowrap" v-for="(value, key, index) in row"
-                            v-if="upperColumns.indexOf(key.toUpperCase()) > -1">
-                            <slot :name="'col-' + key" v-bind:row="row">
-                                <div class="text-sm text-gray-900">{{ value }}</div>
+                        <td class="px-6 py-4 whitespace-nowrap" v-for="column in columns">
+                            <slot :name="'col-' + column" v-bind:row="row">
+                                <div class="text-sm text-gray-900">{{ row[column] }}</div>
                             </slot>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
