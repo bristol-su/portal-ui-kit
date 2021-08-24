@@ -6,7 +6,7 @@
           ref="form"
         >
             <template v-slot:append>
-                <v-button @click.prevent="submit"><slot name="buttonText">Submit</slot></v-button>
+                <v-button @click.prevent="submit"><slot name="buttonText">{{ buttonText }}</slot></v-button>
             </template>
         </v-dynamic-form>
     </div>
@@ -35,6 +35,11 @@ export default {
         groupFormat: {
             required: false,
             validator: (val) => val === null || (typeof val === 'string' && ['single'].indexOf(val) !== -1)
+        },
+        buttonText: {
+            required: false,
+            type: String,
+            default: 'Submit'
         }
     },
     methods: {
