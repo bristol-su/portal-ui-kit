@@ -40,10 +40,10 @@ export default {
             },
             modal: {
                 show: (id) => {
-                    eventBus.$emit('modal.show', id);
+                    Vue.prototype.$ui.eventBus.$emit('modal.show', id);
                 },
                 hide: (id) => {
-                    eventBus.$emit('modal.hide', id);
+                    Vue.prototype.$ui.eventBus.$emit('modal.hide', id);
                 }
             },
             eventBus: eventBus
