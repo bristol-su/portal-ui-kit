@@ -12,29 +12,28 @@ export default {
 
         VueInstance.prototype.$uiEventBus = new Vue({});
 
-        VueInstance.prototype.$confirm.delete = (title, message) => {
+        VueInstance.prototype.$confirm = {
+            delete: (title, message) => {
 
-            const confirmationModal = new VConfirmationModal({
-                parent: VueInstance,
-                propsData: {
-                    title: title,
-                    message: message
-                }
-            })
+                const confirmationModal = new VConfirmationModal({
+                    parent: VueInstance,
+                    propsData: {
+                        title: title,
+                        message: message
+                    }
+                })
 
-            // Return a promise that resolves when hidden, or rejects on destroyed
-            return new Promise((resolve, reject) => {
-                confirmationModal.$on('confirmed', bvModalEvent => {
-                    resolve()
-                });
-                confirmationModal.$on('cancel', bvModalEvent => {
-                    reject()
-                });
-                // Create a mount point (a DIV) and mount the msgBo which will trigger it to show
-                const div = document.createElement('div')
-                document.body.appendChild(div)
-                confirmationModal.$mount(div)
-            })
+                // Return a promise that resolves when hidden, or rejects on destroyed
+                return new Promise((resolve, reject) => {
+                    confirmationModal.$on('confirmed', (bvModalEvent) => resolve());
+                    confirmationModal.$on('cancel', (bvModalEvent) => reject());
+
+                    // Create a mount point (a DIV) and mount the msgBo which will trigger it to show
+                    const div = document.createElement('div')
+                    document.body.appendChild(div)
+                    confirmationModal.$mount(div)
+                })
+            }
         };
 
         const requireComponent = require.context(
