@@ -13,11 +13,11 @@ export default {
         VueInstance.prototype.$uiEventBus = new Vue({});
 
         VueInstance.prototype.$confirm = {
-            delete: (title, message) => {
+            delete: (title, message, element) => {
 
                 let componentClass = Vue.extend(VConfirmationModal);
                 const confirmationModal = new componentClass({
-                    parent: VueInstance,
+                    parent: element,
                     propsData: {
                         title: title,
                         message: message
