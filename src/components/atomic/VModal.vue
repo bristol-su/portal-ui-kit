@@ -48,18 +48,11 @@ export default {
         id: {type: String, required: true}
     },
     created() {
-        this.$ui.eventBus.$on('modal.show', (id) => {
-            console.log('Show ' + id);
-            if(id === this.id) {
-                this.shouldShow = true;
-            }
-        }, this);
-        this.$ui.eventBus.$on('modal.hide', (id) => {
-            console.log('Hide ' + id);
-            if(id === this.id) {
-                this.shouldShow = false;
-            }
-        }, this);
+        this.$ui.eventBus.$on('modal.show', (id) => this.shouldShow = (this.id === id ? true : this.shouldShow), this);
+        this.$ui.eventBus.$on('modal.hide', (id) => this.shouldShow = (this.id === id ? false : this.shouldShow), this);
+
+        this.$ui.eventBus.$on('modal.show', (id) => console.log('Show ' + id), this);
+        this.$ui.eventBus.$on('modal.hide', (id) => console.log('Hide ' + id), this);
     },
     data() {
         return {
