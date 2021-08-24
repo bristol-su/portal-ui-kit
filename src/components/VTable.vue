@@ -27,7 +27,7 @@
                             <a v-if="editable" href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                             <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
                                @click.prevent="$emit('deleted', row)">Delete</a>
-                            <slot name="actions"></slot>
+                            <slot name="actions" v-bind:row="row"></slot>
                         </td>
                     </tr>
                     </tbody>
