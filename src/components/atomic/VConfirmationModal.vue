@@ -1,5 +1,5 @@
 <template>
-    <v-modal :title="title" v-if="show">
+    <v-modal :title="title" v-if="show" @close="cancel">
         {{ message }}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
