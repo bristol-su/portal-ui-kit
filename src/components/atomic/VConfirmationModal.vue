@@ -1,5 +1,5 @@
 <template>
-    <v-modal :title="title" :open="true">
+    <v-modal :title="title" :open="show">
         {{message}}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
@@ -26,12 +26,12 @@ export default {
 
     methods: {
         confirm() {
-            this.$emit('confirmed');
             this.show = false;
+            this.$emit('confirmed');
         },
         cancel() {
-            this.$emit('cancel');
             this.show = false;
+            this.$emit('cancel');
         }
     },
 
