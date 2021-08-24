@@ -1,6 +1,6 @@
 <template>
     <v-modal :title="title" :open="show">
-        {{message}}
+        {{ message }}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
         <v-button @click.prevent="cancel">Close</v-button>
@@ -37,7 +37,8 @@ export default {
 
     props: {
         title: {type: String, default: 'Deleting'},
-        message: {type: String, default: 'Are you sure you want to delete the item?'}
+        message: {type: String, default: 'Are you sure you want to delete the item?'},
+        type: {type: String, default: 'info'} // One of info or danger
     }
 }
 </script>

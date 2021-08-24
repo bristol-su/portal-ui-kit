@@ -20,7 +20,8 @@ export default {
                     parent: element,
                     propsData: {
                         title: title,
-                        message: message
+                        message: message,
+                        type: 'danger'
                     }
                 })
 
