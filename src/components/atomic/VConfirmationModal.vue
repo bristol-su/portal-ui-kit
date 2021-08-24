@@ -1,11 +1,10 @@
 <template>
-    <v-modal :title="title" :open="show">
+    <v-modal :title="title" v-if="show">
         {{ message }}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
         <v-button @click.prevent="cancel">Close</v-button>
     </v-modal>
-
 </template>
 
 <script>
