@@ -19,7 +19,7 @@
                     <tr v-for="row in filteredRows" :id="row.id">
                         <td class="px-6 py-4 whitespace-nowrap" v-for="column in columns">
                             <slot :name="'col-' + column" v-bind:row="row">
-                                <div class="text-sm text-gray-900">{{ row[column] }}</div>
+                                <div class="text-sm text-gray-900">{{ getColumnValue(column, row) }}</div>
                             </slot>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -89,6 +89,13 @@ export default {
             if (this.totalCount) {
                 this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
             }
+        },
+        getColumnValue(column, row) {
+            let colValue = Object.entries(row).filter(([key, value]) => key.toUpperCase() === column.toUpperCase());
+            if(colValue.length > 0) {
+                return row[colValue[0][0]];
+            }
+            return '';
         }
     },
     computed: {
