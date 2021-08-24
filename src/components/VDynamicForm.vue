@@ -1,35 +1,30 @@
 <template>
     <div>
-        <div class="container items-center px-5 py-12 lg:px-20">
-            <div
-              class="flex flex-col w-full p-10 px-8 pt-6 mx-auto my-6 mb-4 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:w-1/2">
-                <div class="lg:text-center">
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-                       v-if="form.title" v-text="form.title"></p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" v-if="form.subtitle"
-                       v-text="form.subtitle"></p>
-                    <p v-if="form.description" v-text="form.description"></p>
-                </div>
-                <form
-                  ref="form"
-                  :action="formUrl"
-                  :method="formMethod">
-                    <slot name="prepend"></slot>
-                    <div v-for="group in form.groups">
-                        <div v-for="formInput in group.fields" :key="formInput.id">
-                            <keep-alive>
-                                <component
-                                  :is="getComponentFromType(formInput.type)"
-                                  v-bind="formInput"
-                                  @input="updateFormData">
-                                </component>
-                            </keep-alive>
-                        </div>
-                    </div>
-                    <slot name="append"></slot>
-                </form>
-            </div>
+        <div class="lg:text-center">
+            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+               v-if="form.title" v-text="form.title"></p>
+            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" v-if="form.subtitle"
+               v-text="form.subtitle"></p>
+            <p v-if="form.description" v-text="form.description"></p>
         </div>
+        <form
+          ref="form"
+          :action="formUrl"
+          :method="formMethod">
+            <slot name="prepend"></slot>
+            <div v-for="group in form.groups">
+                <div v-for="formInput in group.fields" :key="formInput.id">
+                    <keep-alive>
+                        <component
+                          :is="getComponentFromType(formInput.type)"
+                          v-bind="formInput"
+                          @input="updateFormData">
+                        </component>
+                    </keep-alive>
+                </div>
+            </div>
+            <slot name="append"></slot>
+        </form>
     </div>
 </template>
 
