@@ -21,7 +21,7 @@ export default {
         }
     },
     created() {
-        this.$uiEventBus.$on('tab-selected', (title) => this.isActive = (this.title === title), this);
+        this.$ui.eventBus.$on('tab-selected', (title) => this.isActive = (this.title === title), this);
     }
 }
 </script>

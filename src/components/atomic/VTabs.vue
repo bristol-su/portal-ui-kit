@@ -30,7 +30,7 @@ export default {
     methods: {
         selectTab (i) {
             this.selectedIndex = i;
-            this.$uiEventBus.$emit('tab-selected', this.getTabs()[i]);
+            this.$ui.eventBus.$emit('tab-selected', this.getTabs()[i]);
         },
         getTabs() {
             if (this.$slots.default) {

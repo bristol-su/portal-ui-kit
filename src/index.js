@@ -10,7 +10,7 @@ export default {
         VueInstance.use(VueTippy);
         VueInstance.component("tippy", TippyComponent);
 
-        VueInstance.prototype.$uiEventBus = new Vue({});
+        let eventBus = new Vue({});
 
         VueInstance.prototype.$ui = {
             confirm: {
@@ -40,12 +40,13 @@ export default {
             },
             modal: {
                 show: (id) => {
-                    VueInstance.prototype.$uiEventBus.$emit('modal.show', id);
+                    eventBus.$emit('modal.show', id);
                 },
                 hide: (id) => {
-                    VueInstance.prototype.$uiEventBus.$emit('modal.hide', id);
+                    eventBus.$emit('modal.hide', id);
                 }
-            }
+            },
+            eventBus: eventBus
         }
 
         const requireComponent = require.context(
