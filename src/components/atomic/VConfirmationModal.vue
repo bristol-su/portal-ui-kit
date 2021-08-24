@@ -1,5 +1,5 @@
 <template>
-    <v-modal :title="title" v-if="show" @close="cancel">
+    <v-modal ref="modal" :title="title" @hide="cancel">
         {{ message }}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
@@ -17,19 +17,13 @@ export default {
         VButton,
         VModal
     },
-    data() {
-        return {
-            show: true
-        }
-    },
-
     methods: {
         confirm() {
-            this.show = false;
+            this.$refs.modal.hide();
             this.$emit('confirmed');
         },
         cancel() {
-            this.show = false;
+            this.$refs.modal.hide();
             this.$emit('cancel');
         }
     },

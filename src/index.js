@@ -12,31 +12,41 @@ export default {
 
         VueInstance.prototype.$uiEventBus = new Vue({});
 
-        VueInstance.prototype.$confirm = {
-            delete: (title, message, element) => {
+        VueInstance.prototype.$ui = {
+            confirm: {
+                delete: (title, message, element) => {
 
-                let componentClass = Vue.extend(VConfirmationModal);
-                const confirmationModal = new componentClass({
-                    parent: element,
-                    propsData: {
-                        title: title,
-                        message: message,
-                        type: 'danger'
-                    }
-                })
+                    let componentClass = Vue.extend(VConfirmationModal);
+                    const confirmationModal = new componentClass({
+                        parent: element,
+                        propsData: {
+                            title: title,
+                            message: message,
+                            type: 'danger'
+                        }
+                    })
 
-                // Return a promise that resolves when hidden, or rejects on destroyed
-                return new Promise((resolve, reject) => {
-                    confirmationModal.$on('confirmed', (bvModalEvent) => resolve());
-                    confirmationModal.$on('cancel', (bvModalEvent) => reject());
+                    // Return a promise that resolves when hidden, or rejects on destroyed
+                    return new Promise((resolve, reject) => {
+                        confirmationModal.$on('confirmed', (bvModalEvent) => resolve());
+                        confirmationModal.$on('cancel', (bvModalEvent) => reject());
 
-                    // Create a mount point (a DIV) and mount the msgBo which will trigger it to show
-                    const div = document.createElement('div')
-                    document.body.appendChild(div)
-                    confirmationModal.$mount(div)
-                })
+                        // Create a mount point (a DIV) and mount the msgBo which will trigger it to show
+                        const div = document.createElement('div')
+                        document.body.appendChild(div)
+                        confirmationModal.$mount(div)
+                    })
+                }
+            },
+            modal: {
+                show: (id) => {
+                    VueInstance.prototype.$uiEventBus.$emit('modal.show', id);
+                },
+                hide: (id) => {
+                    VueInstance.prototype.$uiEventBus.$emit('modal.hide', id);
+                }
             }
-        };
+        }
 
         const requireComponent = require.context(
           // The relative path of the components folder
