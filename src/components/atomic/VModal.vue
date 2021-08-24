@@ -49,15 +49,17 @@ export default {
     },
     created() {
         this.$uiEventBus.$on('modal.show', (id) => {
+            console.log('Show ' + id);
             if(id === this.id) {
                 this.shouldShow = true;
             }
-        });
+        }, this);
         this.$uiEventBus.$on('modal.hide', (id) => {
+            console.log('Hide ' + id);
             if(id === this.id) {
                 this.shouldShow = false;
             }
-        });
+        }, this);
     },
     data() {
         return {
