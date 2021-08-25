@@ -35,6 +35,7 @@ export default {
                         const div = document.createElement('div')
                         document.body.appendChild(div)
                         confirmationModal.$mount(div)
+                        confirmationModal.show();
                     })
                 }
             },

@@ -18,6 +18,9 @@ export default {
         VModal
     },
     methods: {
+        show() {
+            this.$refs.modal.show();
+        },
         confirm() {
             this.$refs.modal.hide();
             this.$emit('confirmed');
