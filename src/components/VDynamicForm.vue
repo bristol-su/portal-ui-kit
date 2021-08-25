@@ -127,14 +127,14 @@ export default {
 
             form.schema.groups = form.schema.groups.map(group => {
                 group.schema.fields = group.schema.fields.map(field => {
-                    if(this.formData && this.formData.hasOwnProperty(field.id)) {
-                        field.value = this.formData[field.id];
+                    if(this.formData && this.formData.hasOwnProperty(field.schema.id)) {
+                        field.schema.value = this.formData[field.schema.id];
                     }
                     return field;
                 })
                 return group;
             });
-            
+
             return form.asJson();
         },
         formData: {
