@@ -1,5 +1,5 @@
 <template>
-    <v-modal ref="modal" :id="modalId" :title="title" @hide="cancel">
+    <v-modal ref="modal" :id="modalId" :title="title" @hide="$emit('cancel')">
         {{ message }}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
