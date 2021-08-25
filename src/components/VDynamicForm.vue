@@ -125,11 +125,16 @@ export default {
                 form = factory.fromJson(this.schema);
             }
 
-            form.schema.groups.forEach(group => group.schema.fields.forEach(field => {
-                if(this.formData && this.formData.hasOwnProperty(field.id)) {
-                    field.value = this.formData[field.id];
-                }
-            }));
+            form.schema.groups = form.schema.groups.map(group => {
+                group.schema.fields = group.schema.fields.map(field => {
+                    if(this.formData && this.formData.hasOwnProperty(field.id)) {
+                        field.value = this.formData[field.id];
+                    }
+                    return field;
+                })
+                return group;
+            });
+            
             return form.asJson();
         },
         formData: {
