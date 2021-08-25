@@ -61,7 +61,7 @@
                         <div v-if="canAccessSettings">
                             <a :href=settingsRoute
                                class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
-                               role="menuitem">Management</a>
+                               role="menuitem">Build</a>
                         </div>
                         <div v-if="canAccessControl">
                             <a :href=controlRoute
