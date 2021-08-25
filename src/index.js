@@ -28,8 +28,14 @@ export default {
 
                     // Return a promise that resolves when hidden, or rejects on destroyed
                     return new Promise((resolve, reject) => {
-                        confirmationModal.$on('confirmed', (bvModalEvent) => resolve());
-                        confirmationModal.$on('cancel', (bvModalEvent) => reject());
+                        confirmationModal.$on('confirmed', (bvModalEvent) => {
+                            confirmationModal.$destroy();
+                            resolve()
+                        });
+                        confirmationModal.$on('cancel', (bvModalEvent) => {
+                            confirmationModal.$destroy();
+                            reject()
+                        });
 
                         // Create a mount point (a DIV) and mount the msgBo which will trigger it to show
                         const div = document.createElement('div')
