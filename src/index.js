@@ -8,7 +8,7 @@ export default {
     install(VueInstance, options) {
 
         VueInstance.use(VueTippy);
-        VueInstance.component("tippy", TippyComponent);
+        VueInstance.component('tippy', TippyComponent);
 
         let eventBus = new Vue({});
 
