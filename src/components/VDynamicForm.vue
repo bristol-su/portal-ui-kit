@@ -42,6 +42,8 @@ import VNumber from './atomic/dynamic-form/VNumber';
 import VTags from './atomic/dynamic-form/VTags';
 import VPassword from './atomic/dynamic-form/VPassword';
 import VWysiwyg from './atomic/dynamic-form/VWysiwyg';
+import FormGenerator from '../generator/generators/FormGenerator';
+import FormFactory from '../generator/factory/FormFactory';
 
 export default {
     name: "VDynamicForm",
@@ -113,11 +115,21 @@ export default {
     },
     computed: {
         form() {
-            if (this.schema instanceof Form) {
-                return this.schema.asJson();
+            let form = null;
+            if(this.schema instanceof FormGenerator) {
+                form = this.schema.generate();
+            } else if (this.schema instanceof Form) {
+                form = this.schema;
+            } else {
+                let factory = new FormFactory();
+                form = factory.fromJson(this.schema);
             }
-            return this.schema;
-            // TODO We need to update the value of each fields `value` key in the schema to match new values as per this.formData!
+            form.schema.groups.forEach(group => group.schema.fields.forEach(field => {
+                if(this.formData.hasOwnProperty(field.id)) {
+                    field.value = this.formData[field.id];
+                }
+            }));
+            return form.asJson();
         },
         formData: {
             get() {
