@@ -62,8 +62,11 @@ export default {
             this.$emit('show');
         },
         hide() {
-            this.shouldShow = false;
+            this.hideWithoutEvents();
             this.$emit('hide');
+        },
+        hideWithoutEvents() {
+            this.shouldShow = false;
         }
     }
 }

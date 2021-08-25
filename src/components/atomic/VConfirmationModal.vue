@@ -1,5 +1,5 @@
 <template>
-    <v-modal ref="modal" :id="modalId" :title="title" @hide="$emit('cancel')">
+    <v-modal ref="modal" :id="modalId" :title="title" @hide="cancel">
         {{ message }}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
@@ -22,11 +22,11 @@ export default {
             this.$refs.modal.show();
         },
         confirm() {
-            this.$refs.modal.hide();
+            this.$refs.modal.hideWithoutEvents();
             this.$emit('confirmed');
         },
         cancel() {
-            this.$refs.modal.hide();
+            this.$refs.modal.hideWithoutEvents();
             this.$emit('cancel');
         }
     },
