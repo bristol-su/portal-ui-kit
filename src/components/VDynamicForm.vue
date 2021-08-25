@@ -124,9 +124,10 @@ export default {
                 let factory = new FormFactory();
                 form = factory.fromJson(this.schema);
             }
+            let self = this;
             form.schema.groups.forEach(group => group.schema.fields.forEach(field => {
-                if(this.formData.hasOwnProperty(field.id)) {
-                    field.value = this.formData[field.id];
+                if(self.formData.hasOwnProperty(field.id)) {
+                    field.value = self.formData[field.id];
                 }
             }));
             return form.asJson();
