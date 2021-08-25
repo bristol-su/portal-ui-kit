@@ -41,6 +41,7 @@ import Form from '../generator/schema/Form';
 import VNumber from './atomic/dynamic-form/VNumber';
 import VTags from './atomic/dynamic-form/VTags';
 import VPassword from './atomic/dynamic-form/VPassword';
+import VWysiwyg from './atomic/dynamic-form/VWysiwyg';
 
 export default {
     name: "VDynamicForm",
@@ -76,7 +77,8 @@ export default {
                 tags: VTags,
                 textArea: VTextarea,
                 text: VTextInput,
-                password: VPassword
+                password: VPassword,
+                html: VWysiwyg
             }
         }
     },

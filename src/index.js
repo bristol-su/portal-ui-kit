@@ -14,7 +14,7 @@ export default {
 
         VueInstance.prototype.$ui = {
             confirm: {
-                delete: (title, message, element) => {
+                delete: (title, message) => {
 
                     let componentClass = Vue.extend(VConfirmationModal);
                     const confirmationModal = new componentClass({
