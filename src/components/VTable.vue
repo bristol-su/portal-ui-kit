@@ -54,7 +54,7 @@ export default {
         VPagination
     },
     props: {
-        data: {type: Array, required: true},
+        items: {type: Array, required: true},
         columns: {type: Array, required: true},
         editable: {type: Boolean, default: false},
         deletable: {type: Boolean, default: false},
@@ -103,7 +103,7 @@ export default {
     computed: {
         filteredRows() {
             // Omit any Data not included in Columns array:
-            let rows = _.cloneDeep(this.data);
+            let rows = _.cloneDeep(this.items);
 
             // Filter Data if all presented to FE:
             if (!this.totalCount) {
@@ -123,7 +123,7 @@ export default {
             if (this.totalCount) {
                 return this.totalCount;
             }
-            return this.data.length;
+            return this.items.length;
         }
 
 
