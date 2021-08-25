@@ -1,5 +1,5 @@
 <template>
-    <v-modal ref="modal" id="v-confirmation-modal" :title="title" @hide="cancel">
+    <v-modal ref="modal" :id="modalId" :title="title" @hide="cancel">
         {{ message }}
 
         <v-button @click.prevent="confirm">Confirm</v-button>
@@ -32,6 +32,12 @@ export default {
         title: {type: String, default: 'Deleting'},
         message: {type: String, default: 'Are you sure you want to delete the item?'},
         type: {type: String, default: 'info'} // One of info or danger
+    },
+
+    computed: {
+        modalId() {
+            return 'vConfirmationModal' + Math.round(Math.random() * 1000);
+        }
     }
 }
 </script>
