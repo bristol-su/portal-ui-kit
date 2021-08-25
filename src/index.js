@@ -18,7 +18,6 @@ export default {
 
                     let componentClass = Vue.extend(VConfirmationModal);
                     const confirmationModal = new componentClass({
-                        parent: element,
                         propsData: {
                             title: title,
                             message: message,
@@ -28,14 +27,8 @@ export default {
 
                     // Return a promise that resolves when hidden, or rejects on destroyed
                     return new Promise((resolve, reject) => {
-                        confirmationModal.$on('confirmed', (bvModalEvent) => {
-                            confirmationModal.$destroy();
-                            resolve()
-                        });
-                        confirmationModal.$on('cancel', (bvModalEvent) => {
-                            confirmationModal.$destroy();
-                            reject()
-                        });
+                        confirmationModal.$on('confirmed', (bvModalEvent) => resolve());
+                        confirmationModal.$on('cancel', (bvModalEvent) => reject());
 
                         // Create a mount point (a DIV) and mount the msgBo which will trigger it to show
                         const div = document.createElement('div')
