@@ -5,11 +5,11 @@ import Field from '../schema/Field';
 export default class {
     fromJson(json) {
         let form = new Form();
-        form.title(json.form.title);
-        form.subtitle(json.form.subtitle);
-        form.description(json.form.description);
+        form.title(json.title);
+        form.subtitle(json.subtitle);
+        form.description(json.description);
 
-        form.setGroups(json.form.groups.map(groupSchema => {
+        form.setGroups(json.groups.map(groupSchema => {
             let group = new Group();
             group.title( groupSchema.title);
             group.subtitle(  groupSchema.subtitle);
