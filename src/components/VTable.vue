@@ -46,6 +46,7 @@
 
 <script>
 import VPagination from './atomic/VPagination';
+import _ from 'lodash';
 
 export default {
     name: "VTable",
@@ -102,7 +103,7 @@ export default {
     computed: {
         filteredRows() {
             // Omit any Data not included in Columns array:
-            let rows = this.data;
+            let rows = _.cloneDeep(this.data);
 
             // Filter Data if all presented to FE:
             if (!this.totalCount) {
