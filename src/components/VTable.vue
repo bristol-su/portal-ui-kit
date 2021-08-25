@@ -23,112 +23,112 @@
                             </slot>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a v-if="editable" href="#" class="text-indigo-600 hover:text-indigo-900" @click.prevent="$emit('edit', row)">Edit</a>
-                            <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
-                               @click.prevent="$emit('delete', row)">Delete</a>
-                            <slot name="actions" v-bind:row="row"></slot>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <v-pagination
-          :totalCount=totalRowCount
-          :pageSize=pageSize
-          :page=page
-          v-on:updatePageSize="updatePageSize"
-          v-on:changePage="updatePage"
-        ></v-pagination>
-    </div>
-</template>
+                            <a v-if="editable" href="#" class="text-indigo-600 hover:text-indigo-900" @click.prevent="$emit('edit', row)"><i class="fa fa-edit"></i> Edit</a>
+                                                <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
+                                                   @click.prevent="$emit('delete', row)"><i class="fa fa-trash"></i>Delete</a>
+                                                <slot name="actions" v-bind:row="row"></slot>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <v-pagination
+                              :totalCount=totalRowCount
+                              :pageSize=pageSize
+                              :page=page
+                              v-on:updatePageSize="updatePageSize"
+                              v-on:changePage="updatePage"
+                            ></v-pagination>
+                        </div>
+                    </template>
 
-<script>
-import VPagination from './atomic/VPagination';
+                    <script>
+                    import VPagination from './atomic/VPagination';
 
-export default {
-    name: "VTable",
-    components: {
-        VPagination
-    },
-    props: {
-        data: {type: Array, required: true},
-        columns: {type: Array, required: true},
-        editable: {type: Boolean, default: false},
-        deletable: {type: Boolean, default: false},
-        totalCount: {type: Number, required: false}
-    },
-    data() {
-        return {
-            page: 1,
-            pageSize: 5,
-            sort: {
-                dir: true,
-                by: ''
-            },
-            search: '',
-        }
-    },
-    methods: {
-        setSort(column) {
-            // If already to set to current column then invert order:
-            if (this.sort.by === column) {
-                this.sort.dir = !this.sort.dir;
-                return;
-            }
-            // Set to clicked Column:
-            this.sort.by = column;
-        },
-        updatePageSize(e) {
-            this.pageSize = e;
-            // Reset Page so it goes back to page 1:
-            this.page = 0;
-        },
-        updatePage(e) {
-            this.page = e.page;
-            if (this.totalCount) {
-                this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
-            }
-        },
-        getColumnValue(column, row) {
-            let colValue = Object.entries(row).filter(([key, value]) => key.toUpperCase() === column.toUpperCase());
-            if(colValue.length > 0) {
-                return row[colValue[0][0]];
-            }
-            return '';
-        }
-    },
-    computed: {
-        filteredRows() {
-            // Omit any Data not included in Columns array:
-            let rows = this.data;
+                    export default {
+                        name: "VTable",
+                        components: {
+                            VPagination
+                        },
+                        props: {
+                            data: {type: Array, required: true},
+                            columns: {type: Array, required: true},
+                            editable: {type: Boolean, default: false},
+                            deletable: {type: Boolean, default: false},
+                            totalCount: {type: Number, required: false}
+                        },
+                        data() {
+                            return {
+                                page: 1,
+                                pageSize: 5,
+                                sort: {
+                                    dir: true,
+                                    by: ''
+                                },
+                                search: '',
+                            }
+                        },
+                        methods: {
+                            setSort(column) {
+                                // If already to set to current column then invert order:
+                                if (this.sort.by === column) {
+                                    this.sort.dir = !this.sort.dir;
+                                    return;
+                                }
+                                // Set to clicked Column:
+                                this.sort.by = column;
+                            },
+                            updatePageSize(e) {
+                                this.pageSize = e;
+                                // Reset Page so it goes back to page 1:
+                                this.page = 0;
+                            },
+                            updatePage(e) {
+                                this.page = e.page;
+                                if (this.totalCount) {
+                                    this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
+                                }
+                            },
+                            getColumnValue(column, row) {
+                                let colValue = Object.entries(row).filter(([key, value]) => key.toUpperCase() === column.toUpperCase());
+                                if(colValue.length > 0) {
+                                    return row[colValue[0][0]];
+                                }
+                                return '';
+                            }
+                        },
+                        computed: {
+                            filteredRows() {
+                                // Omit any Data not included in Columns array:
+                                let rows = this.data;
 
-            // Filter Data if all presented to FE:
-            if (!this.totalCount) {
-                let start = this.page > 1 ? (this.page - 1) * this.pageSize : 0;
-                rows = rows.splice(start, this.pageSize);
-            }
-
-
-            // Order Data:
-
-            return rows;
-        },
-        upperColumns() {
-            return this.columns.map(col => col.toUpperCase());
-        },
-        totalRowCount() {
-            if (this.totalCount) {
-                return this.totalCount;
-            }
-            return this.data.length;
-        }
+                                // Filter Data if all presented to FE:
+                                if (!this.totalCount) {
+                                    let start = this.page > 1 ? (this.page - 1) * this.pageSize : 0;
+                                    rows = rows.splice(start, this.pageSize);
+                                }
 
 
-    }
-}
-</script>
+                                // Order Data:
 
-<style scoped>
+                                return rows;
+                            },
+                            upperColumns() {
+                                return this.columns.map(col => col.toUpperCase());
+                            },
+                            totalRowCount() {
+                                if (this.totalCount) {
+                                    return this.totalCount;
+                                }
+                                return this.data.length;
+                            }
 
-</style>
+
+                        }
+                    }
+                    </script>
+
+                    <style scoped>
+
+                    </style>
