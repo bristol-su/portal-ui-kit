@@ -5,9 +5,9 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                     <tr>
-                        <th v-for="column in columns"
-                            v-text="column"
-                            @click="setSort(column)"
+                        <th v-for="column in fullColumns"
+                            v-text="column.label"
+                            @click="setSort(column.key)"
                             scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                         </th>
                         <th scope="col" class="relative px-6 py-3" v-if="editable || deletable">
@@ -17,9 +17,9 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     <tr v-for="row in filteredRows" :id="row.id">
-                        <td class="px-6 py-4 whitespace-nowrap" v-for="column in columns">
-                            <slot :name="'col-' + column" v-bind:row="row">
-                                <div class="text-sm text-gray-900">{{ getColumnValue(column, row) }}</div>
+                        <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
+                            <slot :name="'col-' + column.key" v-bind:row="row">
+                                <div class="text-sm text-gray-900">{{ row[column.key] }}</div>
                             </slot>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -116,8 +116,16 @@ export default {
 
             return rows;
         },
+        fullColumns() {
+            return this.columns.map(column => {
+                if(typeof column === 'string') {
+                    return {key: column, label: column}
+                }
+                return column;
+            });
+        },
         upperColumns() {
-            return this.columns.map(col => col.toUpperCase());
+            return this.fullColumns.map(col => col.toUpperCase());
         },
         totalRowCount() {
             if (this.totalCount) {
