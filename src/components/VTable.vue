@@ -8,8 +8,8 @@
                         <th v-for="column in fullColumns"
                             @click="setSort(column.key)"
                             scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            <slot :name="'head(' + column.key + ')'">
-                                <slot name="head()">
+                            <slot :name="'head(' + column.key + ')'" v-bind:column="column">
+                                <slot name="head()" v-bind:column="column">
                                     <div>{{ column.label }}</div>
                                 </slot>
                             </slot>
@@ -22,8 +22,8 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     <tr v-for="row in filteredRows" :id="row.id">
                         <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
-                            <slot :name="'cell(' + column.key + ')'" v-bind:row="row">
-                                <slot name="cell()" v-bind:row="row">
+                            <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
+                                <slot name="cell()" v-bind:row="row" v-bind:column="column">
                                     <div class="text-sm text-gray-900">{{ row[column.key] }}</div>
                                 </slot>
                             </slot>
