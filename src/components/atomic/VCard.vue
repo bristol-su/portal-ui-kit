@@ -12,6 +12,7 @@
                 <a :href=url
                    class="inline-flex items-center mt-auto font-semibold text-blue-600 lg:mb-0 hover:text-black "
                    :title="'Continue ' + title"> {{ urlText }} {{disabled ? '(locked)' : ''}} {{mandatory ? '(mandatory)' : ''}}</a>
+                <slot></slot>
             </div>
             <div class="px-6 py-4 rounded-b-xl" :class="progressStyling" v-if="progress || progress === 0">
                 <p class="inline-flex items-center mt-auto font-semibold text-gray-500 lg:mb-0 "
