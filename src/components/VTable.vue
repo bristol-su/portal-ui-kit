@@ -18,7 +18,7 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                     <tr v-for="row in filteredRows" :id="row.id">
                         <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
-                            <slot :name="'col-' + column.key" v-bind:row="row">
+                            <slot :name="'cell(col-' + column.key + ')'" v-bind:row="row">
                                 <div class="text-sm text-gray-900">{{ row[column.key] }}</div>
                             </slot>
                         </td>
