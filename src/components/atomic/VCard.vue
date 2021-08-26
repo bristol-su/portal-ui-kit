@@ -10,6 +10,7 @@
                 <h2 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font" v-if="subtitle">
                     {{ subtitle }}</h2>
                 <a :href=url
+                   v-if="url"
                    class="inline-flex items-center mt-auto font-semibold text-blue-600 lg:mb-0 hover:text-black "
                    :title="'Continue ' + title"> {{ urlText }} {{disabled ? '(locked)' : ''}} {{mandatory ? '(mandatory)' : ''}}</a>
                 <slot></slot>
@@ -29,7 +30,7 @@ export default {
         title: {type: String, required: true},
         subtitle: {type: String, required: false},
         imageUrl: {type: String, required: false},
-        url: {type: String, required: true},
+        url: {type: String, required: false},
         urlText: {type: String, required: false, default: "Continue Task"},
         progress: {type: Number, required: false},
         tasksComplete: {type: Number, required: false},
