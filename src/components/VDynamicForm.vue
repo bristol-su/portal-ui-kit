@@ -17,8 +17,9 @@
                     <keep-alive>
                         <component
                           :is="getComponentFromType(formInput.type)"
+                          :key="formInput.id"
                           v-bind="formInput"
-                          @input="updateFormData">
+                          @input="updateFormData(formInput.id, $event)">
                         </component>
                     </keep-alive>
                 </div>
@@ -93,9 +94,9 @@ export default {
             this.form.groups.forEach((g) => g.fields.forEach((f) => (data.hasOwnProperty(f.id) ? null : data[f.id] = f.value)));
             this.formData = data;
         },
-        updateFormData(e) {
+        updateFormData(id, value) {
             let data = Object.assign({}, this.formData);
-            data[e.id] = e.value;
+            data[id] = value;
             this.formData = data;
         },
         checkValidity() {
