@@ -27,6 +27,8 @@
                                @click.prevent="$emit('edit', row)"><i class="fa fa-edit"></i> Edit</a>
                             <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
                                @click.prevent="$emit('delete', row)"><i class="fa fa-trash"></i>Delete</a>
+                            <a v-if="viewable" href="#" class="text-green-600 hover:text-green-900"
+                               @click.prevent="$emit('view', row)"><i class="fa fa-eye"></i>View</a>
                             <slot name="actions" v-bind:row="row"></slot>
                         </td>
                     </tr>
@@ -58,6 +60,7 @@ export default {
         columns: {type: Array, required: true},
         editable: {type: Boolean, default: false},
         deletable: {type: Boolean, default: false},
+        viewable: {type: Boolean, default: false},
         totalCount: {type: Number, required: false}
     },
     data() {
