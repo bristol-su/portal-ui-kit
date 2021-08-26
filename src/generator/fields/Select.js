@@ -14,4 +14,8 @@ export default class extends Field {
         return this;
     }
 
+    nullLabel(label) {
+        this.schema.nullLabel = label;
+    }
+
 }
