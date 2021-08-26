@@ -6,9 +6,11 @@
                     <thead class="bg-gray-50">
                     <tr>
                         <th v-for="column in fullColumns"
-                            v-text="column.label"
                             @click="setSort(column.key)"
                             scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <slot :name="'head(col-' + column.key + ')'">
+                                <div>{{ column.label }}</div>
+                            </slot>
                         </th>
                         <th scope="col" class="relative px-6 py-3" v-if="editable || deletable">
                             <span class="sr-only">Actions</span>
