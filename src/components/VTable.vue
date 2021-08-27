@@ -100,13 +100,6 @@ export default {
             if (this.totalCount) {
                 this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
             }
-        },
-        getColumnValue(column, row) {
-            let colValue = Object.entries(row).filter(([key, value]) => key.toUpperCase() === column.toUpperCase());
-            if (colValue.length > 0) {
-                return row[colValue[0][0]];
-            }
-            return '';
         }
     },
     computed: {
