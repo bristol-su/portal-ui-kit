@@ -17,7 +17,7 @@ import VDynamicForm from './VDynamicForm';
 import VButton from './atomic/VButton';
 
 export default {
-    name: "VSubmitForm",
+    name: "VApiForm",
     components: {
         VDynamicForm,
         VButton
@@ -51,7 +51,7 @@ export default {
         this.formData = this.initialData;
     },
     methods: {
-        checkValidity() {
+        checkValidity(e) {
             if (!this.$refs.form.checkValidity()) {
                 e.preventDefault();
             }
