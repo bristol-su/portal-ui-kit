@@ -1,7 +1,12 @@
 <template>
     <div class="bg-red-600 text-white">
         <ul>
-            <li v-for="(errorText, errorId) in this.$ui.errors.all()">{{errorText}} <a class="text-gray-400" :href="'#' + errorId">Goto</a></li>
+            <li v-for="(errors, errorId) in this.$ui.errors.all()">
+                <ul>
+                    <li v-for="error in errors" v-text="error"></li>
+                </ul>
+                <a class="text-gray-400" :href="'#' + errorId">Goto</a>
+            </li>
         </ul>
     </div></template>
 
