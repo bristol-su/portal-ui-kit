@@ -44,6 +44,7 @@ export default {
         },
         labelProps() {
             let props = {
+                id: this.id,
                 title: this.title,
                 required: this.required,
                 help: this.help,
