@@ -2,10 +2,10 @@
     <span>
         <a v-if="href" :href="href">
             <button
-              type="button"
-              class="w-full px-16 py-2 my-2 mr-2 text-base text-white transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
-              :class="styles"
-              :disabled="disabled"
+                type="button"
+                class="w-full px-16 py-2 my-2 mr-2 text-base text-white transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+                :class="styles"
+                :disabled="disabled"
             >
                 <slot>
                     {{ buttonText }}
@@ -28,34 +28,34 @@
 
 <script>
 export default {
-    name: "VButton",
-    props: {
-        buttonText: {type: String, required: false, default: 'Submit'},
-        href: {type: String, required: false},
-        variant: {type: String, required: false, default: 'primary'},
-        disabled: {type: Boolean, required: false, default: false}
-    },
-    methods: {
-        clickButton() {
-            if (this.href) {
-                window.location.href = this.href;
-            }
-            this.$emit('click');
-        }
-    },
-    computed: {
-        styles() {
-            return {
-                'bg-blue-600 border-blue-600 hover:bg-blue-800': this.variant === 'primary',
-                'bg-gray-600 border-gray-600 hover:bg-gray-800': this.variant === 'secondary',
-                'bg-green-600 border-gray-600 hover:bg-gray-800': this.variant === 'success',
-                'bg-red-600 border-gray-600 hover:bg-gray-800': this.variant === 'danger',
-                'bg-blue-100 border-gray-600 hover:bg-gray-800': this.variant === 'info',
-                'w-full px-16 py-2 my-2 text-base font-medium text-blueGray-600 transition duration-500 ease-in-out transform rounded-md border-blueGray-50 bg-blueGray-50 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100': this.variant === 'white',
-                'w-full px-16 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform border-black rounded-md bg-black focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-900': this.variant === 'black',
-            }
-        }
+  name: "VButton",
+  props: {
+    buttonText: {type: String, required: false, default: 'Submit'},
+    href: {type: String, required: false},
+    variant: {type: String, required: false, default: 'primary'},
+    disabled: {type: Boolean, required: false, default: false}
+  },
+  methods: {
+    clickButton() {
+      if (this.href) {
+        window.location.href = this.href;
+      }
+      this.$emit('click');
     }
+  },
+  computed: {
+    styles() {
+      return {
+        'bg-primary border-primary-light hover:bg-primary-dark': this.variant === 'primary',
+        'bg-secondary border-secondary-light hover:bg-secondary-dark': this.variant === 'secondary',
+        'bg-success border-success-light hover:bg-success-dark': this.variant === 'success',
+        'bg-warning border-warning-light hover:bg-warning-dark': this.variant === 'danger',
+        'bg-info border-info-light hover:bg-info-dark': this.variant === 'info',
+        'bg-white border-white hover:bg-white text-black': this.variant === 'white',
+        'bg-black border-black hover:bg-black text-white': this.variant === 'black',
+      }
+    }
+  }
 }
 </script>
 

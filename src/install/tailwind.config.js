@@ -19,10 +19,20 @@ module.exports = {
                     DEFAULT: '#2dbccf',
                     dark: '#2893a1'
                 },
-                ternary: {
+                success: {
                     light: '#55efc4',
                     DEFAULT: '#16e497',
                     dark: '#16c894'
+                },
+                info: {
+                    light: '#fdcb6e',
+                    DEFAULT: '#ffb63d',
+                    dark: '#e79d24'
+                },
+                warning: {
+                    light: '#ff7675',
+                    DEFAULT: '#ff4757',
+                    dark: '#b6253a'
                 },
                 black: '#262626',
                 white: '#fef6f6'
