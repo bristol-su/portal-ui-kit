@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full p-6 mx-auto lg:w-1/3">
+    <div class="w-full p-6 mx-auto md:w-1/3 lg:1/4">
         <div class="shadow-xl rounded-xl bg-blueGray-50">
             <img class="object-cover object-center w-full lg:h-48 md:h-36 rounded-t-xl" v-if="imageUrl" :src="imageUrl"
                  :alt="title + ' banner imageUrl'">
