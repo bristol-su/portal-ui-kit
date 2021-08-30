@@ -13,6 +13,9 @@ export default {
         let eventBus = new Vue({});
 
         VueInstance.prototype.$ui = {
+            errors: options.hasOwnProperty('errors') ? options.errors : {
+                all: () => {}, has: (key) => false, get: (key) => null
+            },
             confirm: {
                 delete: (title, message) => {
 

@@ -48,7 +48,8 @@ export default {
                 title: this.title,
                 required: this.required,
                 help: this.help,
-                tooltip: this.tooltip
+                tooltip: this.tooltip,
+                errors: this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : []
             }
 
             return Object.fromEntries(Object.entries(props).filter(([_, v]) => v !== null)); // Only return non-empty values
