@@ -12,7 +12,7 @@
           :action="formUrl"
           :method="formMethod">
 
-            <v-error-summary v-if="this.$ui.errors.all().length > 0" :errors="this.$ui.errors.all()">
+            <v-error-summary v-if="errors.length > 0" :errors="errors">
 
             </v-error-summary>
 
@@ -150,6 +150,9 @@ export default {
             set(value) {
                 this.$emit('input', value);
             }
+        },
+        errors() {
+            return this.$ui.errors.all();
         }
     }
 }
