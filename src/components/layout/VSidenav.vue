@@ -30,11 +30,12 @@
                 <li v-for="navItem in navItems">
                     <a v-if="navItem.route" :href=navItem.route
                        class="inline-flex items-center px-4 py-2 mt-2 text-base text-white transition duration-500 ease-in-out transform border-l-4 border-white focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-blue-200 hover:border-blue-200">
-                        <!--            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">-->
-                        <!--              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />-->
-                        <!--            </svg>-->
-                        <span class="ml-4" v-text="navItem.title"></span>
+                        <span class="ml-4">
+                            {{navItem.title}} <i v-if="navItem.icon" :class="navItem.icon"></i>
+                            <span v-if="navItem.highlight">(Mandatory)</span>
+                        </span>
                     </a>
+
                     <ul v-else-if="navItem.children && navItem.children.length > 0">
                         {{navItem.title}}
                         <li v-for="child in navItem.children" :key="child.title">
