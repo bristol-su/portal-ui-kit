@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-form-label v-bind="labelProps">
-            <div class="mt-1 flex rounded-md shadow-sm">
+            <div :id="id" class="mt-1 flex rounded-md shadow-sm">
                 <div v-for="checklist in checklists">
                     <input
                       type="checkbox"

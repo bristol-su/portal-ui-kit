@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-form-label v-bind="labelProps">
-            <div v-for="radio in radios">
+            <div :id="id" v-for="radio in radios">
                 <input
                   type="radio"
                   :id="radio.id"

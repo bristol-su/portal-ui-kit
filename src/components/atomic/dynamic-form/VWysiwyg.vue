@@ -2,6 +2,7 @@
     <div>
         <v-form-label v-bind="labelProps">
             <editor
+              :id="id"
               v-model="dynamicValue"
               :api-key="apiKey"
               :init="config"></editor>

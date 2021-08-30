@@ -5,7 +5,7 @@
         <input
             type="text"
             :name="name"
-            :id="title"
+            :id="id"
             :placeholder="help"
             v-model="dynamicValue"
             :required="required"
