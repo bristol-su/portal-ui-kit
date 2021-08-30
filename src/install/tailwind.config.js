@@ -4,6 +4,10 @@ module.exports = {
     theme: {
         fontFamily: {},
         extend: {
+            backgroundImage: theme => ({
+                'landing-page': "url('/images/landingPage.JPG')",
+                'login-page':  "url('/images/loginPage.jpg')",
+            }),
             colors: {
                 primary: {
                     light: '#689fea',
