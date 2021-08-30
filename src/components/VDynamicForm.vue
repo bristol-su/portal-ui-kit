@@ -12,7 +12,7 @@
           :action="formUrl"
           :method="formMethod">
 
-            <v-error-summary v-if="errors.length > 0" :errors="errors">
+            <v-error-summary v-if="hasErrors" :errors="errors">
 
             </v-error-summary>
 
@@ -153,6 +153,9 @@ export default {
         },
         errors() {
             return this.$ui.errors.all();
+        },
+        hasErrors() {
+            return _.isEmpty(this.errors);
         }
     }
 }
