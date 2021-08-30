@@ -50,6 +50,7 @@ import VPassword from './atomic/dynamic-form/VPassword';
 import VWysiwyg from './atomic/dynamic-form/VWysiwyg';
 import FormGenerator from '../generator/generators/FormGenerator';
 import FormFactory from '../generator/factory/FormFactory';
+import VErrorSummary from './atomic/VErrorSummary';
 
 export default {
     name: "VDynamicForm",
@@ -71,6 +72,9 @@ export default {
         formUrl: {required: false, type: String, default: '#'},
         formMethod: {required: false, type: String, default: 'POST'},
 
+    },
+    components: {
+        VErrorSummary
     },
     data() {
         return {
