@@ -11,6 +11,11 @@
           ref="form"
           :action="formUrl"
           :method="formMethod">
+
+            <v-error-summary v-if="this.$ui.errors.all().length > 0" :errors="this.$ui.errors.all()">
+
+            </v-error-summary>
+
             <slot name="prepend"></slot>
             <div v-for="group in form.groups">
                 <div v-for="formInput in group.fields" :key="formInput.id">
