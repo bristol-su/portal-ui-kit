@@ -4,7 +4,7 @@
       <div class="flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row">
         <a :href=homeRoute class="pr-2 lg:pr-8 lg:px-6 focus:outline-none">
           <div class="inline-flex items-center">
-            <img class="w-1/2 md:w-3/12 lg:w-2/12" src="/images/logo.png" alt="Bristol Students' Union Logo - Blue">
+            <img class="w-1/2 md:w-3/12 lg:w-1/12" src="/images/logo.png" alt="Bristol Students' Union Logo - Blue">
           </div>
         </a>
         <div class="flex flex-wrap justify-end ml-auto items-en xl:flex-nowrap md:flex-nowrap lg:flex-wrap">
