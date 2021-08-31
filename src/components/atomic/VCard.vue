@@ -16,8 +16,8 @@
         <slot></slot>
       </div>
       <div class="px-6 py-4 rounded-b-xl" :class="progressStyling" v-if="progress || progress === 0">
-        <p class="inline-flex items-center mt-auto font-semibold text-gray-500 lg:mb-0 "
-           title="Read Full Article"> {{ progress }}% complete <span v-if="tasksComplete || tasksComplete === 0"> ({{tasksComplete}}/{{totalTasks}})</span></p>
+        <p class="inline-flex items-center mt-auto font-semibold lg:mb-0"
+           title="Read Full Article"> {{ progress }}% complete <span class="ml-3" v-if="tasksComplete || tasksComplete === 0"> ({{tasksComplete}}/{{totalTasks}})</span></p>
       </div>
     </div>
   </div>
@@ -41,10 +41,10 @@ export default {
   computed: {
     progressStyling() {
       return {
-        "bg-green-100": this.progress === 100,
-        "bg-blue-400": this.progress >= 66 && this.progress < 100,
-        "bg-orange-300": this.progress >= 33 && this.progress <= 66,
-        "bg-red-600": this.progress === 0
+        "bg-success-dark text-white": this.progress === 100,
+        "bg-secondary text-black": this.progress >= 66 && this.progress < 100,
+        "bg-info-dark text-black": this.progress >= 33 && this.progress <= 66,
+        "bg-warning-dark text-white": this.progress <= 32
       };
     }
   }
