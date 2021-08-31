@@ -22,6 +22,7 @@ export default class extends Field {
 
     nullLabel(label) {
         this.withNullOption(label, null);
+        return this;
     }
 
     setOptions(options) {
