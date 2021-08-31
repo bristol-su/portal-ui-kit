@@ -27,6 +27,14 @@ export default {
             formData: {}
         }
     },
+    watch: {
+        formData: {
+            deep: true,
+            handler: (data) => {
+                this.$emit('updated', data);
+            }
+        }
+    },
     props: {
         schema: {
             required: true,
