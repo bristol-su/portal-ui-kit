@@ -21,7 +21,7 @@ export default class extends Field {
     }
 
     nullLabel(label) {
-        this.withNullOption(schema.nullLabel, null);
+        this.withNullOption(label, null);
     }
 
     setOptions(options) {
