@@ -5,6 +5,7 @@
                 <div v-if="getTabs().length > 1">
                     <div class="group p-0.5 rounded-lg flex bg-gray-100 hover:bg-gray-200">
                         <button
+                          type="button"
                           v-for='(title, index) in getTabs()'
                           :key='title'
                           class="ml-0.5 p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-600 font-medium focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus:outline-none focus-visible:ring-offset-gray-100"
