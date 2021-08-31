@@ -9,14 +9,18 @@
 </template>
 
 <script>
+import VModal from './VModal';
+import VButton from './VButton';
+
 export default {
     name: "VNotification",
+    components: {VModal, VButton},
     props: {
         message: {required: true, type: String},
         type: {
             required: true,
             validator: (val) => typeof val === 'string' && ['info', 'alert', 'warning', 'success'].indexOf(val) !== -1
-        } // One of info, alert, warning or success
+        }
     },
     methods: {
         hide() {
