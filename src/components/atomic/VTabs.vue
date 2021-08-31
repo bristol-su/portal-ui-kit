@@ -53,6 +53,7 @@ export default {
     },
     methods: {
         selectTab(i) {
+            this.$ui.eventBus.$emit('tab-deselected', this.getTabs()[this.selectedIndex]);
             this.selectedIndex = i;
             this.$ui.eventBus.$emit('tab-selected', this.getTabs()[i]);
         },
