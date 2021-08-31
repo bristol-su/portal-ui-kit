@@ -11,7 +11,7 @@
                       :name="name"
                       v-model="dynamicValue"
                       class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
-                    <label :for="checklist.id">checklist.text</label>
+                    <label :for="checklist.id">{{ checklist.text }}</label>
                 </div>
             </div>
         </v-form-label>
