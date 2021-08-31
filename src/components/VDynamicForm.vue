@@ -162,12 +162,6 @@ export default {
             set(value) {
                 this.$emit('input', value);
             }
-        },
-        errors() {
-            return this.$ui.errors.all();
-        },
-        hasErrors() {
-            return !_.isEmpty(this.errors);
         }
     }
 }
