@@ -30,8 +30,8 @@ export default {
     watch: {
         formData: {
             deep: true,
-            handler: (data) => {
-                this.$emit('updated', data);
+            handler() {
+                this.$emit('updated', this.formData);
             }
         }
     },
