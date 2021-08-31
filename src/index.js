@@ -3,6 +3,7 @@ import camelCase from 'lodash/camelCase'
 import VueTippy, { TippyComponent } from "vue-tippy";
 import Vue from 'vue';
 import VConfirmationModal from './components/atomic/VConfirmationModal';
+import VNotification from './components/atomic/VNotification';
 
 export default {
     install(VueInstance, options) {
@@ -11,6 +12,20 @@ export default {
         VueInstance.component('tippy', TippyComponent);
 
         let eventBus = new Vue({});
+
+        let showNotification = (message, type) => {
+            let componentClass = Vue.extend(VNotification);
+            const notificationModal = new componentClass({
+                propsData: {
+                    message: message,
+                    type: type
+                }
+            })
+            const div = document.createElement('div')
+            document.body.appendChild(div)
+            notificationModal.$mount(div)
+            notificationModal.show();
+        }
 
         VueInstance.prototype.$ui = {
             errors: options.hasOwnProperty('errors') ? options.errors : {
@@ -40,6 +55,12 @@ export default {
                         confirmationModal.show();
                     })
                 }
+            },
+            notify: {
+                info: (message) => showNotification(message, 'info'),
+                alert: (message) => showNotification(message, 'alert'),
+                warning: (message) => showNotification(message, 'warning'),
+                success: (message) => showNotification(message, 'success'),
             },
             modal: {
                 show: (id) => {
