@@ -73,6 +73,8 @@ export default {
             eventBus: eventBus
         }
 
+        Vue.prototype.$notify = Vue.prototype.$ui.notify;
+
         const requireComponent = require.context(
           // The relative path of the components folder
           './components',
