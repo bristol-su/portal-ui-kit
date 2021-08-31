@@ -5,7 +5,7 @@ export default {
         id: {type: String, required: true},
         label: {validator: (val) => val === null || typeof val === 'string', required: false},
         required: {type: Boolean, required: false},
-        visible: {type: Boolean, required: false},
+        visible: {type: Boolean, required: false, default: true},
         hint: {validator: (val) => val === null || typeof val === 'string', required: false},
         tooltip: {validator: (val) => val === null || typeof val === 'string', required: false},
         value: {required: false, default: null}
