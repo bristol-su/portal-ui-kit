@@ -162,6 +162,9 @@ export default {
             set(value) {
                 this.$emit('input', value);
             }
+        },
+        hasErrors() {
+            return !_.isEmpty(this.errors);
         }
     }
 }
