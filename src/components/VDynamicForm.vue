@@ -91,13 +91,21 @@ export default {
                 text: VTextInput,
                 password: VPassword,
                 html: VWysiwyg
-            }
+            },
+            errors: {}
         }
     },
     mounted() {
         this.initialiseFormData();
     },
+    created() {
+        this.$ui.eventBus.$on('errors-updated', () => this.recheckErrors());
+        this.recheckErrors();
+    },
     methods: {
+        recheckErrors() {
+            this.errors = this.$ui.errors.all();
+        },
         initialiseFormData() {
             let data = Object.assign({}, this.formData);
             this.form.groups.forEach((g) => g.fields.forEach((f) => (data.hasOwnProperty(f.id) ? null : data[f.id] = f.value)));

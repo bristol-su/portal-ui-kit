@@ -10,7 +10,7 @@ export default {
         VueInstance.use(VueTippy);
         VueInstance.component('tippy', TippyComponent);
 
-        let eventBus = new Vue({});
+        this.eventBus = new Vue({});
 
         VueInstance.prototype.$ui = {
             errors: options.hasOwnProperty('errors') ? options.errors : {
@@ -49,7 +49,7 @@ export default {
                     Vue.prototype.$ui.eventBus.$emit('modal.hide', id);
                 }
             },
-            eventBus: eventBus
+            eventBus: this.eventBus
         }
 
         const requireComponent = require.context(
@@ -88,6 +88,5 @@ export default {
               componentConfig.default || componentConfig
             )
         })
-
-    }
+    },
 }

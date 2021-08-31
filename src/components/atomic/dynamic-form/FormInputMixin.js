@@ -18,6 +18,18 @@ export default {
             this.$emit('input', value);
         }
     },
+    created() {
+        this.$ui.eventBus.$on('errors-updated', () => this.recheckErrors());
+        this.recheckErrors();
+    },
+    recheckErrors() {
+        this.formErrors = this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : [];
+    },
+    data() {
+        return {
+            formErrors: []
+        }
+    },
     computed: {
         name() {
             return this.id;
@@ -49,7 +61,7 @@ export default {
                 required: this.required,
                 help: this.help,
                 tooltip: this.tooltip,
-                errors: this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : []
+                errors: this.formErrors
             }
 
             return Object.fromEntries(Object.entries(props).filter(([_, v]) => v !== null)); // Only return non-empty values
