@@ -1,7 +1,7 @@
 <template>
   <section class="text-blueGray-700">
     <div class="container items-center px-5 py-8 mx-auto">
-      <div class="flex flex-wrap justify-center mb-12 bg-white rounded-xl shadow-xl">
+      <div class="flex flex-wrap justify-center mb-12 bg-offWhite rounded-xl shadow-xl">
         <div class="w-full text-center mt-5">
           <h1 class="mb-6 text-2xl font-semibold tracking-tighter text-black sm:text-5xl title-font" >{{title}}</h1>
         </div>
@@ -13,12 +13,12 @@
 
 <script>
 export default {
-    name: "VCardGroup",
-    props: {
-        title: {
-            required: false, type: String, default: ''
-        }
+  name: "VCardGroup",
+  props: {
+    title: {
+      required: false, type: String, default: ''
     }
+  }
 }
 </script>
 

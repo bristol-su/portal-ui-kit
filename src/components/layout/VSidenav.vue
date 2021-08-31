@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col flex-shrink-0 w-full text-blueGray-700 bg-blue-900 shadow-xl md:w-64">
+    <div class="flex flex-col flex-shrink-0 w-full text-blueGray-700 bg-blue-900 shadow-xl md:w-64 h-full">
         <div class="flex flex-col items-center flex-shrink-0 bg-blue-800">
             <button
               class="p-1 m-2 ml-auto text-white transition-colors duration-200 transform rounded-md hover:bg-opacity-25 hover:bg-white focus:outline-none"
