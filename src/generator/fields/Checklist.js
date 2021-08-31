@@ -14,4 +14,10 @@ export default class extends Field {
         return this;
     }
 
+    setOptions(options) {
+        this.schema.checklists = options;
+        return this;
+    }
+
+
 }
