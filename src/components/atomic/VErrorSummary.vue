@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-danger border-l-4 rounded-t border-danger-dark text-black p-4 text-left" role="alert">
+  <div class="bg-warning border-l-4 rounded-t border-warning-dark text-black p-4 text-left" role="alert">
     <p class="font-bold">Error!</p>
     <div v-for="(errors, errorId) in this.$ui.errors.all()">
       <ul>
