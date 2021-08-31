@@ -14,8 +14,14 @@ export default class extends Field {
         return this;
     }
 
-    nullLabel(label) {
+    withNullOption(label, value) {
+        this.schema.showNullOption = true;
         this.schema.nullLabel = label;
+        this.schema.nullValue = value;
+    }
+
+    nullLabel(label) {
+        this.withNullOption(schema.nullLabel, null);
     }
 
     setOptions(options) {
