@@ -15,7 +15,7 @@ export default {
         message: {required: true, type: String},
         type: {
             required: true,
-            validator: (val) => typeof stringValue === 'string' && ['info', 'alert', 'warning', 'success'].indexOf(val) !== -1
+            validator: (val) => typeof val === 'string' && ['info', 'alert', 'warning', 'success'].indexOf(val) !== -1
         } // One of info, alert, warning or success
     },
     methods: {
