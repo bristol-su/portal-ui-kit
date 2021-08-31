@@ -30,4 +30,9 @@ export default class extends Field {
         return this;
     }
 
+    multiple(multiple) {
+        this.schema.multiple = multiple;
+        return this;
+    }
+
 }
