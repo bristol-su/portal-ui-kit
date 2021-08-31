@@ -16,14 +16,14 @@ export default {
     methods: {
         setValue(value) {
             this.$emit('input', value);
-        }
+        },
+        recheckErrors() {
+            this.formErrors = this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : [];
+        },
     },
     created() {
         this.$ui.eventBus.$on('errors-updated', () => this.recheckErrors());
         this.recheckErrors();
-    },
-    recheckErrors() {
-        this.formErrors = this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : [];
     },
     data() {
         return {
