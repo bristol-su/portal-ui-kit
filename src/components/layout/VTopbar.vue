@@ -67,14 +67,7 @@
                  role="menuitem">Sign out</a>
             </div>
           </div>
-
         </div>
-
-
-
-
-
-
       </div>
     </div>
     <form id="logout-form" ref="logoutForm" :action="logoutRoute" method="POST" style="display: none;">
