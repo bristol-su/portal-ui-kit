@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         optionIsChecked(checklist) {
-            return this.value.indexOf(checklist.id) !== -1;
+            return this.dynamicValue && this.dynamicValue.indexOf(checklist.id) !== -1;
         }
     }
 }
