@@ -29,18 +29,42 @@
               </slot>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium" v-if="editable || deletable || viewable">
-              <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
-                 @click.prevent="$emit('edit', row)">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                </svg>
-                Edit
-              </a>
-              <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
-                 @click.prevent="$emit('delete', row)"><i class="fa fa-trash"></i>Delete</a>
-              <a v-if="viewable" href="#" class="text-green-600 hover:text-green-900"
-                 @click.prevent="$emit('view', row)"><i class="fa fa-eye"></i>View</a>
-              <slot name="actions" v-bind:row="row"></slot>
+                           <span class="flex justify-between">
+                                <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
+                                   @click.prevent="$emit('edit', row)">
+                                    <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                 content="Edit File" v-tippy="{ arrow: true, animation: 'fade', placement: 'top-start', arrow: true, interactive: true}"
+                                            >
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                            <span class="sr-only">Edit</span>
+                                    </span>
+                                </a>
+                                <a v-if="deletable" href="#" class="text-warning hover:text-warning-dark"
+                                   @click.prevent="$emit('delete', row)">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                             content="Delete File" v-tippy="{ arrow: true, animation: 'fade', placement: 'top-start', arrow: true, interactive: true}"
+                                        >
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                        <span class="sr-only">Delete</span>
+                                    </span>
+                                </a>
+                                <a v-if="viewable" href="#" class="text-secondary hover:text-secondary-dark"
+                                   @click.prevent="$emit('view', row)">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                             content="View File" v-tippy="{ arrow: true, animation: 'fade', placement: 'top-start', arrow: true, interactive: true}"
+                                        >
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    </span>
+                                    <span class="sr-only">View</span>
+                                </a>
+                                <slot name="actions" v-bind:row="row"></slot>
+                           </span>
             </td>
           </tr>
           </tbody>
