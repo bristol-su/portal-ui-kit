@@ -28,7 +28,7 @@
                 </slot>
               </slot>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium" v-if="editable || deletable || viewable">
               <a v-if="editable" href="#" class="text-indigo-600 hover:text-indigo-900"
                  @click.prevent="$emit('edit', row)"><i class="fa fa-edit"></i> Edit</a>
               <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
