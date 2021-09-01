@@ -9,7 +9,7 @@
                       :value="checklist.id"
                       :checked="optionIsChecked(checklist)"
                       :name="name"
-                      v-model="dynamicValue"
+                      v-model="dynamicValue[checklist.id]"
                       class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
                     <label :for="checklist.id">{{ checklist.text }}</label>
                 </div>
