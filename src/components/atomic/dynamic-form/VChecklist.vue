@@ -6,10 +6,9 @@
                     <input
                       type="checkbox"
                       :id="checklist.id"
-                      :value="checklist.id"
-                      :checked="optionIsChecked(checklist)"
+                      :checked="optionIsChecked(checklist.id)"
                       :name="name"
-                      v-model="dynamicValue[checklist.id]"
+                      @change="setCheckboxValue(checklist.id, $event.target.checked)"
                       class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
                     <label :for="checklist.id">{{ checklist.text }}</label>
                 </div>
@@ -32,8 +31,17 @@ export default {
         }
     },
     methods: {
-        optionIsChecked(checklist) {
-            return this.dynamicValue && this.dynamicValue.indexOf(checklist.id) !== -1;
+        setCheckboxValue(id, value) {
+            let dynamicValue = (this.dynamicValue ? _.cloneDeep(this.dynamicValue) : []);
+            if(!value && dynamicValue.indexOf(id) !== -1) {
+                dynamicValue.splice(dynamicValue.indexOf(dynamicValue.filter(d => d === id)), 1);
+            } else if(value && dynamicValue.indexOf(id) === -1) {
+                dynamicValue.push(id);
+            }
+            this.dynamicValue = dynamicValue;
+        },
+        optionIsChecked(id) {
+            return this.dynamicValue && this.dynamicValue.indexOf(id) !== -1;
         }
     }
 }
