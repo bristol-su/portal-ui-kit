@@ -14,7 +14,7 @@
       <div>
         <v-select
             id="tableSelect"
-            title="Select Page Size"
+            label="Rows per page"
             :selectOptions="[{id: 5, value: 5}, {id: 10, value: 10}, {id: 25, value: 25}]"
             :value=pageSize
             help="Select the number of records to show in the table"
