@@ -1,55 +1,55 @@
 <template>
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                    <tr>
-                        <th v-for="column in fullColumns"
-                            @click="setSort(column.key)"
-                            scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            <slot :name="'head(' + column.key + ')'" v-bind:column="column">
-                                <slot name="head()" v-bind:column="column">
-                                    <div>{{ column.label }}</div>
-                                </slot>
-                            </slot>
-                        </th>
-                        <th scope="col" class="relative px-6 py-3" v-if="editable || deletable">
-                            <span class="sr-only">Actions</span>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                    <tr v-for="row in filteredRows" :id="row.id">
-                        <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
-                            <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
-                                <slot name="cell()" v-bind:row="row" v-bind:column="column">
-                                    <div class="text-sm text-gray-900">{{ dataGet(row, column.key) }}</div>
-                                </slot>
-                            </slot>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a v-if="editable" href="#" class="text-indigo-600 hover:text-indigo-900"
-                               @click.prevent="$emit('edit', row)"><i class="fa fa-edit"></i> Edit</a>
-                            <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
-                               @click.prevent="$emit('delete', row)"><i class="fa fa-trash"></i>Delete</a>
-                            <a v-if="viewable" href="#" class="text-green-600 hover:text-green-900"
-                               @click.prevent="$emit('view', row)"><i class="fa fa-eye"></i>View</a>
-                            <slot name="actions" v-bind:row="row"></slot>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <v-pagination
-          :totalCount=totalRowCount
-          :pageSize=pageSize
-          :page=page
-          v-on:updatePageSize="updatePageSize"
-          v-on:changePage="updatePage"
-        ></v-pagination>
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+          <tr>
+            <th v-for="column in fullColumns"
+                @click="setSort(column.key)"
+                scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <slot :name="'head(' + column.key + ')'" v-bind:column="column">
+                <slot name="head()" v-bind:column="column">
+                  <div>{{ column.label }}</div>
+                </slot>
+              </slot>
+            </th>
+            <th scope="col" class="relative px-6 py-3" v-if="editable || deletable">
+              <span class="sr-only">Actions</span>
+            </th>
+          </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+          <tr v-for="row in filteredRows" :id="row.id">
+            <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
+              <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
+                <slot name="cell()" v-bind:row="row" v-bind:column="column">
+                  <div class="text-sm text-gray-900">{{ row.hasOwnProperty(column.key) && row[column.key] !== undefined ? row[column.key] : '' }}</div>
+                </slot>
+              </slot>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              <a v-if="editable" href="#" class="text-indigo-600 hover:text-indigo-900"
+                 @click.prevent="$emit('edit', row)"><i class="fa fa-edit"></i> Edit</a>
+              <a v-if="deletable" href="#" class="text-red-600 hover:text-red-900"
+                 @click.prevent="$emit('delete', row)"><i class="fa fa-trash"></i>Delete</a>
+              <a v-if="viewable" href="#" class="text-green-600 hover:text-green-900"
+                 @click.prevent="$emit('view', row)"><i class="fa fa-eye"></i>View</a>
+              <slot name="actions" v-bind:row="row"></slot>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    <v-pagination
+        :totalCount=totalRowCount
+        :pageSize=pageSize
+        :page=page
+        v-on:updatePageSize="updatePageSize"
+        v-on:changePage="updatePage"
+    ></v-pagination>
+  </div>
 </template>
 
 <script>
@@ -57,90 +57,88 @@ import VPagination from './atomic/VPagination';
 import _ from 'lodash';
 
 export default {
-    name: "VTable",
-    components: {
-        VPagination
-    },
-    props: {
-        items: {type: Array, required: true},
-        columns: {type: Array, required: true},
-        editable: {type: Boolean, default: false},
-        deletable: {type: Boolean, default: false},
-        viewable: {type: Boolean, default: false},
-        totalCount: {type: Number, required: false}
-    },
-    data() {
-        return {
-            page: 1,
-            pageSize: 5,
-            sort: {
-                dir: true,
-                by: ''
-            },
-            search: '',
-        }
-    },
-    methods: {
-        setSort(column) {
-            // If already to set to current column then invert order:
-            if (this.sort.by === column) {
-                this.sort.dir = !this.sort.dir;
-                return;
-            }
-            // Set to clicked Column:
-            this.sort.by = column;
-        },
-        updatePageSize(e) {
-            this.pageSize = e;
-            // Reset Page so it goes back to page 1:
-            this.page = 0;
-        },
-        updatePage(e) {
-            this.page = e.page;
-            if (this.totalCount) {
-                this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
-            }
-        },
-        dataGet(row, key) {
-            return _.get(row, key, '')
-        }
-    },
-    computed: {
-        filteredRows() {
-            // Omit any Data not included in Columns array:
-            let rows = _.cloneDeep(this.items);
-
-            // Filter Data if all presented to FE:
-            if (!this.totalCount) {
-                let start = this.page > 1 ? (this.page - 1) * this.pageSize : 0;
-                rows = rows.splice(start, this.pageSize);
-            }
-
-
-            // Order Data:
-
-            return rows;
-        },
-        fullColumns() {
-            return this.columns.map(column => {
-                if(typeof column === 'string') {
-                    return {key: column, label: column}
-                }
-                return column;
-            });
-        },
-        upperColumns() {
-            return this.fullColumns.map(col => col.toUpperCase());
-        },
-        totalRowCount() {
-            if (this.totalCount) {
-                return this.totalCount;
-            }
-            return this.items.length;
-        }
-
-
+  name: "VTable",
+  components: {
+    VPagination
+  },
+  props: {
+    items: {type: Array, required: true},
+    columns: {type: Array, required: true},
+    editable: {type: Boolean, default: false},
+    deletable: {type: Boolean, default: false},
+    viewable: {type: Boolean, default: false},
+    totalCount: {type: Number, required: false}
+  },
+  data() {
+    return {
+      page: 1,
+      pageSize: 5,
+      sort: {
+        dir: true,
+        by: ''
+      },
+      search: '',
     }
+  },
+  methods: {
+    setSort(column) {
+      // If already to set to current column then invert order:
+      if (this.sort.by === column) {
+        this.sort.dir = !this.sort.dir;
+        return;
+      }
+      // Set to clicked Column:
+      this.sort.by = column;
+    },
+    updatePageSize(e) {
+      alert('Update page Size to - ' + e);
+      this.pageSize = e;
+      // Reset Page so it goes back to page 1:
+      this.page = 1;
+    },
+    updatePage(e) {
+      this.page = e.page;
+      if (this.totalCount) {
+        this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
+      }
+    }
+  },
+  computed: {
+    filteredRows() {
+      // Omit any Data not included in Columns array:
+      let rows = _.cloneDeep(this.items);
+
+      // Filter Data if all presented to FE:
+      if (!this.totalCount) {
+        let start = this.page > 1 ? (this.page - 1) * this.pageSize : 0;
+        rows = rows.splice(start, this.pageSize);
+      }
+
+
+      // Order Data:
+
+      return rows;
+    },
+    fullColumns() {
+      return this.columns.map(column => {
+        if(typeof column === 'string') {
+          return {key: column, label: column}
+        }
+        return column;
+      });
+    },
+    upperColumns() {
+      return this.fullColumns.map(col => col.toUpperCase());
+    },
+    totalRowCount() {
+      if (this.totalCount) {
+        return this.totalCount;
+      }
+      return this.items.length;
+    }
+
+
+  }
 }
 </script>
 

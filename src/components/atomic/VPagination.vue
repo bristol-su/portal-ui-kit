@@ -16,10 +16,10 @@
             id="tableSelect"
             title="Select Page Size"
             :selectOptions="[{id: 5, value: 5}, {id: 10, value: 10}, {id: 25, value: 25}]"
-            :value="5"
+            :value=pageSize
             help="Select the number of records to show in the table"
             tooltip="Select the number of records to show in the table"
-            v-on:updated="updatePageSize"
+            v-on:input="updatePageSize"
         ></v-select>
       </div>
 
@@ -110,7 +110,7 @@ export default {
   },
   methods: {
     updatePageSize(e) {
-      this.$emit('updatePageSize', e.value)
+      this.$emit('updatePageSize', e)
     },
     updatePage(number) {
       this.$emit('changePage', {"page": number});
