@@ -14,7 +14,7 @@
         </a>
         <button v-else
                 v-on="$listeners"
-                type="submit"
+                :type="type"
                 class="w-full px-16 py-2 my-2 mr-2 text-base transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
                 :class="styles"
                 :disabled="disabled"
@@ -33,7 +33,8 @@ export default {
     buttonText: {type: String, required: false, default: 'Submit'},
     href: {type: String, required: false},
     variant: {type: String, required: false, default: 'primary'},
-    disabled: {type: Boolean, required: false, default: false}
+    disabled: {type: Boolean, required: false, default: false},
+      type: {type: String, required: false, default: 'submit'}
   },
   methods: {
     clickButton() {
