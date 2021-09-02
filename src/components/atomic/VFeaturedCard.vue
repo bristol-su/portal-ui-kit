@@ -6,7 +6,7 @@
           <div class="relative hidden w-full h-auto bg-white bg-cover border-r rounded-l-lg lg:block lg:w-6/12">
             <div class="relative z-10 m-12 text-left ">
               <a class="flex items-center">
-                <img src="/images/logo.png" alt="Bristol Students' Union Logo - Blue">
+                <img :src="logo" alt="Bristol Students' Union Logo - Blue">
               </a>
               <h1 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"> {{ title }} </h1>
               <div class="w-full mt-16 mb-8 text-base leading-relaxed text-blueGray-900 sm:md:w-3/3 lg:text-1xl " v-if="subtext"> {{ subtext }} </div>
@@ -16,7 +16,7 @@
             <div class="xs:block lg:hidden">
               <div class="relative z-10 m-12 text-left ">
                 <a class="flex items-center">
-                  <img src="/images/logo.png" alt="Bristol Students' Union Logo - Blue">
+                  <img :src="logo" alt="Bristol Students' Union Logo - Blue">
                 </a>
                 <h1 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"> {{ title }} </h1>
                 <div class="w-full mt-16 mb-8 text-base leading-relaxed text-blueGray-900 sm:md:w-3/3 lg:text-1xl " v-if="subtext"> {{ subtext }} </div>
@@ -34,6 +34,7 @@
 export default {
   name: "VFeaturedCard",
   props: {
+    logo: { type: String, required: true },
     title: { type: String, required: true },
     subtext: { type: String, required: false },
     bg: { type: String, required: false }
