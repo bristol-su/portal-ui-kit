@@ -24,7 +24,7 @@
             <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
               <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
                 <slot name="cell()" v-bind:row="row" v-bind:column="column">
-                  <div class="text-sm text-gray-900">{{ row.hasOwnProperty(column.key) && row[column.key] !== undefined ? row[column.key] : '' }}</div>
+                  <div class="text-sm text-gray-900">{{ dataGet(row, column.key) }}</div>
                 </slot>
               </slot>
             </td>
@@ -129,6 +129,9 @@ export default {
       if (this.totalCount) {
         this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
       }
+    },
+    dataGet(row, key) {
+      return _.get(row, key, '')
     }
   },
   computed: {
