@@ -52,6 +52,7 @@ import FormGenerator from '../generator/generators/FormGenerator';
 import FormFactory from '../generator/factory/FormFactory';
 import VErrorSummary from './atomic/VErrorSummary';
 import VArray from './atomic/dynamic-form/VArray';
+import VDatePicker from './atomic/dynamic-form/VDatePicker';
 
 export default {
     name: "VDynamicForm",
@@ -92,7 +93,8 @@ export default {
                 text: VTextInput,
                 password: VPassword,
                 html: VWysiwyg,
-                array: VArray
+                array: VArray,
+                date: VDatePicker
             },
             errors: {}
         }

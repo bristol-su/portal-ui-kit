@@ -41,6 +41,9 @@ export default {
         }
     },
     props: {
+        addOwnOptions: {
+            required: false, type: Boolean, default: false
+        },
         selectOptions: {
             required: true,
             type: Array,

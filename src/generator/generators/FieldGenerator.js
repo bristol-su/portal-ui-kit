@@ -43,6 +43,10 @@ export default class {
         return new Checklist(id);
     }
 
+    static date(id) {
+        return new Field('date', id);
+    }
+
     static select(id) {
         return new Select(id);
     }
