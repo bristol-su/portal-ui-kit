@@ -8,7 +8,8 @@ export default {
         visible: {type: Boolean, required: false, default: true},
         hint: {validator: (val) => val === null || typeof val === 'string', required: false},
         tooltip: {validator: (val) => val === null || typeof val === 'string', required: false},
-        value: {required: false, default: null}
+        value: {required: false, default: null},
+        errors: {required: false, type: Array}
     },
     components: {
         VFormLabel
@@ -19,6 +20,7 @@ export default {
         },
         recheckErrors() {
             this.formErrors = this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : [];
+            this.formErrors.concat(this.errors);
         },
     },
     created() {
