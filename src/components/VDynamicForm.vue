@@ -51,6 +51,7 @@ import VWysiwyg from './atomic/dynamic-form/VWysiwyg';
 import FormGenerator from '../generator/generators/FormGenerator';
 import FormFactory from '../generator/factory/FormFactory';
 import VErrorSummary from './atomic/VErrorSummary';
+import VArray from './atomic/dynamic-form/VArray';
 
 export default {
     name: "VDynamicForm",
@@ -90,7 +91,8 @@ export default {
                 textArea: VTextarea,
                 text: VTextInput,
                 password: VPassword,
-                html: VWysiwyg
+                html: VWysiwyg,
+                array: VArray
             },
             errors: {}
         }

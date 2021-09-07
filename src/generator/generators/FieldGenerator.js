@@ -51,6 +51,10 @@ export default class {
         return new Switch(id);
     }
 
+    static array(id) {
+        return new Field('array', id);
+    }
+
     static tags(id) {
         return new Field('tags', id);
     }
