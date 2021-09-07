@@ -20,7 +20,7 @@ export default {
         },
         recheckErrors() {
             this.formErrors = this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : [];
-            this.formErrors.concat(this.errors);
+            this.formErrors = this.formErrors.concat(this.errors);
         },
     },
     created() {
