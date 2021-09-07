@@ -31,13 +31,13 @@
                          content="Add"
                          v-tippy="{ arrow: true, animation: 'fade', placement: 'top-start', arrow: true, interactive: true}"
                     >
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        +
+<!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>-->
                     </svg>
                 </span>
                 <span class="sr-only">Add</span>
             </a>
-
 
         </v-form-label>
     </div>
@@ -60,6 +60,9 @@ export default {
     methods: {
         addValue() {
             let val = _.cloneDeep(this.dynamicValue);
+            if(!Array.isArray(val)) {
+                val = [];
+            }
             val.push('');
             this.dynamicValue = val;
         },
