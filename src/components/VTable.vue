@@ -171,9 +171,6 @@ export default {
                 return column;
             });
         },
-        upperColumns() {
-            return this.fullColumns.map(col => col.toUpperCase());
-        },
         totalRowCount() {
             if (this.totalCount) {
                 return this.totalCount;
