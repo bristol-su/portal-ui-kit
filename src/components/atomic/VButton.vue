@@ -2,7 +2,7 @@
     <div tabindex="-1">
         <a v-if="href" :href="href"
             type="button"
-            class="w-full px-16 py-2 my-2 mr-2 text-center transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+            class="inline-flex items-center w-full px-16 py-2 my-2 mr-2 text-center transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
             :class="styles"
             :disabled="disabled"
         >
