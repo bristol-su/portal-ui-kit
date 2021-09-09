@@ -174,12 +174,10 @@ export default {
             let labels = {};
             form.groups.forEach(group => {
                 group.fields.forEach(field => {
-                    labels[field.id] =
+                    labels[field.errorKey] = field.label;
                 })
             })
-            // return 'field key' => 'label name'
-            <div v-for="group in form.groups">
-                <div v-for="formInput in group.fields" :key="formInput.id">
+            return labels;
         }
     }
 }
