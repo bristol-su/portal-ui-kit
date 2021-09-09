@@ -3,7 +3,7 @@
         <p class="font-bold">There are {{errorCount}} errors in the form.</p>
         <div v-for="(errors, errorId) in errors">
             <ul>
-                <li v-for="error in errors" v-text="error">
+                <li v-for="error in errors">
                     <a class="mt-5" :href="'#' + errorId">{{getLabel(errorId)}}</a>
                     <div v-if="errors.length > 1">
                         <ul>
