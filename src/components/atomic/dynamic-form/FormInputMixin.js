@@ -36,10 +36,14 @@ export default {
     },
     computed: {
         ariaDescribedBy() {
-            return [
-              this.id + '-help-text',
-              this.id + '-errors'
-            ].join(' ');
+            let describedBy = [];
+            if(this.hasHelp) {
+                describedBy.push(this.id + '-help-text')
+            }
+            if(this.errors) {
+                describedBy.push(this.id + '-errors')
+            }
+            return describedBy.join(' ');
         },
         name() {
             return this.id;
