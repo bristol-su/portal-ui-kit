@@ -12,7 +12,7 @@
               <div class="w-full mt-16 mb-8 text-base leading-relaxed text-blueGray-900 sm:md:w-3/3 lg:text-1xl " v-if="subtext"> {{ subtext }} </div>
             </div>
           </div>
-          <div class="w-full h-full px-8 py-24 bg-white rounded-lg border-blueGray-100 lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none flex flex-wrap content-center">
+          <div class="w-full h-full sm:px-2 sm:py-5 px-8 py-24 bg-white rounded-lg border-blueGray-100 lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none flex flex-wrap content-center">
             <div class="xs:block lg:hidden">
               <div class="relative z-10 m-12 text-left ">
                 <a class="flex items-center">
