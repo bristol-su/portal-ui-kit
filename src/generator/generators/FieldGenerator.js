@@ -4,6 +4,7 @@ import Checklist from '../fields/Checklist';
 import Select from '../fields/Select';
 import Switch from '../fields/Switch';
 import File from '../fields/File';
+import Text from '../fields/Text';
 
 export default class {
 
@@ -28,7 +29,7 @@ export default class {
     }
 
     static text(id) {
-        return new Field('text', id);
+        return new Text(id);
     }
 
     static password(id) {
