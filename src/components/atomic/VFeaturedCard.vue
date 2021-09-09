@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-col items-center h-screen md:flex-row" :class="[bg ? 'bg-' + bg : '']">
+  <section class="flex flex-col items-center h-full md:flex-row" :class="[bg ? 'bg-' + bg : '']">
     <div class="container mx-auto">
       <div class="flex justify-center px-2 py-6 ">
         <div class="flex w-full rounded-lg xl:w-3/4 lg:w-11/12 lg:shadow-xl">
