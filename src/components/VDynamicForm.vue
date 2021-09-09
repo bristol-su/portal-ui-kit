@@ -172,7 +172,7 @@ export default {
         },
         fieldLabels() {
             let labels = {};
-            form.groups.forEach(group => {
+            this.form.groups.forEach(group => {
                 group.fields.forEach(field => {
                     labels[field.errorKey] = field.label;
                 })
