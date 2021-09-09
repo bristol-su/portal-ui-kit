@@ -44,6 +44,9 @@ export default {
             if(this.errors) {
                 describedBy.push(this.id + '-errors')
             }
+            if(describedBy.length === 0) {
+                return null;
+            }
             return describedBy.join(' ');
         },
         name() {
