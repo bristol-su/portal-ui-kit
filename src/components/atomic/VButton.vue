@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <div>
         <a v-if="href" :href="href">
             <button
                 type="button"
@@ -23,7 +23,7 @@
                 {{ buttonText }}
             </slot>
         </button>
-    </span>
+    </div>
 </template>
 
 <script>
