@@ -1,5 +1,6 @@
 <template>
     <div class="relative mt-4">
+        <slot name="preLabel"></slot>
         <label :content=tooltip :for="id" class="text-base leading-7 text-blueGray-500" v-if="title" tabindex="-1"
                v-tippy="{ arrow: true, animation: 'fade', placement: 'top-start', arrow: true, interactive: true, onShow: () => !!tooltip }"
         >

@@ -1,17 +1,19 @@
 <template>
     <div>
+      <div class="mt-1 flex rounded-md shadow-sm">
         <v-form-label v-bind="labelProps">
-            <div class="mt-1 flex rounded-md shadow-sm">
-                <input
-                  :aria-describedby="ariaDescribedBy"
-                  type="checkbox"
-                  :id="id"
-                  :required="required"
-                  :name="name"
-                  v-model="dynamicValue"
-                  class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
-            </div>
+          <template v-slot:preLabel>
+            <input
+                :aria-describedby="ariaDescribedBy"
+                type="checkbox"
+                :id="id"
+                :required="required"
+                :name="name"
+                v-model="dynamicValue"
+                class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
+          </template>
         </v-form-label>
+      </div>
     </div>
 </template>
 
