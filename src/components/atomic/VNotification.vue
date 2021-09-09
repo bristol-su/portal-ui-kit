@@ -57,9 +57,13 @@ export default {
         }
     },
     created() {
-        this.visible = this.showOnStart;
         this.$ui.eventBus.$on('modal.show', (id) => this.visible = (this.id === id ? true : this.visible), this);
         this.$ui.eventBus.$on('modal.hide', (id) => this.visible = (this.id === id ? false : this.visible), this);
+    },
+    mounted() {
+        if(this.showOnStart) {
+            this.show();
+        }
     },
     methods: {
         hide() {
