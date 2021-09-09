@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div tabindex="-1">
         <a v-if="href" :href="href">
             <button
                 type="button"
