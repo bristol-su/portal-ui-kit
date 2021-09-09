@@ -4,7 +4,7 @@
                v-tippy="{ arrow: true, animation: 'fade', placement: 'top-start', arrow: true, interactive: true, onShow: () => !!tooltip }"
         >
             <span class="inline-flex">{{ title }}
-            <span v-if="required"> * <span class="sr-only">Required</span></span>
+            <span v-if="required"> <span class="not-sr-only">* (required)</span> <span class="sr-only">Required</span></span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
                  v-if="tooltip">
                 <path fill-rule="evenodd"
