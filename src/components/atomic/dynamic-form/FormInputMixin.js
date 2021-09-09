@@ -3,6 +3,7 @@ import VFormLabel from '../VFormLabel';
 export default {
     props: {
         id: {type: String, required: true},
+        errorKey: {type: String, required: false},
         label: {validator: (val) => val === null || typeof val === 'string', required: false},
         required: {type: Boolean, required: false},
         visible: {type: Boolean, required: false, default: true},
@@ -19,7 +20,7 @@ export default {
             this.$emit('input', value);
         },
         recheckErrors() {
-            this.formErrors = this.$ui.errors.has(this.id) ? this.$ui.errors.get(this.id) : [];
+            this.formErrors = this.$ui.errors.has(this.errorKeyValue) ? this.$ui.errors.get(this.errorKeyValue) : [];
             if(this.errors) {
                 this.formErrors = this.formErrors.concat(this.errors);
             }
@@ -79,6 +80,9 @@ export default {
             }
 
             return Object.fromEntries(Object.entries(props).filter(([_, v]) => v !== null)); // Only return non-empty values
+        },
+        errorKeyValue() {
+            return this.errorKey ?? this.id;
         }
     }
 }

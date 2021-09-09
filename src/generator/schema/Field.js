@@ -11,11 +11,17 @@ export default class {
             required: false,
             hint: null,
             tooltip: null,
+            errorKey: id
         }
     }
 
     id(id) {
         this.schema.id = id;
+        return this;
+    }
+
+    errorKey(errorKey) {
+        this.schema.errorKey = id;
         return this;
     }
 

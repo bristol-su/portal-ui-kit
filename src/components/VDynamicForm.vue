@@ -12,7 +12,7 @@
           :action="formUrl"
           :method="formMethod">
 
-            <v-error-summary v-if="hasErrors" :errors="errors">
+            <v-error-summary v-if="hasErrors" :errors="errors" :labels="fieldLabels">
 
             </v-error-summary>
 
@@ -169,6 +169,17 @@ export default {
         },
         hasErrors() {
             return !_.isEmpty(this.errors);
+        },
+        fieldLabels() {
+            let labels = {};
+            form.groups.forEach(group => {
+                group.fields.forEach(field => {
+                    labels[field.id] =
+                })
+            })
+            // return 'field key' => 'label name'
+            <div v-for="group in form.groups">
+                <div v-for="formInput in group.fields" :key="formInput.id">
         }
     }
 }
