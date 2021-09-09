@@ -3,6 +3,7 @@
         <v-form-label v-bind="labelProps">
             <div :id="id" v-for="radio in radios">
                 <input
+                  :aria-describedby="ariaDescribedBy"
                   type="radio"
                   :id="radio.id"
                   :value="radio.id"

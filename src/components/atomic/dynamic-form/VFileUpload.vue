@@ -4,7 +4,8 @@
       <div class="mt-1 flex rounded-md shadow-sm">
           <!-- Tab index (untested): https://stackoverflow.com/a/59199276 -->
         <input
-            :id="id"
+          :aria-describedby="ariaDescribedBy"
+          :id="id"
             :name="name"
             @change="setValue($event.target.files)"
             tabindex="-1"

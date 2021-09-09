@@ -4,6 +4,7 @@
             <div class="mt-1 flex rounded-md shadow-sm">
                 <input
                   type="text"
+                  :aria-describedby="ariaDescribedBy"
                   :name="name"
                   :id="id"
                   v-model="dynamicValue"

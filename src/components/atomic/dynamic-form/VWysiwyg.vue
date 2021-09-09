@@ -3,6 +3,7 @@
         <v-form-label v-bind="labelProps">
             <editor
               :id="id"
+              :aria-describedby="ariaDescribedBy"
               v-model="dynamicValue"
               :api-key="apiKey"
               :init="config"></editor>

@@ -3,6 +3,7 @@
         <v-form-label v-bind="labelProps">
             <div class="mt-1 flex rounded-md shadow-sm">
           <textarea
+            :aria-describedby="ariaDescribedBy"
             :id="id"
             :name="name"
             v-model="dynamicValue"

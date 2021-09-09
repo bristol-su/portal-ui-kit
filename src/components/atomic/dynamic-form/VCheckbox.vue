@@ -3,6 +3,7 @@
         <v-form-label v-bind="labelProps">
             <div class="mt-1 flex rounded-md shadow-sm">
                 <input
+                  :aria-describedby="ariaDescribedBy"
                   type="checkbox"
                   :id="id"
                   :name="name"

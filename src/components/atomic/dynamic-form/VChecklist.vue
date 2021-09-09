@@ -4,6 +4,7 @@
             <div :id="id" class="mt-1 flex rounded-md shadow-sm">
                 <div v-for="checklist in checklists">
                     <input
+                      :aria-describedby="ariaDescribedBy"
                       type="checkbox"
                       :id="checklist.id"
                       :checked="optionIsChecked(checklist.id)"

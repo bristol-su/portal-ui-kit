@@ -1,5 +1,5 @@
 <template>
-  <p class="mt-2 text-gray-600 text-xs italic" v-text="help" :aria-describedby="id"></p>
+  <p class="mt-2 text-gray-600 text-xs italic" v-text="help" :id="id"></p>
 </template>
 
 <script>

@@ -35,6 +35,12 @@ export default {
         }
     },
     computed: {
+        ariaDescribedBy() {
+            return [
+              this.id + '-help-text',
+              this.id + '-errors'
+            ].join(' ');
+        },
         name() {
             return this.id;
         },

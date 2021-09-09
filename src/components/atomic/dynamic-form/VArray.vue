@@ -4,6 +4,7 @@
             <div v-for="(val, index) in dynamicValue"
                  :key="index">
                 <v-text-input
+                  :aria-describedby="ariaDescribedBy"
                   :id="'v-array-' + index"
                   :required="true"
                   :value="val"
