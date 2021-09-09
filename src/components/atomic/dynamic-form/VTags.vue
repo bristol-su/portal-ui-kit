@@ -6,7 +6,6 @@
                   type="text"
                   :name="name"
                   :id="id"
-                  :placeholder="help"
                   v-model="inputValue"
                   :required="required"
                   @keyup.enter.prevent="addTag"

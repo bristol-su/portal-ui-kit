@@ -6,7 +6,6 @@
                   type="password"
                   :name="name"
                   :id="id"
-                  :placeholder="help"
                   v-model="dynamicValue"
                   :required="required"
                   @enter.prevent="$emit('enter', $event.target.value)"

@@ -6,7 +6,6 @@
                   type="number"
                   :name="name"
                   :id="id"
-                  :placeholder="help"
                   v-model="dynamicValue"
                   :required="required"
                   :step="step"
