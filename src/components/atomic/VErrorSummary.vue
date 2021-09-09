@@ -3,9 +3,16 @@
         <p class="font-bold">There are {{errorCount}} errors in the form.</p>
         <div v-for="(errors, errorId) in errors">
             <ul>
-                <li v-for="error in errors" v-text="error"></li>
+                <li v-for="error in errors" v-text="error">
+                    <a class="mt-5" :href="'#' + errorId">{{getLabel(errorId)}}</a>
+                    <div v-if="errors.length > 1">
+                        <ul>
+                            <li v-for="e in error">{{e}}</li>
+                        </ul>
+                    </div>
+                    <div v-else>{{error}}</div>
+                </li>
             </ul>
-            <a class="mt-5" :href="'#' + errorId">Goto</a>
         </div>
     </div>
 </template>
@@ -20,6 +27,14 @@ export default {
     computed: {
         errorCount() {
             return Object.keys(this.errors).length;
+        }
+    },
+    methods: {
+        getLabel(id) {
+            if(this.labels.hasOwnProperty(id)) {
+                return this.labels[id];
+            }
+            return id;
         }
     }
 }
