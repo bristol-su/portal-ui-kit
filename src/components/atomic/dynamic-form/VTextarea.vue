@@ -4,6 +4,7 @@
             <div class="mt-1 flex rounded-md shadow-sm">
           <textarea
             :aria-describedby="ariaDescribedBy"
+            :required="required"
             :id="id"
             :name="name"
             v-model="dynamicValue"

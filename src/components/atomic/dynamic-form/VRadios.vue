@@ -8,6 +8,7 @@
                   :id="radio.id"
                   :value="radio.id"
                   :checked="optionIsChecked(radio)"
+                  :required="required"
                   :name="name"
                   v-model="dynamicValue"
                   class="form-checkbox px-4 py-2 mt-2 h-5 w-5">

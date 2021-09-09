@@ -4,6 +4,7 @@
             <editor
               :id="id"
               :aria-describedby="ariaDescribedBy"
+              :required="required"
               v-model="dynamicValue"
               :api-key="apiKey"
               :init="config"></editor>
