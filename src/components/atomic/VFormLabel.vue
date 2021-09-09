@@ -14,8 +14,8 @@
             </span>
         </label>
         <slot></slot>
-        <v-help-text v-if="hasHelp" :help=help></v-help-text>
-        <div v-if="errors" v-for="error in errors">
+        <v-help-text :id="id" v-if="hasHelp" :help=help></v-help-text>
+        <div v-if="errors" v-for="error in errors" :aria-describedby="id">
             <v-error :error=error></v-error>
         </div>
     </div>

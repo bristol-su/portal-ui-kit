@@ -1,5 +1,5 @@
 <template>
-    <p class="text-red-500 text-xs italic" v-text="error"></p>
+    <p class="text-red-500 text-xs italic"><span class="sr-only">Validation failed:</span> {{error}}</p>
 </template>
 
 <script>
