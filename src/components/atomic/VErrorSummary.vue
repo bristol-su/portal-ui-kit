@@ -2,14 +2,14 @@
     <div class="bg-warning border-l-4 rounded-t border-warning-dark text-black p-4 text-left" role="alert">
         <p class="font-bold">There are {{errorCount}} errors in the form.</p>
         <ul>
-        <li v-for="(errors, errorId) in errors" :key="errorId">
+        <li v-for="(fieldErrors, errorId) in errors" :key="errorId">
             <a class="mt-5" :href="'#' + errorId">{{ getLabel(errorId) }}:</a>
-            <div v-if="errors.length > 1">
+            <div v-if="fieldErrors.length > 1">
                 <ul>
-                    <li v-for="e in error">{{ e }}</li>
+                    <li v-for="error in fieldErrors">{{ error }}</li>
                 </ul>
             </div>
-            <span v-else>{{ error }}</span>
+            <span v-else>{{ fieldErrors[0] }}</span>
         </li>
         </ul>
     </div>
