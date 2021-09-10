@@ -1,12 +1,17 @@
 <template>
     <div>
-        <header class="flex items-center mb-3 whitespace-nowrap" :class="[getTabs().length > 1 ? 'justify-end' : '']">
+        <header class="flex items-center mb-3 whitespace-nowrap" :class="[tabs.length > 1 ? 'justify-end' : '']">
             <div class="flex-none flex items-center"> <!-- ml-auto pl-4 sm:pl-6 -->
-                <div v-if="getTabs().length > 1">
-                    <div class="group p-0.5 rounded-lg flex bg-gray-100 hover:bg-gray-200">
+                <div v-if="tabs.length > 1">
+                    <div class="group p-0.5 rounded-lg flex bg-gray-100 hover:bg-gray-200" role="tablist" :aria-label="description">
                         <button
                           type="button"
-                          v-for='(title, index) in getTabs()'
+                          :id="getTabButtonId(title)"
+                          role="tab"
+                          :aria-selected="selectedIndex === index"
+                          :aria-controls="getTabPanelId(title)"
+                          :tabindex="selectedIndex === index ? '0' : '-1'"
+                          v-for='(title, index) in tabs'
                           :key='title'
                           class="ml-0.5 p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-600 font-medium focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus:outline-none focus-visible:ring-offset-gray-100"
                           :class="selectedIndex === index ? 'bg-white shadow-sm ring-1 ring-black ring-opacity-5' : ''"
@@ -31,7 +36,7 @@
                 </div>
                 <div v-else>
                     <h2 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"
-                        v-for="title in getTabs()">{{ title }}</h2>
+                        v-for="title in tabs">{{ title }}</h2>
                 </div>
             </div>
         </header>
@@ -40,24 +45,33 @@
 </template>
 
 <script>
+import slugify from 'slugify';
+
 export default {
     name: "VTabs",
     data() {
         return {
             selectedIndex: 0, // the index of the selected tab,
+            tabs: []
+        }
+    },
+    props: {
+        description: { // A description of the tabs for accessibility
+            required: false, type: String, default: 'Page tabs'
         }
     },
     mounted() {
+        this.loadTabs();
         this.selectTab(0);
     },
     methods: {
         selectTab(i) {
-            this.$ui.eventBus.$emit('tab-deselected', this.getTabs()[this.selectedIndex]);
+            this.$ui.eventBus.$emit('tab-deselected', this.tabs[this.selectedIndex]);
             this.selectedIndex = i;
-            this.$ui.eventBus.$emit('tab-selected', this.getTabs()[i]);
+            this.$ui.eventBus.$emit('tab-selected', this.tabs[i]);
         },
         nextTabFrom(i) {
-            if (i <= this.getTabs().length - 1) {
+            if (i <= this.tabs.length - 1) {
                 this.selectTab(i + 1);
             }
         },
@@ -66,13 +80,20 @@ export default {
                 this.selectTab(i - 1);
             }
         },
-        getTabs() {
+        loadTabs() {
             if (this.$slots.default) {
-                return this.$slots.default
+                this.tabs = this.$slots.default
                   .filter(comp => comp.componentOptions)
                   .map(comp => comp.componentOptions.propsData.title);
+            } else {
+                this.tabs = [];
             }
-            return []
+        },
+        getTabPanelId(title) {
+            return slugify('tabs-tab-panel-' + title);
+        },
+        getTabButtonId(title) {
+            return slugify('tabs-button-' + title);
         }
     },
     computed: {}
