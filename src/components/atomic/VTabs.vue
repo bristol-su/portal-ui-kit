@@ -11,8 +11,6 @@
                 class="ml-0.5 p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-600 font-medium focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus:outline-none focus-visible:ring-offset-gray-100"
                 :class="selectedIndex === index ? 'bg-white shadow-sm ring-1 ring-black ring-opacity-5' : ''"
                 @click='selectTab(index)'
-                tabindex="-1"
-                :tabindex="selectedIndex === index ? '0' : '-1'"
                 @keydown.arrow-left="selectTab(index)"
                 @keydown.arrow-right="selectTab(index)"
             >
@@ -24,7 +22,7 @@
                       d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                       clip-rule="evenodd"/>
               </svg>
-              <span class="sr-only lg:not-sr-only text-gray-600 group-hover:text-gray-900"
+              <span class="sr-only md:not-sr-only text-gray-600 group-hover:text-gray-900"
                     :class="selectedIndex === index ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'">{{
                   title
                 }}</span>
