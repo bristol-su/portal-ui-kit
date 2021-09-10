@@ -31,6 +31,9 @@ export default {
             errors: options.hasOwnProperty('errors') ? options.errors : {
                 all: () => {}, has: (key) => false, get: (key) => null
             },
+            oldData: options.hasOwnProperty('old') ? options.old : {
+                all: () => {}, has: (key) => false, get: (key) => null
+            },
             confirm: {
                 delete: (title, message) => {
 

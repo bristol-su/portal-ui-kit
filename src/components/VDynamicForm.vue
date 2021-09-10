@@ -111,7 +111,7 @@ export default {
             this.errors = this.$ui.errors.all();
         },
         initialiseFormData() {
-            let data = Object.assign({}, this.formData);
+            let data = Object.assign(this.oldData, this.formData);
             this.form.groups.forEach((g) => g.fields.forEach((f) => (data.hasOwnProperty(f.id) ? null : data[f.id] = f.value)));
             this.formData = data;
         },
@@ -178,6 +178,9 @@ export default {
                 })
             })
             return labels;
+        },
+        oldData() {
+            return this.$ui.oldData.all();
         }
     }
 }
