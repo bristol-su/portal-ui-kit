@@ -1,97 +1,113 @@
 <template>
-    <div>
-        <header class="flex items-center mb-3 whitespace-nowrap" :class="[tabs.length > 1 ? 'justify-end' : '']">
-            <div class="flex-none flex items-center"> <!-- ml-auto pl-4 sm:pl-6 -->
-                <div v-if="tabs.length > 1">
-                    <div class="group p-0.5 rounded-lg flex bg-gray-100 hover:bg-gray-200" role="tablist"
-                         :aria-label="description">
-                        <button
-                          type="button"
-                          :id="getTabButtonId(title)"
-                          role="tab"
-                          :aria-selected="selectedIndex === index"
-                          :aria-controls="getTabPanelId(title)"
-                          :tabindex="selectedIndex === index ? '0' : '-1'"
-                          v-for='(title, index) in tabs'
-                          :key='title'
-                          class="ml-0.5 p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-600 font-medium focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100"
-                          :class="selectedIndex === index ? 'bg-white shadow-sm ring-1 ring-black ring-opacity-5' : ''"
-                          @click='selectTab(index)'
-                          @keydown.arrow-left="selectTab(selectedIndex - 1)"
-                          @keydown.arrow-right="selectTab(selectedIndex + 1)"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                 fill="currentColor">
-                                <path
-                                  d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
-                                <path fill-rule="evenodd"
-                                      d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                      clip-rule="evenodd"/>
-                            </svg>
-                            <span class="sr-only md:not-sr-only text-gray-600 group-hover:text-gray-900"
-                                  :class="selectedIndex === index ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'">{{
-                                    title
-                                }}</span>
-                        </button>
+    <div class="items-center">
+        <div class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg ">
+            <div class="flex p-5 mx-auto md:items-center">
+                <a :href=homeRoute class="pr-2 lg:pr-8 lg:px-6 focus:ring-2 focus:ring-primary">
+                    <div class="inline-flex items-center">
+                        <img class="w-1/2 md:w-3/12 lg:w-1/12" :src="logo" alt="Go to dashboard">
+                    </div>
+                </a>
+                <div class="flex flex-wrap justify-end ml-auto items-en xl:flex-nowrap md:flex-nowrap lg:flex-wrap">
+                    <!-- Search Button -->
+                    <!--          <button class="block p-2 mr-4 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-full focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 lg:ml-auto">-->
+                    <!--            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                    <!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />-->
+                    <!--            </svg>-->
+                    <!--          </button>-->
+
+                    <a href="#" @click.prevent="logout"
+                       class="hidden md:block p-2 mr-4 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-full focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 lg:ml-auto"
+                    >
+                        <span class="sr-only">Logout</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto icon icon-tabler icon-tabler-logout"
+                             width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path
+                              d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                            <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+                        </svg>
+                    </a>
+
+                    <div class="relative ml-3">
+                        <div>
+                            <button
+                              class="flex text-sm bg-blueGray-800 rounded-full focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+                              id="user-menu" aria-haspopup="true" @click.prevent="showUserDropdown = !showUserDropdown">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="w-full sm:w-48 md:w-72 lg:w-12 rounded-full" src="https://i.pravatar.cc/150?img=12" alt="Open user menu">
+                            </button>
+                        </div>
+                        <div
+                          :class="{hidden: !showUserDropdown}"
+                          class="absolute right-0 w-48 px-4 py-2 mt-2 transition duration-500 ease-in-out origin-top-right transform bg-white border rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 e z-50"
+                          role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                            <div>
+                                <a :href=homeRoute
+                                   class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
+                                   role="menuitem">Home</a>
+                            </div>
+                            <div v-if="profileRoute">
+                                <a :href=profileRoute
+                                   class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
+                                   role="menuitem">Your Profile</a>
+                            </div>
+                            <div v-if="canAccessSettings">
+                                <a :href=settingsRoute
+                                   class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
+                                   role="menuitem">Build</a>
+                            </div>
+                            <div v-if="canAccessControl">
+                                <a :href=controlRoute
+                                   class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
+                                   role="menuitem">Control</a>
+                            </div>
+                            <a href="#" @click.prevent="logout"
+                               class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
+                               role="menuitem">Sign out</a>
+                        </div>
                     </div>
                 </div>
-                <div v-else>
-                    <h2 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"
-                        v-for="title in tabs">{{ title }}</h2>
-                </div>
             </div>
-        </header>
-        <slot></slot>
+        </div>
+        <form id="logout-form" ref="logoutForm" :action="logoutRoute" method="POST" style="display: none;">
+            <v-csrf-token></v-csrf-token>
+        </form>
     </div>
 </template>
 
 <script>
-import slugify from 'slugify';
+import VCsrfToken from '../atomic/VCsrfToken';
 
 export default {
-    name: "VTabs",
-    data() {
-        return {
-            selectedIndex: 0, // the index of the selected tab,
-            tabs: []
-        }
+    name: "VTopbar",
+    components: {
+        VCsrfToken
     },
     props: {
-        description: { // A description of the tabs for accessibility
-            required: false, type: String, default: 'Page tabs'
-        }
+        logo: {type: String, required: true},
+        homeRoute: {type: String, required: true},
+        logoutRoute: {type: String, required: true},
+        profileRoute: {type: String, required: false},
+        settingsRoute: {type: String, required: false},
+        controlRoute: {type: String, required: false},
+        canAccessControl: {type: Boolean, required: false, default: false},
+        canAccessSettings: {type: Boolean, required: false, default: false},
+        siteName: {type: String, required: false}
     },
-    mounted() {
-        this.loadTabs();
-        this.selectTab(0);
+    data() {
+        return {
+            showUserDropdown: false
+        }
     },
     methods: {
-        selectTab(i) {
-            if (i >= 0 && i < this.tabs.length) {
-                this.$ui.eventBus.$emit('tab-deselected', this.tabs[this.selectedIndex]);
-                this.selectedIndex = i;
-                this.$ui.eventBus.$emit('tab-selected', this.tabs[i]);
-            }
-        },
-        loadTabs() {
-            if (this.$slots.default) {
-                this.tabs = this.$slots.default
-                  .filter(comp => comp.componentOptions)
-                  .map(comp => comp.componentOptions.propsData.title);
-            } else {
-                this.tabs = [];
-            }
-        },
-        getTabPanelId(title) {
-            return slugify('tabs-tab-panel-' + title);
-        },
-        getTabButtonId(title) {
-            return slugify('tabs-button-' + title);
+        logout() {
+            this.$refs.logoutForm.submit();
         }
-    },
-    computed: {}
+    }
 }
 </script>
 
 <style scoped>
+
 </style>
