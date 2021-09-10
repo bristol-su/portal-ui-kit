@@ -1,8 +1,8 @@
 <template>
   <div class="items-center">
     <div class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg ">
-      <div class="flex flex-col flex-wrap p-5 mx-auto md:items-center md:flex-row">
-        <a :href=homeRoute class="pr-2 lg:pr-8 lg:px-6 focus:ring-2 focus:ring-primary">
+      <div class="flex p-5 mx-auto md:items-center">
+        <a :href=homeRoute class="pr-2 lg:pr-8 lg:px-6 focus:outline-none">
           <div class="inline-flex items-center">
             <img class="w-1/2 md:w-3/12 lg:w-1/12" :src="logo" alt="Go to dashboard">
           </div>
@@ -32,10 +32,10 @@
           <div class="relative ml-3">
             <div>
               <button
-                  class="flex text-sm bg-blueGray-800 rounded-full focus:ring-2 focus:ring-offset-2 focus:ring-offset-blueGray-800 focus:ring-white"
+                  class="flex text-sm bg-blueGray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blueGray-800 focus:ring-white"
                   id="user-menu" aria-haspopup="true" @click.prevent="showUserDropdown = !showUserDropdown">
                 <span class="sr-only">Open user menu</span>
-                <img class="w-8 h-8 rounded-full" src="https://i.pravatar.cc/150?img=12" alt="">
+                <img class="w-full sm:w-48 md:w-72 lg:w-12 rounded-full" src="https://i.pravatar.cc/150?img=12" alt="">
               </button>
             </div>
             <div
