@@ -1,5 +1,5 @@
 <template>
-    <div role="tabpanel" :aria-labelledby="tabPanelId" tabindex="0">
+    <div role="tabpanel" :aria-labelledby="tabButtonId" :id="tabPanelId" tabindex="0">
         <div v-show="isActive">
             <slot></slot>
         </div>
@@ -29,6 +29,9 @@ export default {
     computed: {
         tabPanelId() {
             return slugify('tabs-tab-panel-' + this.title);
+        },
+        tabButtonId() {
+            return slugify('tabs-button-' + this.title);
         }
     }
 }
