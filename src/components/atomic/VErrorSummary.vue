@@ -6,7 +6,7 @@
       <li v-for="(fieldErrors, errorId) in errors" :key="errorId">
         <a class="mt-5 underline" :href="'#' + errorId">{{ getLabel(errorId) }}:</a>
         <div v-if="fieldErrors.length > 1">
-          <ul>
+          <ul class="ml-5 list-disc">
             <li v-for="error in fieldErrors">{{ error }}</li>
           </ul>
         </div>
