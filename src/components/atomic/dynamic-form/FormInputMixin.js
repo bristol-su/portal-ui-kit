@@ -49,6 +49,12 @@ export default {
             }
             return describedBy.join(' ');
         },
+        isInvalid() {
+            return !this.isValid;
+        },
+        isValid() {
+            return this.formErrors.length === 0;
+        },
         name() {
             return this.id;
         },

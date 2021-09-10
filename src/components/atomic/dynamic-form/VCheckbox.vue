@@ -7,6 +7,7 @@
                 :aria-describedby="ariaDescribedBy"
                 type="checkbox"
                 :id="id"
+                :aria-invalid="isInvalid"
                 :required="required"
                 :name="name"
                 v-model="dynamicValue"

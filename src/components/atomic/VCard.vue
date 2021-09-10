@@ -4,11 +4,11 @@
       <img class="object-cover object-center w-full lg:h-48 md:h-36 rounded-t-xl" v-if="imageUrl" :src="imageUrl"
            :alt="title + ' banner imageUrl'">
       <div class="p-4 lg:p-8 bg-blueGray-50">
-        <h1
+        <h3
             class="mx-auto mb-4 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font">
-          {{ title }}</h1>
-        <h2 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font" v-if="subtitle">
-          {{ subtitle }}</h2>
+          {{ title }}</h3>
+        <h4 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font" v-if="subtitle">
+          {{ subtitle }}</h4>
         <a :href=url
            v-if="url"
            class="inline-flex items-center mt-auto font-semibold text-blue-600 lg:mb-0 hover:text-black "

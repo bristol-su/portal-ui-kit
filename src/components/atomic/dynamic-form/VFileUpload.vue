@@ -8,6 +8,7 @@
           :id="id"
             :name="name"
             @change="setValue($event.target.files)"
+          :aria-invalid="isInvalid"
           :required="required"
           tabindex="-1"
             type="file"

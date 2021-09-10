@@ -5,6 +5,7 @@
               :id="id"
               :aria-describedby="ariaDescribedBy"
               :required="required"
+              :aria-invalid="isInvalid"
               v-model="dynamicValue"
               :api-key="apiKey"
               :init="config"></editor>

@@ -6,6 +6,7 @@
                   :aria-describedby="ariaDescribedBy"
                   type="text"
                   :name="name"
+                  :aria-invalid="isInvalid"
                   :id="id"
                   v-model="inputValue"
                   :required="required"

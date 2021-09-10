@@ -7,6 +7,7 @@
                   :aria-describedby="ariaDescribedBy"
                   :name="name"
                   :id="id"
+                  :aria-invalid="isInvalid"
                   v-model="dynamicValue"
                   :required="required"
                   autocomplete="password"

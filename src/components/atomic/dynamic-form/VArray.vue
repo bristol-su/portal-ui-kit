@@ -7,6 +7,7 @@
                   :aria-describedby="ariaDescribedBy"
                   :id="'v-array-' + index"
                   :required="true"
+                  :aria-invalid="isInvalid"
                   :value="val"
                   @input="updateValue(index, $event)"
                 ></v-text-input>

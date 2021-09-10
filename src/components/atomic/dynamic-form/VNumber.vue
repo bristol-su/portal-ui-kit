@@ -7,6 +7,7 @@
                   type="number"
                   :name="name"
                   :id="id"
+                  :aria-invalid="isInvalid"
                   v-model="dynamicValue"
                   :required="required"
                   :step="step"

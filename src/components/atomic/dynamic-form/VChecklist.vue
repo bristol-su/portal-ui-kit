@@ -8,6 +8,7 @@
                       type="checkbox"
                       :id="checklist.id"
                       :checked="optionIsChecked(checklist.id)"
+                      :aria-invalid="isInvalid"
                       :required="required"
                       :name="name"
                       @change="setCheckboxValue(checklist.id, $event.target.checked)"

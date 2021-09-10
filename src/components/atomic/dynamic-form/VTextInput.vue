@@ -5,6 +5,7 @@
                 <input
                   type="text"
                   :aria-describedby="ariaDescribedBy"
+                  :aria-invalid="isInvalid"
                   :name="name"
                   :id="id"
                   v-model="dynamicValue"

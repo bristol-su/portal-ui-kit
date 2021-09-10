@@ -5,6 +5,7 @@
           <textarea
             :aria-describedby="ariaDescribedBy"
             :required="required"
+            :aria-invalid="isInvalid"
             :id="id"
             :name="name"
             v-model="dynamicValue"
