@@ -71,7 +71,7 @@ export default {
             this.$ui.eventBus.$emit('tab-selected', this.tabs[i]);
         },
         nextTabFrom(i) {
-            if (i <= this.tabs.length - 1) {
+            if (i < this.tabs.length - 1) {
                 this.selectTab(i + 1);
             }
         },
