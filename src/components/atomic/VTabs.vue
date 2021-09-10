@@ -16,8 +16,8 @@
                           class="ml-0.5 p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-600 font-medium focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus:outline-none focus-visible:ring-offset-gray-100"
                           :class="selectedIndex === index ? 'bg-white shadow-sm ring-1 ring-black ring-opacity-5' : ''"
                           @click='selectTab(index)'
-                          @keydown.arrow-left="nextTabFrom(index)"
-                          @keydown.arrow-right="previousTabFrom(index)"
+                          @keydown.arrow-left="previousTabFrom(index)"
+                          @keydown.arrow-right="nextTabFrom(index)"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
