@@ -3,7 +3,8 @@
         <header class="flex items-center mb-3 whitespace-nowrap" :class="[tabs.length > 1 ? 'justify-end' : '']">
             <div class="flex-none flex items-center"> <!-- ml-auto pl-4 sm:pl-6 -->
                 <div v-if="tabs.length > 1">
-                    <div class="group p-0.5 rounded-lg flex bg-gray-100 hover:bg-gray-200" role="tablist" :aria-label="description">
+                    <div class="group p-0.5 rounded-lg flex bg-gray-100 hover:bg-gray-200" role="tablist"
+                         :aria-label="description">
                         <button
                           type="button"
                           :id="getTabButtonId(title)"
@@ -16,8 +17,8 @@
                           class="ml-0.5 p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-600 font-medium focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus:outline-none focus-visible:ring-offset-gray-100"
                           :class="selectedIndex === index ? 'bg-white shadow-sm ring-1 ring-black ring-opacity-5' : ''"
                           @click='selectTab(index)'
-                          @keydown.arrow-left="previousTabFrom(index)"
-                          @keydown.arrow-right="nextTabFrom(index)"
+                          @keydown.arrow-left="selectTab(selectedIndex - 1)"
+                          @keydown.arrow-right="selectTab(selectedIndex + 1)"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
                                  fill="currentColor">
@@ -66,18 +67,10 @@ export default {
     },
     methods: {
         selectTab(i) {
-            this.$ui.eventBus.$emit('tab-deselected', this.tabs[this.selectedIndex]);
-            this.selectedIndex = i;
-            this.$ui.eventBus.$emit('tab-selected', this.tabs[i]);
-        },
-        nextTabFrom(i) {
-            if (i < this.tabs.length - 1) {
-                this.selectTab(i + 1);
-            }
-        },
-        previousTabFrom(i) {
-            if (i > 0) {
-                this.selectTab(i - 1);
+            if (i >= 0 && i < this.tabs.length) {
+                this.$ui.eventBus.$emit('tab-deselected', this.tabs[this.selectedIndex]);
+                this.selectedIndex = i;
+                this.$ui.eventBus.$emit('tab-selected', this.tabs[i]);
             }
         },
         loadTabs() {
