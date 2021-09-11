@@ -48,26 +48,26 @@
                             <div>
                                 <a :href=homeRoute
                                    class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
-                                   role="menuitem">Home</a>
+                                   role="menuitem"><i class="fa fa-home"></i>Dashboard</a>
                             </div>
                             <div v-if="profileRoute">
                                 <a :href=profileRoute
                                    class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
-                                   role="menuitem">Your Profile</a>
+                                   role="menuitem"><i class="fa user"></i>Your Profile</a>
                             </div>
                             <div v-if="canAccessSettings">
                                 <a :href=settingsRoute
                                    class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
-                                   role="menuitem">Build</a>
+                                   role="menuitem"><i class="fa fa-hammer"></i>Build</a>
                             </div>
                             <div v-if="canAccessControl">
                                 <a :href=controlRoute
                                    class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
-                                   role="menuitem">Control</a>
+                                   role="menuitem"><i class="fa fa-users"></i>Control</a>
                             </div>
                             <a href="#" @click.prevent="logout"
                                class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
-                               role="menuitem">Sign out</a>
+                               role="menuitem"><i class="fa fa-sign-out-alt"></i>Sign out</a>
                         </div>
                     </div>
                 </div>
