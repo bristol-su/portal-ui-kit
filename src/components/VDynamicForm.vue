@@ -179,8 +179,19 @@ export default {
             })
             return labels;
         },
+        fieldIds() {
+            let fieldIds = [];
+            this.form.groups.forEach((g) => g.fields.forEach((f) => fieldIds.push(f.id)));
+            return fieldIds;
+        },
         oldData() {
-            return this.$ui.oldData.all();
+            let oldData = {};
+            this.fieldIds.forEach(fieldId => {
+                if(this.$ui.oldData.has(fieldId)) {
+                    oldData[fieldId] = this.$ui.oldData.get(fieldId);
+                }
+            })
+            return oldData;
         }
     }
 }
