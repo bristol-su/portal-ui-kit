@@ -3,7 +3,7 @@
         <div class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg ">
             <div class="flex p-5 mx-auto md:items-center">
                 <div class="w-1/2 md:w-3/12 lg:w-1/12">
-                  <a :href=homeRoute class="pr-2 lg:pr-8 lg:px-6 focus:ring-2 focus:ring-primary">
+                  <a :href=homeRoute class="focus:ring-2 focus:ring-primary">
                     <img :src="logo" alt="Go to dashboard">
                   </a>
                 </div>
@@ -36,9 +36,9 @@
                               id="user-menu" aria-haspopup="true"
                               @click.prevent="showUserDropdown = !showUserDropdown">
                             <span class="sr-only">Open user menu</span>
-                            <img v-if="userAvatarIsImage" class=""
+                            <img v-if="userAvatarIsImage" class="w-1/2 md:w-3/12 lg:w-1/12"
                                  :src="avatarSrcToUse" alt="Open user menu">
-                            <span v-else class="p-3">{{initials}}</span>
+                            <span v-else class="p-3 rounded-full bg-primary-light">{{initials}}</span>
                             </button>
                         </div>
                         <div
