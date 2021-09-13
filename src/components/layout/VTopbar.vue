@@ -32,13 +32,13 @@
                     <div class="relative ml-3">
                         <div>
                             <button
-                              class="flex text-sm bg-blueGray-800 rounded-full focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+                              class="flex text-sm rounded-full bg-primary-light focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
                               id="user-menu" aria-haspopup="true"
                               @click.prevent="showUserDropdown = !showUserDropdown">
-                                <span class="sr-only">Open user menu</span>
-                                <img v-if="userAvatarIsImage" class=""
-                                     :src="avatarSrcToUse" alt="Open user menu">
-                                <span v-else class="">{{initials}}</span>
+                            <span class="sr-only">Open user menu</span>
+                            <img v-if="userAvatarIsImage" class=""
+                                 :src="avatarSrcToUse" alt="Open user menu">
+                            <span v-else class="p-3">{{initials}}</span>
                             </button>
                         </div>
                         <div
