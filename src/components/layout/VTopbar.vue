@@ -36,9 +36,9 @@
                               id="user-menu" aria-haspopup="true"
                               @click.prevent="showUserDropdown = !showUserDropdown">
                                 <span class="sr-only">Open user menu</span>
-                                <img v-if="userAvatarIsImage" class="w-full sm:w-48 md:w-72 lg:w-12 rounded-full"
+                                <img v-if="userAvatarIsImage" class=""
                                      :src="avatarSrcToUse" alt="Open user menu">
-                                <span v-else class="w-full sm:w-48 md:w-72 lg:w-12 rounded-full">{{initials}}</span>
+                                <span v-else class="">{{initials}}</span>
                             </button>
                         </div>
                         <div
