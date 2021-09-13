@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "gothic";
+        font-weight: 700;
+        src: url('/fonts/GOTHIC.TTF') format('TTF');
+    }
+    @font-face {
+        font-family: "gothic";
+        font-style: 'italic';
+        font-weight: 700;
+        src: url('/fonts/GOTHICI.TTF') format('TTF');
+    }
+    @font-face {
+        font-family: "gothic";
+        font-style: 'bold';
+        font-weight: 700;
+        src: url('/fonts/GOTHICB.TTF') format('TTF');
+    }
+    @font-face {
+        font-family: "gothic";
+        font-style: 'bold italic';
+        font-weight: 700;
+        src: url('/fonts/GOTHICBI.TTF') format('TTF');
+    }
+}
