@@ -2,11 +2,11 @@
     <div class="items-center">
         <div class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg ">
             <div class="flex p-5 mx-auto md:items-center">
-                <a :href=homeRoute class="pr-2 lg:pr-8 lg:px-6 focus:ring-2 focus:ring-primary">
-                    <div class="inline-flex items-center">
-                        <img class="w-1/2 md:w-3/12 lg:w-1/12" :src="logo" alt="Go to dashboard">
-                    </div>
-                </a>
+                <div class="w-1/2 md:w-3/12 lg:w-1/12">
+                  <a :href=homeRoute class="pr-2 lg:pr-8 lg:px-6 focus:ring-2 focus:ring-primary">
+                    <img :src="logo" alt="Go to dashboard">
+                  </a>
+                </div>
                 <div class="flex flex-wrap justify-end ml-auto items-en xl:flex-nowrap md:flex-nowrap lg:flex-wrap">
                     <!-- Search Button -->
                     <!--          <button class="block p-2 mr-4 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-full focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 lg:ml-auto">-->
