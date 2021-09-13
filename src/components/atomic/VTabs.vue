@@ -36,7 +36,7 @@
                 </div>
             </div>
         </header>
-        <slot></slot>`
+        <slot></slot>
     </div>
 </template>
 
