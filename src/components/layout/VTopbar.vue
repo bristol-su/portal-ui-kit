@@ -38,7 +38,7 @@
                             <span class="sr-only">Open user menu</span>
                             <img v-if="userAvatarIsImage" class="w-1/2 md:w-3/12 lg:w-1/12"
                                  :src="avatarSrcToUse" alt="Open user menu">
-                            <span v-else class="p-3 rounded-full bg-primary-light">{{initials}}</span>
+                            <span v-else class="p-3 rounded-full bg-primary-light font-bold">{{initials}}</span>
                             </button>
                         </div>
                         <div
