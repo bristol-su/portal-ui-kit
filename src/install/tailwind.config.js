@@ -4,6 +4,9 @@ module.exports = {
     theme: {
         fontFamily: {},
         extend: {
+            fontFamily: {
+              sans: ['gothic']
+            },
             backgroundImage: theme => ({
                 'landing-page': "url('/images/landingPage.JPG')",
                 'login-page':  "url('/images/loginPage.jpg')",
