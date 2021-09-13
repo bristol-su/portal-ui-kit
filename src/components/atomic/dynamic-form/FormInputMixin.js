@@ -92,6 +92,12 @@ export default {
         },
         errorKeyValue() {
             return this.errorKey ?? this.id;
+        },
+        componentStyling()
+        {
+            return {
+                'border-warning-dark border-2': this.isInvalid
+            }
         }
     }
 }

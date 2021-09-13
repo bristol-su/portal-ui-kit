@@ -12,7 +12,9 @@
                   :aria-invalid="isInvalid"
                   :name="name"
                   v-model="dynamicValue"
-                  class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
+                  class="form-checkbox px-4 py-2 mt-2 h-5 w-5"
+                  :class=componentStyling
+                >
                 <label class="ml-2" :for="radio.id">{{radio.text}}</label>
             </div>
         </v-form-label>

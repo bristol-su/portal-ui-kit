@@ -8,7 +8,9 @@
               :aria-invalid="isInvalid"
               v-model="dynamicValue"
               :api-key="apiKey"
-              :init="config"></editor>
+              :init="config"
+              :class=componentStyling
+            ></editor>
         </v-form-label>
     </div>
 </template>

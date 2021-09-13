@@ -5,7 +5,9 @@
                 <input :aria-describedby="ariaDescribedBy"
                        :aria-invalid="isInvalid"
                        type="checkbox" :name="name" :id="id" v-model="dynamicValue"
-                       class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                       class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                       :class=componentStyling
+                />
                 <label :for="id"
                        class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
             </div>

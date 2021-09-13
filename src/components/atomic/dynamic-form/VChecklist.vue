@@ -12,7 +12,9 @@
                       :required="required"
                       :name="name"
                       @change="setCheckboxValue(checklist.id, $event.target.checked)"
-                      class="form-checkbox px-4 py-2 mt-2 h-5 w-5">
+                      class="form-checkbox px-4 py-2 mt-2 h-5 w-5"
+                      :class=componentStyling
+                    >
                     <label :for="checklist.id">{{ checklist.text }}</label>
                 </div>
             </div>
