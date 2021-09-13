@@ -8,8 +8,8 @@ module.exports = {
               sans: ['gothic']
             },
             backgroundImage: theme => ({
-                'landing-page': "url('/images/landingPage.JPG')",
-                'login-page':  "url('/images/loginPage.jpg')",
+                'landing-page': "url('/images/landing-page.jpg')",
+                'login-page':  "url('/images/login-page.jpg')",
             }),
             borderColor: theme => ({
                 primary: {

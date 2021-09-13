@@ -5,25 +5,26 @@
 @layer base {
     @font-face {
         font-family: "gothic";
+        font-style: normal;
         font-weight: 700;
-        src: url('/fonts/GOTHIC.TTF') format('TTF');
+        src: url('/fonts/gothic.tff') format('truetype');
     }
     @font-face {
         font-family: "gothic";
-        font-style: 'italic';
+        font-style: italic;
         font-weight: 700;
-        src: url('/fonts/GOTHICI.TTF') format('TTF');
+        src: url('/fonts/gothici.tff') format('truetype');
     }
     @font-face {
         font-family: "gothic";
-        font-style: 'bold';
-        font-weight: 700;
-        src: url('/fonts/GOTHICB.TTF') format('TTF');
+        font-style: normal;
+        font-weight: bold;
+        src: url('/fonts/gothicb.tff') format('truetype');
     }
     @font-face {
         font-family: "gothic";
-        font-style: 'bold italic';
-        font-weight: 700;
-        src: url('/fonts/GOTHICBI.TTF') format('TTF');
+        font-style: italic;
+        font-weight: bold;
+        src: url('/fonts/gothicbi.tff') format('truetype');
     }
 }
