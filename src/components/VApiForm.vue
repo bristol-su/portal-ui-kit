@@ -71,7 +71,7 @@ export default {
             }
         },
         reset() {
-            this.formData = this.initialData;
+            this.formData = this.initialData ?? {};
         }
     }
 }
