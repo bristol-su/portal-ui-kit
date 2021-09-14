@@ -6,7 +6,7 @@
           ref="form"
         >
             <template v-slot:append>
-                <v-button @click.prevent="submit"><slot name="buttonText">{{ buttonText }}</slot></v-button>
+                <v-button @click.prevent="submit" :busy="busy"><slot name="buttonText">{{ buttonText }}</slot></v-button>
             </template>
         </v-dynamic-form>
     </div>
@@ -55,6 +55,9 @@ export default {
                 return {}
             },
             type: Object
+        },
+        busy: {
+            required: false, type: Boolean, default: false
         }
     },
     created() {
