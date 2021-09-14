@@ -29,16 +29,16 @@
                         </svg>
                     </a>
 
-                    <div class="relative ml-3">
+                    <div class="relative ml-3" :class="[userAvatarIsImage ? 'w-2/12 md:w-1/12 lg:w-1/12' : '']">
                         <div>
                             <button
                               class="flex text-sm rounded-full bg-primary-light focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
                               id="user-menu" aria-haspopup="true"
                               @click.prevent="showUserDropdown = !showUserDropdown">
                             <span class="sr-only">Open user menu</span>
-                            <img v-if="userAvatarIsImage" class="w-1/2 md:w-3/12 lg:w-1/12"
+                            <img v-if="userAvatarIsImage"
                                  :src="avatarSrcToUse" alt="Open user menu">
-                            <span v-else class="p-3 rounded-full bg-primary-light">{{initials}}</span>
+                            <span v-else class="p-3">{{initials}}</span>
                             </button>
                         </div>
                         <div
