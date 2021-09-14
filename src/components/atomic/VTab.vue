@@ -1,5 +1,5 @@
 <template>
-    <div role="tabpanel" :aria-labelledby="tabButtonId" :id="tabPanelId" tabindex="0">
+    <div role="tabpanel" :aria-labelledby="tabButtonId" :id="tabPanelId" :tabindex="(this.isActive ? 0 : -1)">
         <div v-show="isActive">
             <slot></slot>
         </div>
