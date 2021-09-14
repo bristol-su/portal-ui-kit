@@ -51,7 +51,9 @@ export default {
         },
         initialData: {
             required: false,
-            default: () => {},
+            default: () => {
+                return {}
+            },
             type: Object
         }
     },
@@ -71,7 +73,7 @@ export default {
             }
         },
         reset() {
-            this.formData = this.initialData ?? {};
+            this.formData = this.initialData;
         }
     }
 }

@@ -69,6 +69,7 @@ export default {
             required: false,
             type: Object,
             default: () => {
+                return {}
             }
         },
         formUrl: {required: false, type: String, default: '#'},
