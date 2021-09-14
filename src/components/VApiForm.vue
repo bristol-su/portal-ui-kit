@@ -71,6 +71,9 @@ export default {
             if(this.checkValidity()) {
                 this.$emit('submit', this.formData);
             }
+        },
+        reset() {
+            this.formData = this.initialData;
         }
     }
 }
