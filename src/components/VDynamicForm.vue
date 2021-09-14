@@ -1,16 +1,16 @@
 <template>
     <div>
         <div class="lg:text-center">
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
-               v-if="form.title" v-text="form.title"></p>
+            <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl"
+                v-if="form.title" v-text="form.title"></h3>
             <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto" v-if="form.subtitle"
                v-text="form.subtitle"></p>
             <p v-if="form.description" v-text="form.description"></p>
         </div>
         <form
-          ref="form"
-          :action="formUrl"
-          :method="formMethod">
+            ref="form"
+            :action="formUrl"
+            :method="formMethod">
 
             <v-error-summary v-if="hasErrors" :errors="errors" :labels="fieldLabels">
 
@@ -21,10 +21,10 @@
                 <div v-for="formInput in group.fields" :key="formInput.id">
                     <keep-alive>
                         <component
-                          :is="getComponentFromType(formInput.type)"
-                          :key="formInput.id"
-                          v-bind="formInput"
-                          @input="updateFormData(formInput.id, $event)">
+                            :is="getComponentFromType(formInput.type)"
+                            :key="formInput.id"
+                            v-bind="formInput"
+                            @input="updateFormData(formInput.id, $event)">
                         </component>
                     </keep-alive>
                 </div>
