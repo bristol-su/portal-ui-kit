@@ -76,7 +76,8 @@ export default {
     },
     mounted() {
         this.trap = focusTrap.createFocusTrap('#' + this.id + '-modal', {
-            fallbackFocus: () => '#' + this.id + '-modal-container'
+            fallbackFocus: () => '#' + this.id + '-modal-container',
+            onPostDeactivate: () => this.hide()
         });
     },
     methods: {
