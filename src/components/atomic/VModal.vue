@@ -1,5 +1,5 @@
 <template>
-    <div v-if="shouldShow">
+    <div v-if="shouldShow" @keyup.esc.prevent="hide" tabindex="0" ref="modal">
         <div class="fixed z-10 inset-0 overflow-y-auto" :aria-labelledby="id + '-modal-title'" role="dialog"
              aria-modal="true" :aria-describedby="id + '-modal-described-by'">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import * as focusTrap from 'focus-trap';
+
 export default {
     name: "VModal",
     props: {
@@ -55,17 +57,21 @@ export default {
     },
     data() {
         return {
-            shouldShow: false
+            shouldShow: false,
+            trap: null
         }
     },
     methods: {
         show() {
             this.shouldShow = true;
             this.$emit('show');
+            this.trap = focusTrap.createFocusTrap(this.$refs.modal.$el);
         },
         hide() {
             this.hideWithoutEvents();
             this.$emit('hide');
+            this.trap.deactivate();
+            this.trap = null;
         },
         hideWithoutEvents() {
             this.shouldShow = false;
