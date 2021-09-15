@@ -1,13 +1,13 @@
 <template>
-    <span @mouseover="hovering = true" @mouseout="hovering = false">
-        <span v-if="hovering">
+    <span>
+        <tippy>
+            <template v-slot:trigger>
+                <slot>{{ text }}</slot>
+           </template>
             <slot name="onHover">
-                {{hoverText}}
+                {{ hoverText }}
             </slot>
-        </span>
-        <span v-else>
-            <slot>{{text}}</slot>
-        </span>
+        </tippy>
     </span>
 </template>
 
@@ -15,13 +15,8 @@
 export default {
     name: "VHover",
     props: {
-        text: { type: String, required: false },
-        hoverText: { type: String, required: false }
-    },
-    data() {
-      return {
-        hovering: false
-      }
+        text: {type: String, required: false},
+        hoverText: {type: String, required: false}
     }
 }
 </script>
