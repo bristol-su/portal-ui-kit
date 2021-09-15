@@ -21,7 +21,7 @@ export default class {
     }
 
     errorKey(errorKey) {
-        this.schema.errorKey = id;
+        this.schema.errorKey = errorKey;
         return this;
     }
 
