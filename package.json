@@ -19,14 +19,10 @@
   "dependencies": {
     "@tinymce/tinymce-vue": "^3.2.8",
     "focus-trap": "^6.6.1",
+    "lodash": "^4.17.21",
     "slugify": "^1.6.0",
+    "tailwindcss": "^2.2.7",
     "vue": "^2.6.12",
     "vue-tippy": "^4.10.2"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.3.1",
-    "lodash": "^4.17.21",
-    "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.7"
   }
 }
