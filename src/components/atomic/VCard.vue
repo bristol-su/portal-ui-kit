@@ -3,7 +3,9 @@
     <div class="shadow-xl rounded-xl bg-white">
       <img class="object-cover object-center w-full lg:h-48 md:h-36 rounded-t-xl" v-if="imageUrl" :src="imageUrl"
            :alt="title + ' banner imageUrl'">
-      <div class="p-4 lg:p-8 bg-blueGray-50">
+      <div class="p-4 lg:p-8 bg-blueGray-50"
+           :class="[disabled ? 'bg-gray-100': '']"
+      >
         <h3
             class="mx-auto mb-4 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font">
           {{ title }}</h3>
@@ -11,8 +13,9 @@
           {{ subtitle }}</h4>
         <a :href=url
            v-if="url"
-           class="inline-flex items-center mt-auto font-semibold text-blue-600 lg:mb-0 hover:text-black "
-           :title="'Continue ' + title"> {{ urlText }} {{disabled ? '(locked)' : ''}} {{mandatory ? '(mandatory)' : ''}}</a>
+           class="inline-flex items-center mt-auto font-semibold text-blue-600 lg:mb-0 hover:text-black"
+           :class="[disabled ? 'cursor-not-allowed pointer-events-none' : '']"
+           :title="'Continue ' + title"> {{ generatedLinkText }} </a>
         <slot></slot>
       </div>
       <div class="px-6 py-4 rounded-b-xl" :class="progressStyling" v-if="progress || progress === 0">
@@ -46,6 +49,13 @@ export default {
         "bg-info-dark text-black": this.progress >= 33 && this.progress <= 66,
         "bg-warning-dark text-white": this.progress <= 32
       };
+    },
+    generatedLinkText()
+    {
+      if(this.disabled) {
+        return '(Locked)';
+      }
+      return this.mandatory ? this.urlText + ' (Mandatory)' : urlText;
     }
   }
 }
