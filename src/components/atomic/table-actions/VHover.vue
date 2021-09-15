@@ -1,6 +1,6 @@
 <template>
     <span>
-        <tippy>
+        <tippy :arrow="true" animation="fade" placement="top-start" :interactive="true">
             <template v-slot:trigger>
                 <slot>{{ text }}</slot>
            </template>
