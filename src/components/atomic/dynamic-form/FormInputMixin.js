@@ -41,7 +41,7 @@ export default {
             if(this.hasHelp) {
                 describedBy.push(this.id + '-help-text')
             }
-            if(this.errors) {
+            if(this.errors && this.errors.length > 0) {
                 describedBy.push(this.id + '-errors')
             }
             if(describedBy.length === 0) {
