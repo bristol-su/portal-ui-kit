@@ -1,5 +1,5 @@
 <template>
-    <div v-html="html">
+    <div class="html-renderer" v-html="html">
 
     </div>
 </template>
@@ -16,35 +16,35 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+div.html-renderer >>> h1 {
     @apply text-4xl font-semibold
 }
 
-h2 {
+div.html-renderer >>> h2 {
     @apply text-3xl font-semibold
 }
 
-h3 {
+div.html-renderer >>> h3 {
     @apply text-2xl font-semibold
 }
 
-h4 {
+div.html-renderer >>> h4 {
     @apply text-xl font-semibold
 }
 
-h5 {
+div.html-renderer >>> h5 {
     @apply text-lg font-semibold
 }
 
-h6 {
+div.html-renderer >>> h6 {
     @apply font-semibold
 }
 
-ul > li:not([style]), ul > li[style=""] {
+div.html-renderer >>> ul > li:not([style]), div.html-renderer >>> ul > li[style=""]{
     @apply list-disc;
 }
 
-ol > li:not([style]), ol > li[style=""] {
+div.html-renderer >>> ol > li:not([style]), div.html-renderer >>> ol > li[style=""]{
     @apply list-decimal;
 }
 
