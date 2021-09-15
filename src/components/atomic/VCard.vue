@@ -11,10 +11,11 @@
                     {{ title }}</h3>
                 <h4 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font" v-if="subtitle">
                     {{ subtitle }}</h4>
-                <a :href=url
+                <a :href="disabled ? '#' : url"
                    v-if="url"
                    class="inline-flex items-center mt-auto font-semibold text-blue-600 lg:mb-0 hover:text-black"
                    :class="[disabled ? 'cursor-not-allowed pointer-events-none' : '']"
+                   :aria-disabled="disabled"
                    :title="'Continue ' + title"> {{ generatedLinkText }} </a>
                 <slot></slot>
             </div>
