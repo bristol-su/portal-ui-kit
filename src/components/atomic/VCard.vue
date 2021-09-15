@@ -56,7 +56,7 @@ export default {
             if (this.disabled) {
                 return '(Locked)';
             }
-            return this.urlText + this.mandatory ? ' (Mandatory)' : '';
+            return this.urlText + (this.mandatory ? ' (Mandatory)' : '');
         }
     }
 }
