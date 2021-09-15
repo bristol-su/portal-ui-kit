@@ -4,7 +4,7 @@
             <div v-for="(tag, index) in tags"
                  class="text-xs inline-flex items-center font-bold leading-sm px-3 py-1 bg-blue-200 text-blue-700 rounded-full" tabindex="0">
                 {{ tag }}
-                <div class="ml-1" @click.prevent="$emit('delete', index)" role="button" tabindex="0">
+                <div class="ml-1" @keyup.enter.prevent="$emit('delete', index)" @keyup.space.prevent="$emit('delete', index)" @click.prevent="$emit('delete', index)" role="button" tabindex="0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                          class="feather feather-x-circle">
