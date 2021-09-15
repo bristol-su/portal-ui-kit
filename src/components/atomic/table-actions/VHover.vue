@@ -1,6 +1,6 @@
 <template>
     <span @mouseover="hovering = true" @mouseout="hovering = false">
-        <span v-if="! hovering">
+        <span v-if="hovering">
             <slot name="onHover">
                 {{hoverText}}
             </slot>
