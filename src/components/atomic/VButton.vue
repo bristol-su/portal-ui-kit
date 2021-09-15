@@ -86,7 +86,7 @@ export default {
                 'bg-info border-info-light hover:bg-info-dark': this.variant === 'info',
                 'bg-white border-white hover:bg-white text-black': this.variant === 'white',
                 'bg-black border-black hover:bg-black text-white': this.variant === 'black',
-                'opacity-70 cursor-not-allowed': this.busy || this.disabled
+                'opacity-70 cursor-not-allowed pointer-events-none': this.busy || this.disabled
             }
         }
     }
