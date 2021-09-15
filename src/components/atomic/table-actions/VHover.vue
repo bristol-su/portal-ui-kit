@@ -1,10 +1,12 @@
 <template>
     <span @mouseover="hovering = true" @mouseout="hovering = false">
         <span v-if="! hovering">
-            {{ before }}
+            <slot name="onHover">
+                {{hoverText}}
+            </slot>
         </span>
         <span v-else>
-            {{ after }}
+            <slot>{{text}}</slot>
         </span>
     </span>
 </template>
@@ -13,8 +15,8 @@
 export default {
     name: "VHover",
     props: {
-        before: { type: String, required: true },
-        after: { type: String, required: true }
+        text: { type: String, required: false },
+        hoverText: { type: String, required: false }
     },
     data() {
       return {
