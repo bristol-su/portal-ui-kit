@@ -1,21 +1,21 @@
 <template>
-    <div tabindex="-1">
-        <a v-if="href"
-           :href="href"
-           type="button"
-           role="button"
-           :class="styles"
-           class="inline-grid align-centre w-full px-16 py-2 my-2 mr-2 text-center transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 bg-secondary border-secondary-light text-black hover:bg-secondary-dark hover:text-white"
-           :aria-live="busy ? 'polite' : undefined"
-           :aria-busy="busy"
-           :disabled="disabled || busy"
-        >
+  <div tabindex="-1">
+    <a v-if="href"
+       :href="href"
+       type="button"
+       role="button"
+       :class="styles"
+       class="inline-grid align-middle w-full px-16 py-2 my-2 mr-2 text-center transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 bg-secondary border-secondary-light text-black hover:bg-secondary-dark hover:text-white"
+       :aria-live="busy ? 'polite' : undefined"
+       :aria-busy="busy"
+       :disabled="disabled || busy"
+    >
             <span>
                 <slot v-if="!busy">
                 {{ buttonText }}
             </slot>
-            <span v-else>
-                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            <div class="flex flex-nowrap align-middle" v-else>
+                <svg class="animate-spin h-4 w-4 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none"
                      viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor"
@@ -24,24 +24,24 @@
                 <slot name="busy">
                     {{ busyText }}
                 </slot>
+            </div>
             </span>
-            </span>
-        </a>
-        <button v-else
-                v-on="$listeners"
-                :type="type"
-                class="w-full px-16 py-2 my-2 mr-2 text-center transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
-                :class="styles"
-                :aria-live="busy ? 'polite' : undefined"
-                :aria-busy="busy"
-                :disabled="disabled || busy"
-        >
+    </a>
+    <button v-else
+            v-on="$listeners"
+            :type="type"
+            class="w-full px-16 py-2 my-2 mr-2 text-center transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2"
+            :class="styles"
+            :aria-live="busy ? 'polite' : undefined"
+            :aria-busy="busy"
+            :disabled="disabled || busy"
+    >
             <span>
                 <slot v-if="!busy">
                 {{ buttonText }}
             </slot>
-            <span v-else>
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            <div class="flex flex-nowrap align-middle" v-else>
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none"
                      viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor"
@@ -50,10 +50,10 @@
                 <slot name="busy">
                     {{ busyText }}
                 </slot>
+            </div>
             </span>
-            </span>
-        </button>
-    </div>
+    </button>
+  </div>
 </template>
 
 <script>
