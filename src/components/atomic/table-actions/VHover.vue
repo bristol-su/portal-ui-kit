@@ -1,17 +1,26 @@
 <template>
-    <span>
-        <span class="hidden hover:block">
-            <slot name="onHover"></slot>
+    <span @mouseover="hovering = true" @mouseout="hovering = false">
+        <span v-if="! hovering">
+            {{ before }}
         </span>
-        <span class="block hover:hidden">
-            <slot></slot>
+        <span v-else>
+            {{ after }}
         </span>
     </span>
 </template>
 
 <script>
 export default {
-    name: "VHover"
+    name: "VHover",
+    props: {
+        before: { type: String, required: true },
+        after: { type: String, required: true }
+    },
+    data() {
+      return {
+        hovering: false
+      }
+    }
 }
 </script>
 
