@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-form-label v-bind="labelProps">
-            <div :id="id" class="mt-1 flex rounded-md shadow-sm">
+            <div :id="id" class="grid sm:grid-flow-row sm:grid-column-1 md:grid-rows-3 md:grid-flow-col gap-2 mt-1 flex rounded-md shadow-sm">
                 <div v-for="checklist in checklists">
                     <input
                       :aria-describedby="ariaDescribedBy"
