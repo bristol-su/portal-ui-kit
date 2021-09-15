@@ -32,7 +32,7 @@
                             v-if="editable || deletable || viewable">
                            <span class="flex justify-between">
                                 <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
-                                   @click.prevent="$emit('edit', row)">
+                                   @click.prevent="$emit('edit', row)" @keydown.enter.prevent="$emit('edit', row)" @keydown.space.prevent="$emit('edit',  row)" role="button">
                                     <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                                  viewBox="0 0 24 24" stroke="currentColor"
@@ -46,7 +46,7 @@
                                     </span>
                                 </a>
                                 <a v-if="deletable" href="#" class="text-warning hover:text-warning-dark"
-                                   @click.prevent="$emit('delete', row)">
+                                   @click.prevent="$emit('delete', row)" @keydown.enter.prevent="$emit('delete', row)" @keydown.space.prevent="$emit('delete', row)" role="button">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor"
@@ -60,7 +60,7 @@
                                     </span>
                                 </a>
                                 <a v-if="viewable" href="#" class="text-secondary hover:text-secondary-dark"
-                                   @click.prevent="$emit('view', row)">
+                                   @click.prevent="$emit('view', row)" @keydown.enter.prevent="$emit('view', row)" @keydown.space.prevent="$emit('view', row)" role="button">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor"
