@@ -18,6 +18,7 @@
             <ul>
                 <li v-for="navItem in navItems">
                     <a v-if="navItem.route" :href=navItem.route
+                       :class="{'bg-red-600': isCurrentUrl(navItem.route)}"
                        class="inline-flex items-center px-4 py-2 mt-2 text-base text-white transition duration-500 ease-in-out transform border-l-4 border-white focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-blue-200 hover:border-blue-200">
                         <span class="ml-4">
                             <i v-if="navItem.icon" :class="navItem.icon"></i>  {{ navItem.title }}
@@ -44,7 +45,12 @@ export default {
         userName: {type: String, required: false},
         subtitle: {type: String, required: false},
         navItems: {type: Array, required: true}, // Expects array of Objects -> {title: '', route: ''} // icon to be added LT
-        currentRoute: {type: String, required: false}
+        currentUrl: {type: String, required: false}
+    },
+    methods: {
+        isCurrentUrl(url) {
+            return new URL(url).clearQuery().toString() === window.location.pathname;
+        }
     }
 }
 </script>
