@@ -21,7 +21,7 @@
                        :class="{'bg-white shadow-lg rounded-r-lg text-black': isCurrentUrl(navItem.route)}"
                        class="inline-flex items-center px-4 py-2 mt-2 text-base text-white transition duration-500 ease-in-out transform border-l-4 border-white focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-blue-200 hover:border-blue-200">
                         <span class="ml-4" :class="{'text-black': isCurrentUrl(navItem.route)}">
-                            <i v-if="navItem.icon" :class="navItem.icon"></i>  {{ navItem.title }}
+                            <i v-if="navItem.icon" :class="iconStyling(navItem)"></i>  {{ navItem.title }}
                             <span v-if="navItem.highlight">(Mandatory)</span>
                         </span>
                     </a>
@@ -52,6 +52,11 @@ export default {
     methods: {
         isCurrentUrl(url) {
             return new URL(url).clearQuery().toString() === new URL(window.location.pathname).clearQuery().toString();
+        },
+        iconStyling(navItem) {
+            let style = {'text-green-600': this.isCurrentUrl(navItem.route) && navItem.icon === 'fa fa-check', 'text-blue-600': this.isCurrentUrl(navItem.route) && navItem.icon !== 'fa fa-check' && navItem.highlight};
+            style[navItem.icon] = true;
+            return style;
         }
     }
 }
