@@ -22,17 +22,22 @@ module.exports = {
                     DEFAULT: '#2dbccf',
                     dark: '#2893a1'
                 },
+                info: {
+                    light: '#4aecec',
+                    DEFAULT: '#2dbccf',
+                    dark: '#2893a1'
+                },
                 success: {
                     light: '#55efc4',
                     DEFAULT: '#16e497',
                     dark: '#16c894'
                 },
-                info: {
+                warning: {
                     light: '#fdcb6e',
                     DEFAULT: '#ffb63d',
                     dark: '#e79d24'
                 },
-                warning: {
+                danger: {
                     light: '#ff7675',
                     DEFAULT: '#ff4757',
                     dark: '#b6253a'
@@ -49,17 +54,22 @@ module.exports = {
                     DEFAULT: '#2dbccf',
                     dark: '#2893a1'
                 },
+                info: {
+                    light: '#4aecec',
+                    DEFAULT: '#2dbccf',
+                    dark: '#2893a1'
+                },
                 success: {
                     light: '#55efc4',
                     DEFAULT: '#16e497',
                     dark: '#16c894'
                 },
-                info: {
+                warning: {
                     light: '#fdcb6e',
                     DEFAULT: '#ffb63d',
                     dark: '#e79d24'
                 },
-                warning: {
+                danger: {
                     light: '#ff7675',
                     DEFAULT: '#ff4757',
                     dark: '#b6253a'

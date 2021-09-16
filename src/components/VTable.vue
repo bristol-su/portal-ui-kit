@@ -45,7 +45,7 @@
                                             <span class="sr-only">Edit</span>
                                     </span>
                                 </a>
-                                <a v-if="deletable" href="#" class="text-warning hover:text-warning-dark"
+                                <a v-if="deletable" href="#" class="text-danger hover:text-danger-dark"
                                    @click.prevent="$emit('delete', row)" @keydown.enter.prevent="$emit('delete', row)" @keydown.space.prevent="$emit('delete', row)" role="button">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"

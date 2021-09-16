@@ -82,8 +82,9 @@ export default {
                 'bg-primary border-primary-light text-black hover:bg-primary-dark hover:text-white': this.variant === 'primary',
                 'bg-secondary border-secondary-light text-black hover:bg-secondary-dark hover:text-white': this.variant === 'secondary',
                 'bg-success border-success-light hover:bg-success-dark': this.variant === 'success',
-                'bg-warning border-warning-light hover:bg-warning-dark': this.variant === 'danger',
+                'bg-danger border-danger-light hover:bg-danger-dark': this.variant === 'danger',
                 'bg-info border-info-light hover:bg-info-dark': this.variant === 'info',
+                'bg-warning border-info-light hover:bg-info-dark': this.variant === 'warning',
                 'bg-white border-white hover:bg-white text-black': this.variant === 'white',
                 'bg-black border-black hover:bg-black text-white': this.variant === 'black',
                 'opacity-70 cursor-not-allowed pointer-events-none': this.busy || this.disabled

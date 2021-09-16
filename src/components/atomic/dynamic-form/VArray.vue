@@ -11,7 +11,7 @@
                   :value="val"
                   @input="updateValue(index, $event)"
                 ></v-text-input>
-                <a href="#" class="text-warning hover:text-warning-dark" @click.prevent="deleteValue(index)">
+                <a href="#" class="text-danger hover:text-danger-dark" @click.prevent="deleteValue(index)">
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                              viewBox="0 0 24 24" stroke="currentColor"

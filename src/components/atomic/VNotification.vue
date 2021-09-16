@@ -86,7 +86,7 @@ export default {
         style() {
             return {
                 'bg-primary text-white': this.type === 'info',
-                'bg-info-dark text-white': this.type === 'alert',
+                'bg-danger-dark text-white': this.type === 'alert',
                 'bg-warning text-white': this.type === 'warning',
                 'bg-success text-white': this.type === 'success'
             }

@@ -96,7 +96,7 @@ export default {
         componentStyling()
         {
             return {
-                'border-warning-dark border-2': this.isInvalid,
+                'border-danger-dark border-2': this.isInvalid,
                 'border-2': !this.isInvalid
             }
         }

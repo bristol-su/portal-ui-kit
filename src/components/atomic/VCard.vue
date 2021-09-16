@@ -49,8 +49,8 @@ export default {
             return {
                 "bg-success-dark text-black": this.progress === 100,
                 "bg-secondary text-black": this.progress >= 66 && this.progress < 100,
-                "bg-info-dark text-black": this.progress >= 33 && this.progress <= 66,
-                "bg-warning-dark text-white": this.progress <= 32
+                "bg-warning-dark text-black": this.progress >= 33 && this.progress <= 66,
+                "bg-danger-dark text-white": this.progress <= 32
             };
         },
         generatedLinkText() {
