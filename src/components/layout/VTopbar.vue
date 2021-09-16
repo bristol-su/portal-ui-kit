@@ -116,7 +116,7 @@ export default {
             return this.initials === null;
         },
         avatarSrcToUse() {
-            return this.avatarSrc ?? this.defaultAvatarSrc;
+            return this.avatarSrc ? this.avatarSrcToUse() : this.defaultAvatarSrc;
         },
         initials() {
             if(this.userName.replace(/\s+/g, '')) {

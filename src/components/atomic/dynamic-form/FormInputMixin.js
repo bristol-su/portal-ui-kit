@@ -91,7 +91,7 @@ export default {
             return Object.fromEntries(Object.entries(props).filter(([_, v]) => v !== null)); // Only return non-empty values
         },
         errorKeyValue() {
-            return this.errorKey ?? this.id;
+            return this.errorKey ? this.errorKey : this.id;
         },
         componentStyling()
         {
