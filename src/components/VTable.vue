@@ -22,7 +22,8 @@
                     <tbody v-if="busy">
                     <td colspan="100">
                         <div class="flex justify-center p-5">
-                            <svg class="animate-spin h-5 w-5 mr-3 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            <svg class="animate-spin h-5 w-5 mr-3 text-primary" xmlns="http://www.w3.org/2000/svg"
+                                 fill="none"
                                  viewBox="0 0 24 24">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
                                         stroke-width="4"></circle>
@@ -36,8 +37,11 @@
                     <tbody v-else-if="filteredRows.length === 0">
                     <td colspan="100" class="text-center">
                         <div class="flex justify-center p-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-warning" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-warning"
+                                 viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                      d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                      clip-rule="evenodd"/>
                             </svg>
                             No data to display.
                         </div>
@@ -57,7 +61,8 @@
                             v-if="editable || deletable || viewable">
                            <span class="flex justify-between">
                                 <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
-                                   @click.prevent="$emit('edit', row)" @keydown.enter.prevent="$emit('edit', row)" @keydown.space.prevent="$emit('edit',  row)" role="button">
+                                   @click.prevent="$emit('edit', row)" @keydown.enter.prevent="$emit('edit', row)"
+                                   @keydown.space.prevent="$emit('edit',  row)" role="button">
                                     <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                                  viewBox="0 0 24 24" stroke="currentColor"
@@ -70,8 +75,27 @@
                                             <span class="sr-only">Edit</span>
                                     </span>
                                 </a>
-                                <a v-if="deletable" href="#" class="text-danger hover:text-danger-dark"
-                                   @click.prevent="$emit('delete', row)" @keydown.enter.prevent="$emit('delete', row)" @keydown.space.prevent="$emit('delete', row)" role="button">
+                               <span v-if="deletable">
+                                  <span v-if="row._table && row._table.isDeleting"
+                                        class="text-danger hover:text-danger-dark"
+                                        :aria-busy="true">
+                                    <span>
+                                        <svg class="animate-spin h-6 w-6" xmlns="http://www.w3.org/2000/svg"
+                                             fill="none"
+                                             viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                                    stroke-width="2"></circle>
+                                            <path fill="currentColor"
+                                                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        <span class="sr-only">Deleting</span>
+                                    </span>
+                                </span>
+                                 <a href="#"
+                                    v-else
+                                    class="text-danger hover:text-danger-dark"
+                                    @click.prevent="$emit('delete', row)" @keydown.enter.prevent="$emit('delete', row)"
+                                    @keydown.space.prevent="$emit('delete', row)" role="button">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor"
@@ -81,11 +105,14 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                         </svg>
+
                                         <span class="sr-only">Delete</span>
                                     </span>
                                 </a>
+                               </span>
                                 <a v-if="viewable" href="#" class="text-secondary hover:text-secondary-dark"
-                                   @click.prevent="$emit('view', row)" @keydown.enter.prevent="$emit('view', row)" @keydown.space.prevent="$emit('view', row)" role="button">
+                                   @click.prevent="$emit('view', row)" @keydown.enter.prevent="$emit('view', row)"
+                                   @keydown.space.prevent="$emit('view', row)" role="button">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor"
@@ -159,7 +186,7 @@ export default {
             this.pageSize = e;
             // Reset Page so it goes back to page 1:
             this.page = 1;
-            if(this.totalCount) {
+            if (this.totalCount) {
                 this.$emit('changePage', {'page': this.page, 'size': this.pageSize});
             }
         },
