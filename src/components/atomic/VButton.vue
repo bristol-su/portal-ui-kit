@@ -63,7 +63,7 @@ export default {
     name: "VButton",
     props: {
         buttonText: {type: String, required: false, default: 'Submit'},
-        busyText: {type: String, required: false, default: 'Loading...'},
+        busyText: {type: String, required: false, default: 'Loading'},
         href: {type: String, required: false},
         variant: {type: String, required: false, default: 'primary'},
         disabled: {type: Boolean, required: false, default: false},

@@ -24,7 +24,7 @@
 import FormInputMixin from './FormInputMixin';
 
 export default {
-    name: "VTextInput",
+    name: "VPassword",
     mixins: [FormInputMixin]
 }
 </script>

@@ -50,7 +50,7 @@ import * as _ from 'lodash';
 import VTextInput from './VTextInput';
 
 export default {
-    name: 'VArray',
+    name: "VArray",
     components: {VTextInput},
     mixins: [FormInputMixin],
     created() {

@@ -59,7 +59,7 @@ export default {
         busy: {
             required: false, type: Boolean, default: false
         },
-        busyText: {type: String, required: false, default: 'Loading...'}
+        busyText: {type: String, required: false, default: 'Loading'}
     },
     created() {
         this.formData = this.initialData;

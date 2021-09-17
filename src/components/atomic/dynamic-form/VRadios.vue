@@ -25,7 +25,7 @@
 import FormInputMixin from './FormInputMixin';
 
 export default {
-    name: "VRadio",
+    name: "VRadios",
     mixins: [FormInputMixin],
     props: {
         radios: {

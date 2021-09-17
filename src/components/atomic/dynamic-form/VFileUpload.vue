@@ -22,7 +22,7 @@
 import FormInputMixin from './FormInputMixin';
 
 export default {
-    name: "VCheckbox",
+    name: "VFileUpload",
     mixins: [FormInputMixin]
 }
 </script>
