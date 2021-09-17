@@ -53,7 +53,12 @@
                         <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
                             <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
                                 <slot name="cell()" v-bind:row="row" v-bind:column="column">
-                                    <div class="text-sm text-gray-900">{{ dataGet(row, column.key) }}</div>
+                                    <div class="text-sm text-gray-900" v-if="column.hasOwnProperty('truncateCell')">
+                                        <v-hover :hoverText="dataGet(row, column.key)">
+                                            {{ truncate(dataGet(row, column.key), column.truncateCell) }}
+                                        </v-hover>
+                                    </div>
+                                    <div class="text-sm text-gray-900" v-else>{{ dataGet(row, column.key) }}</div>
                                 </slot>
                             </slot>
                         </td>
@@ -145,12 +150,13 @@
 
 <script>
 import VPagination from './atomic/VPagination';
+import VHover from './atomic/table-actions/VHover';
 import _ from 'lodash';
 
 export default {
     name: "VTable",
     components: {
-        VPagination
+        VPagination, VHover
     },
     props: {
         items: {type: Array, required: true},
@@ -173,6 +179,9 @@ export default {
         }
     },
     methods: {
+        truncate(text, chars) {
+            return text.toString().substring(0, chars - 1);
+        },
         setSort(column) {
             // If already to set to current column then invert order:
             if (this.sort.by === column) {
