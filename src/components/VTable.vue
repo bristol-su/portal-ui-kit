@@ -19,7 +19,26 @@
                         </th>
                     </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody v-if="busy">
+                    <td colspan="100">
+                        <div class="flex justify-center">
+                            <svg class="animate-spin h-20 w-20 mr-3 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                 viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                        stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span class="sr-only">Loading Data</span>
+                        </div>
+                    </td>
+                    </tbody>
+                    <tbody v-else-if="filteredRows.length === 0">
+                    <td colspan="100" class="text-center">
+                        No data to display.
+                    </td>
+                    </tbody>
+                    <tbody class="bg-white divide-y divide-gray-200" v-else>
                     <tr v-for="row in filteredRows" :id="row.id">
                         <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
                             <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
@@ -82,11 +101,11 @@
             </div>
         </div>
         <v-pagination
-          :totalCount=totalRowCount
-          :pageSize=pageSize
-          :page=page
-          v-on:updatePageSize="updatePageSize"
-          v-on:changePage="updatePage"
+            :totalCount=totalRowCount
+            :pageSize=pageSize
+            :page=page
+            v-on:updatePageSize="updatePageSize"
+            v-on:changePage="updatePage"
         ></v-pagination>
     </div>
 </template>
@@ -106,7 +125,8 @@ export default {
         editable: {type: Boolean, default: false},
         deletable: {type: Boolean, default: false},
         viewable: {type: Boolean, default: false},
-        totalCount: {type: Number, required: false}
+        totalCount: {type: Number, required: false},
+        busy: {type: Boolean, required: false, default: false}
     },
     data() {
         return {
