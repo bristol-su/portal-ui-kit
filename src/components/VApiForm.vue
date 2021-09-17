@@ -6,7 +6,7 @@
           ref="form"
         >
             <template v-slot:append>
-                <v-button @click.prevent="submit" :busy="busy"><slot name="buttonText">{{ buttonText }}</slot></v-button>
+                <v-button @click.prevent="submit" :busy="busy" :busy-text="busyText"><slot name="buttonText">{{ buttonText }}</slot></v-button>
             </template>
         </v-dynamic-form>
     </div>
@@ -58,7 +58,8 @@ export default {
         },
         busy: {
             required: false, type: Boolean, default: false
-        }
+        },
+        busyText: {type: String, required: false, default: 'Loading...'}
     },
     created() {
         this.formData = this.initialData;
