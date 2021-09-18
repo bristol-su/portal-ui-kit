@@ -15,6 +15,11 @@ export default {
     components: {
         VFormLabel
     },
+    watch: {
+        errors(errors) {
+            this.recheckErrors();
+        }
+    },
     methods: {
         setValue(value) {
             this.$emit('input', value);
