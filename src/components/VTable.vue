@@ -66,8 +66,8 @@
                             v-if="editable || deletable || viewable">
                            <span class="flex justify-between">
                                 <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
-                                   @click.prevent="$emit('edit', row)" @keydown.enter.prevent="$emit('edit', row)"
-                                   @keydown.space.prevent="$emit('edit',  row)" role="button">
+                                   @click.prevent="$emit('edit', prepareRowForEvent(row))" @keydown.enter.prevent="$emit('edit', prepareRowForEvent(row))"
+                                   @keydown.space.prevent="$emit('edit',  prepareRowForEvent(row))" role="button">
                                     <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                                  viewBox="0 0 24 24" stroke="currentColor"
@@ -99,8 +99,8 @@
                                  <a href="#"
                                     v-else
                                     class="text-danger hover:text-danger-dark"
-                                    @click.prevent="$emit('delete', row)" @keydown.enter.prevent="$emit('delete', row)"
-                                    @keydown.space.prevent="$emit('delete', row)" role="button">
+                                    @click.prevent="$emit('delete', prepareRowForEvent(row))" @keydown.enter.prevent="$emit('delete', prepareRowForEvent(row))"
+                                    @keydown.space.prevent="$emit('delete', prepareRowForEvent(row))" role="button">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor"
@@ -116,8 +116,8 @@
                                 </a>
                                </span>
                                 <a v-if="viewable" href="#" class="text-secondary hover:text-secondary-dark"
-                                   @click.prevent="$emit('view', row)" @keydown.enter.prevent="$emit('view', row)"
-                                   @keydown.space.prevent="$emit('view', row)" role="button">
+                                   @click.prevent="$emit('view', prepareRowForEvent(row))" @keydown.enter.prevent="$emit('view', prepareRowForEvent(row))"
+                                   @keydown.space.prevent="$emit('view', prepareRowForEvent(row))" role="button">
                                     <span>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor"
@@ -190,6 +190,13 @@ export default {
             }
             // Set to clicked Column:
             this.sort.by = column;
+        },
+        prepareRowForEvent(row) {
+            let clonedRow = _.cloneDeep(row);
+            if(clonedRow.hasOwnProperty('_table')) {
+                delete clonedRow._table;
+            }
+            return clonedRow;
         },
         updatePageSize(e) {
             this.pageSize = e;
