@@ -25,10 +25,10 @@
                     </div>
                 </div>
             </div>
-        </v-form-label>
-        <v-basic-tags :tags="tags" @delete="removeTag">
+            <v-basic-tags :tags="tags" @delete="removeTag">
 
-        </v-basic-tags>
+            </v-basic-tags>
+        </v-form-label>
     </div>
 </template>
 
