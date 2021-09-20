@@ -4,7 +4,7 @@
             <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
                 <input :aria-describedby="ariaDescribedBy"
                        :aria-invalid="isInvalid"
-                       type="checkbox" :name="name" :id="id" v-model="dynamicValue"
+                       type="checkbox" :name="name" :id="id" :value="isTurnedOn" @input="setValue"
                        class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
                        :class=componentStyling
                 />
@@ -28,7 +28,10 @@ export default {
     },
     computed: {
         switchText() {
-            return this.value ? this.onText : this.offText;
+            return this.isTurnedOn ? this.onText : this.offText;
+        },
+        isTurnedOn() {
+            return this.value || this.value === "1";
         }
     }
 }
