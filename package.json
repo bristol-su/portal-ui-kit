@@ -1,29 +1,35 @@
 {
-  "name": "@bristol-su/portal-ui-kit",
-  "version": "0.0.1",
-  "description": "Portal UI Kit which holds all Vue Components for the Portal project. Open Source",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "Portal",
-    "UI Kit",
-    "Vue.js"
-  ],
-  "author": "Aidan Laycock (aidan@elbowspace.co.uk)",
-  "license": "open-source",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "dependencies": {
-    "@tinymce/tinymce-vue": "^3.2.8",
-    "domurl": "^2.3.4",
-    "focus-trap": "^6.6.1",
-    "lodash": "^4.17.21",
-    "slugify": "^1.6.0",
-    "tailwindcss": "^2.2.7",
-    "vue": "^2.6.12",
-    "vue-tippy": "^4.10.2"
-  }
+    "name": "@bristol-su/portal-ui-kit",
+    "version": "0.0.1",
+    "description": "Portal UI Kit which holds all Vue Components for the Portal project. Open Source",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "Portal",
+        "UI Kit",
+        "Vue.js"
+    ],
+    "author": "Aidan Laycock (aidan@elbowspace.co.uk)",
+    "license": "open-source",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "dependencies": {
+        "@tinymce/tinymce-vue": "^3.2.8",
+        "domurl": "^2.3.4",
+        "focus-trap": "^6.6.1",
+        "lodash": "^4.17.21",
+        "slugify": "^1.6.0",
+        "tailwindcss": "^2.2.7",
+        "vue": "^2.6.12",
+        "vue-tippy": "^4.10.2"
+    },
+    "devDependencies": {
+        "@vue/eslint-config-prettier": "^6.0.0",
+        "babel-eslint": "^10.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-vue": "^6.2.2"
+    }
 }
