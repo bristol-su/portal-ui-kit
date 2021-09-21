@@ -12,7 +12,7 @@
                                 class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
                             >
                                 <p class="font-semibold text-gray-800" :id="id + '-modal-title'">{{ title }}</p>
-                                <a href="#" @click="hide" tabindex="0" role="button">
+                                <div @click="hide" tabindex="0" role="button">
                                     <svg @click="hide"
                                          class="w-6 h-6"
                                          fill="none"
@@ -28,7 +28,7 @@
                                         ></path>
                                     </svg>
                                     <span class="sr-only">Close</span>
-                                </a>
+                                </div>
                             </div>
                             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <div class="sm:flex sm:items-start">
