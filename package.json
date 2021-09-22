@@ -14,6 +14,7 @@
     "author": "Aidan Laycock (aidan@elbowspace.co.uk)",
     "license": "open-source",
     "publishConfig": {
+        "cache": "cache/.npm",
         "registry": "https://npm.pkg.github.com/"
     },
     "dependencies": {
