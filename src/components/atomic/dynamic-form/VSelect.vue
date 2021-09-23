@@ -77,13 +77,14 @@ export default {
     computed: {
         groupedSelectOptions() {
             let groups = {};
-            let addOption = (group, option) => {
+            let addOption = (option) => {
                 if (!groups.hasOwnProperty(option.group)) {
                     groups[option.group] = [];
                 }
                 groups[option.group].push(option);
             }
             this.selectOptions.filter((option) => option.group).forEach((option) => addOption(option));
+            return groups;
         },
         ungroupedSelectOptions() {
             return this.selectOptions.filter((option) => !option.group);
