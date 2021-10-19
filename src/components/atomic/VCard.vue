@@ -7,9 +7,9 @@
                  :class="[disabled ? 'bg-gray-100': '']"
             >
                 <h3
-                    class="mx-auto mb-4 text-2xl font-semibold leading-none tracking-tighter text-black lg:text-3xl title-font">
+                    class="mx-auto mb-4 text-2xl font-semibold leading-none tracking-normal text-black lg:text-3xl title-font">
                     {{ title }}</h3>
-                <h4 class="mb-8 text-xs font-semibold tracking-widest text-black uppercase title-font" v-if="subtitle">
+                <h4 class="mb-8 text-xs font-semibold text-black title-font" v-if="subtitle">
                     {{ subtitle }}</h4>
                 <a :href="disabled ? '#' : url"
                    v-if="url"

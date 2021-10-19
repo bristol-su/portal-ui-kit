@@ -5,12 +5,12 @@
         <div class="flex flex-col items-center flex-shrink-0 py-4 bg-primary-dark">
             <div class="inline-flex items-center">
                 <h2
-                    class="block p-2 text-xl font-medium tracking-tighter text-white transition duration-500 ease-in-out transform cursor-pointer hover:text-white lg:text-x lg:mr-8">
+                    class="block p-2 text-xl font-medium tracking-normal text-white transition duration-500 ease-in-out transform cursor-pointer hover:text-white lg:text-x lg:mr-8">
                     Hi<span v-if="userName"> {{ userName }}</span>, </h2>
             </div>
             <div class="inline-flex items-center" v-if="subtitle">
                 <p
-                    class="block p-2 font-medium tracking-tighter text-white transition duration-500 ease-in-out transform cursor-pointer hover:text-white lg:text-x lg:mr-8">
+                    class="block p-2 font-medium tracking-normal text-white transition duration-500 ease-in-out transform cursor-pointer hover:text-white lg:text-x lg:mr-8">
                     {{ subtitle }}</p>
             </div>
         </div>

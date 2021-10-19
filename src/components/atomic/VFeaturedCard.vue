@@ -8,7 +8,7 @@
               <div class="flex items-center">
                 <img :src="logo" alt="Bristol Students' Union Logo - Blue">
               </div>
-              <h1 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"> {{ title }} </h1>
+              <h1 class="mt-12 mb-2 text-2xl font-semibold tracking-normal text-black sm:text-3xl title-font"> {{ title }} </h1>
               <div class="w-full mt-16 mb-8 text-base leading-relaxed text-blueGray-900 sm:md:w-3/3 lg:text-1xl " v-if="subtext"> {{ subtext }} </div>
             </div>
           </div>
@@ -18,7 +18,7 @@
                 <div class="flex items-center">
                   <img :src="logo" alt="Bristol Students' Union Logo - Blue">
                 </div>
-                <h1 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"> {{ title }} </h1>
+                <h1 class="mt-12 mb-2 text-2xl font-semibold tracking-normal text-black sm:text-3xl title-font"> {{ title }} </h1>
                 <div class="w-full mt-16 mb-8 text-base leading-relaxed text-blueGray-900 sm:md:w-3/3 lg:text-1xl " v-if="subtext"> {{ subtext }} </div>
               </div>
             </div>
