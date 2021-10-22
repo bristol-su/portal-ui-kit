@@ -53,7 +53,7 @@
                         <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
                             <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
                                 <slot name="cell()" v-bind:row="row" v-bind:column="column">
-                                    <div class="text-sm text-gray-900" v-if="column.hasOwnProperty('truncateCell') && dataGet(row, column.key).length > column.truncateCell">
+                                    <div class="text-sm text-gray-900" v-if="column.hasOwnProperty('truncateCell') && (dataGet(row, column.key) === null ? '' : dataGet(row, column.key)).length > column.truncateCell">
                                         <v-hover :hoverText="dataGet(row, column.key)">
                                             {{ truncate(dataGet(row, column.key), column.truncateCell) }}
                                         </v-hover>

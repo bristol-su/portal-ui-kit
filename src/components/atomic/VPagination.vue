@@ -15,7 +15,7 @@
                 <v-select
                   :id="'v-pagination-per-page-' + Math.round(Math.random() * 1000)"
                   label="Rows per page"
-                  :selectOptions="[{id: 5, value: 5}, {id: 10, value: 10}, {id: 25, value: 25}]"
+                  :selectOptions="[{id: 5, value: 5}, {id: 10, value: 10}, {id: 25, value: 25}, {id: 50, value: 50}, {id: pageShowing.total, value: 'All'}]"
                   v-model="dynamicPageSize"
                   help="Select the number of records to show in the table"
                   tooltip="Select the number of records to show in the table"
