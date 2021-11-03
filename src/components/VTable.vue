@@ -63,7 +63,7 @@
                             </slot>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                            v-if="editable || deletable || viewable">
+                            v-if="editable || deletable || viewable || actions">
                            <span class="flex justify-between">
                                 <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
                                    @click.prevent="$emit('edit', prepareRowForEvent(row))" @keydown.enter.prevent="$emit('edit', prepareRowForEvent(row))"
@@ -165,7 +165,8 @@ export default {
         deletable: {type: Boolean, default: false},
         viewable: {type: Boolean, default: false},
         totalCount: {type: Number, required: false},
-        busy: {type: Boolean, required: false, default: false}
+        busy: {type: Boolean, required: false, default: false},
+        actions: {type: Boolean, required: false, default: false},
     },
     data() {
         return {
