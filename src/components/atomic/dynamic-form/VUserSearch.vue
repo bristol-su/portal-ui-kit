@@ -2,12 +2,13 @@
     <div>
         <v-form-label v-bind="labelProps">
             <div class="mt-1 flex rounded-md shadow-sm">
-                <v-vue-select label="preferred_name"
+                <v-vue-select class="w-full"
+                              label="preferred_name"
                               :options="selectOptions"
                               :clearable="true"
                               :inputId="id"
                               :name="title"
-                              @search="search"
+                              @search="onSearch"
                               :required="required"
                               v-model="dynamicValue"
                               :reduce="option => option.id"
@@ -35,14 +36,18 @@ export default {
         }
     },
     methods: {
-        search: debounce((search, loading) => {
-            this.$ui.userSearcher(search, 1, 15)
-              .then(users => {
-                  this.users = users.data
-              })
-              .catch(() => {})
+        onSearch: function(search, loading) {
+            if(search.length) {
+                this.search(search, loading, this)
+            }
+        },
+        search: _.debounce((search, loading, vm) => {
+            loading(true)
+            vm.$ui.userSearcher(search, 1, 15)
+              .then(users => vm.users = users)
+              .catch(error => vm.$notify.alert('Could not load users: ' + error.message))
               .then(() => loading(false));
-        }, 2000)
+        })
     },
     computed: {
         selectOptions() {
