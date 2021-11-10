@@ -5,44 +5,17 @@
                 <v-vue-select label="preferred_name"
                               :options="selectOptions"
                               :clearable="true"
-                              :filter="search"
                               :inputId="id"
                               :name="title"
+                              @search="search"
                               :required="required"
                               v-model="dynamicValue"
                               :reduce="option => option.id"
                               :loading="$isLoading('user-search')"
-                              :searchable="true">
+                              :fitlerable="false">
 
                 </v-vue-select>
 
-<!--                <select-->
-<!--                  :aria-describedby="ariaDescribedBy"-->
-<!--                  :id="id"-->
-<!--                  :name="title"-->
-<!--                  :required="required"-->
-<!--                  v-model="dynamicValue"-->
-<!--                  :aria-invalid="isInvalid"-->
-<!--                  :multiple="multiple"-->
-<!--                  class="w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform rounded-lg bg-blueGray-100 focus:border-blueGray-500 focus:bg-white focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2"-->
-<!--                  :class=componentStyling-->
-<!--                >-->
-<!--                    <option v-if="showNullOption" :value="nullValue">{{ nullLabel }}</option>-->
-<!--                    <option-->
-<!--                      v-for="option in ungroupedSelectOptions"-->
-<!--                      :value="option.id"-->
-<!--                      v-text="option.value"-->
-<!--                    >-->
-<!--                    </option>-->
-<!--                    <optgroup v-for="(options, group) in groupedSelectOptions">-->
-<!--                        <option-->
-<!--                          v-for="option in options"-->
-<!--                          :value="option.id"-->
-<!--                          v-text="option.value"-->
-<!--                        >-->
-<!--                        </option>-->
-<!--                    </optgroup>-->
-<!--                </select>-->
             </div>
         </v-form-label>
     </div>
@@ -54,14 +27,18 @@ import FormInputMixin from './FormInputMixin';
 
 export default {
     name: "VUserSearch",
+    mixins: [FormInputMixin],
     data() {
         return {
             users: []
         }
     },
     methods: {
-        search(search) {
-            this.selectOptions = this.$ui.userSearcher(search);
+        search(search, loading) {
+            this.$ui.userSearcher(search)
+              .then(users => this.users = users)
+              .catch(() => {})
+              .then(() => loading(true));
         }
     },
     computed: {
@@ -71,9 +48,8 @@ export default {
                 return user;
             });
         }
-    },
-    mixins: [FormInputMixin]
-}
+    }
+} // TODO COMMIT JS, UPDATE AND TEST USER SEARCHER
 </script>
 
 <style scoped>
