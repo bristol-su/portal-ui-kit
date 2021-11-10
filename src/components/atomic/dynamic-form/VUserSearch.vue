@@ -24,6 +24,7 @@
 <script>
 
 import FormInputMixin from './FormInputMixin';
+import {debounce} from 'lodash';
 
 export default {
     name: "VUserSearch",
@@ -34,16 +35,18 @@ export default {
         }
     },
     methods: {
-        search(search, loading) {
-            this.$ui.userSearcher(search)
-              .then(users => this.users = users)
+        search: debounce((search, loading) => {
+            this.$ui.userSearcher(search, 1, 15)
+              .then(users => {
+                  this.users = users.data
+              })
               .catch(() => {})
-              .then(() => loading(true));
-        }
+              .then(() => loading(false));
+        }, 2000)
     },
     computed: {
         selectOptions() {
-            return this.users.map(user => {
+            return (this.users ?? []).map(user => {
                 user.preferred_name = user.data.preferred_name;
                 return user;
             });
