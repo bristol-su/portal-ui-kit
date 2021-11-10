@@ -25,6 +25,7 @@
         "slugify": "^1.6.0",
         "tailwindcss": "^2.2.7",
         "vue": "^2.6.12",
+        "vue-select": "^3.16.0",
         "vue-tippy": "^4.10.2"
     },
     "devDependencies": {
