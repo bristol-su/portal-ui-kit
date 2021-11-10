@@ -49,7 +49,7 @@ export default {
             });
         }
     }
-} // TODO COMMIT JS, UPDATE AND TEST USER SEARCHER
+}
 </script>
 
 <style scoped>
