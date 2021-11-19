@@ -23,11 +23,29 @@ export default {
             type: Boolean,
             required: false,
             default: true
+        },
+        badge: {
+            type: Number,
+            required: false,
+            default: null
+        },
+        icon: {
+            type: String,
+            required: false,
+            default: 'fas fa-edit'
         }
     },
     data () {
         return {
             isActive: false
+        }
+    },
+    watch: {
+        badge() {
+            this.$ui.eventBus.$emit('refreshTabs');
+        },
+        icon() {
+            this.$ui.eventBus.$emit('refreshTabs');
         }
     },
     created() {

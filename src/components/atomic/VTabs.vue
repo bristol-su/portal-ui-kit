@@ -6,32 +6,25 @@
                      :aria-label="description">
                     <button
                       type="button"
-                      :id="getTabButtonId(title)"
-                      :ref="getTabButtonId(title)"
+                      :id="getTabButtonId(props.title)"
+                      :ref="getTabButtonId(props.title)"
                       role="tab"
                       :aria-selected="selectedIndex === index"
-                      :aria-controls="getTabPanelId(title)"
+                      :aria-controls="getTabPanelId(props.title)"
                       :tabindex="selectedIndex === index ? '0' : '-1'"
-                      v-for='(title, index) in tabs'
-                      :key='title'
+                      v-for='(props, index) in tabs'
+                      :key='props.title'
                       class="ml-0.5 p-1.5 lg:pl-2.5 lg:pr-3.5 rounded-md flex items-center text-sm text-gray-600 font-medium focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-100"
                       :class="{'bg-white shadow-sm ring-1 ring-black ring-opacity-5': selectedIndex === index}"
                       @click='selectTab(index)'
                       @keydown.arrow-left="selectTab(selectedIndex - 1)"
                       @keydown.arrow-right="selectTab(selectedIndex + 1)"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                             fill="currentColor">
-                            <path
-                              d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
-                            <path fill-rule="evenodd"
-                                  d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                                  clip-rule="evenodd"/>
-                        </svg>
+                        <i :class="props.icon ? props.icon : 'fas fa-edit'" class="pr-1"></i>
                         <span class="text-gray-600 group-hover:text-gray-900"
-                              :class="selectedIndex === index ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'">{{
-                                title
-                            }}</span>
+                              :class="selectedIndex === index ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'">
+                            {{props.title}} <v-badge v-if="Number.isInteger(props.badge)" :badge="props.badge"></v-badge>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -42,9 +35,13 @@
 
 <script>
 import slugify from 'slugify';
+import VBadge from './VBadge';
 
 export default {
     name: "VTabs",
+    components: {
+        VBadge
+    },
     data() {
         return {
             selectedIndex: 0, // the index of the selected tab,
@@ -56,6 +53,9 @@ export default {
             required: false, type: String, default: 'Page tabs'
         }
     },
+    created() {
+        this.$ui.eventBus.$on('refreshTabs', () => this.loadTabs());
+    },
     mounted() {
         this.loadTabs();
         this.$nextTick(() => this.selectTab(0));
@@ -63,17 +63,17 @@ export default {
     methods: {
         selectTab(i) {
             if (i >= 0 && i < this.tabs.length) {
-                this.$ui.eventBus.$emit('tab-deselected', this.tabs[this.selectedIndex]);
+                this.$ui.eventBus.$emit('tab-deselected', this.tabs[this.selectedIndex].title);
                 this.selectedIndex = i;
-                this.$ui.eventBus.$emit('tab-selected', this.tabs[i]);
-                this.$refs[this.getTabButtonId(this.tabs[i])][0].focus();
+                this.$ui.eventBus.$emit('tab-selected', this.tabs[i].title);
+                this.$refs[this.getTabButtonId(this.tabs[i].title)][0].focus();
             }
         },
         loadTabs() {
             if (this.$slots.default) {
                 this.tabs = this.$slots.default
                   .filter(comp => comp.componentOptions)
-                  .map(comp => comp.componentOptions.propsData.title);
+                  .map(comp => comp.componentOptions.propsData);
             } else {
                 this.tabs = [];
             }
