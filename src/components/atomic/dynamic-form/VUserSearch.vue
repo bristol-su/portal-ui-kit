@@ -3,7 +3,7 @@
         <v-form-label v-bind="labelProps">
             <div class="mt-1 flex rounded-md shadow-sm">
                 <v-vue-select class="w-full"
-                              label="preferred_name"
+                              label="display"
                               :options="selectOptions"
                               :clearable="true"
                               :inputId="id"
@@ -25,7 +25,6 @@
 <script>
 
 import FormInputMixin from './FormInputMixin';
-import {debounce} from 'lodash';
 
 export default {
     name: "VUserSearch",
@@ -53,6 +52,8 @@ export default {
         selectOptions() {
             return (this.users ?? []).map(user => {
                 user.preferred_name = user.data.preferred_name;
+                user.email = user.data.email;
+                user.display = user.preferred_name + ' (' + user.email + ')';
                 return user;
             });
         }
