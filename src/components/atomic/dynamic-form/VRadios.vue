@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         optionIsChecked(radio) {
-            return this.value.indexOf(radio.id) !== -1;
+            return this.value === radio.id;
         }
     }
 }

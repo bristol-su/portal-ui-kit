@@ -53,6 +53,7 @@ import FormFactory from '../generator/factory/FormFactory';
 import VErrorSummary from './atomic/VErrorSummary';
 import VArray from './atomic/dynamic-form/VArray';
 import VDatePicker from './atomic/dynamic-form/VDatePicker';
+import VLogic from './atomic/dynamic-form/VLogic';
 
 export default {
     name: "VDynamicForm",
@@ -95,7 +96,8 @@ export default {
                 password: VPassword,
                 html: VWysiwyg,
                 array: VArray,
-                date: VDatePicker
+                date: VDatePicker,
+                logic: VLogic
             },
             errors: {}
         }

@@ -33,6 +33,7 @@ export default {
 
         VueInstance.prototype.$ui = {
             userSearcher: options.hasOwnProperty('userSearcher') ? options.userSearcher : (search) => [],
+            logics: options.hasOwnProperty('logics') ? options.logics : () => [],
             errors: options.hasOwnProperty('errors') ? options.errors : {
                 all: () => {}, has: (key) => false, get: (key) => null
             },

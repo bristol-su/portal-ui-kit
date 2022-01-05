@@ -5,6 +5,7 @@ import Select from '../fields/Select';
 import Switch from '../fields/Switch';
 import File from '../fields/File';
 import Text from '../fields/Text';
+import Logic from '../fields/Logic';
 
 export default class {
 
@@ -14,6 +15,10 @@ export default class {
 
     static radios(id) {
         return new Radios(id);
+    }
+
+    static logic(id) {
+        return new Logic(id);
     }
 
     static checkbox(id) {
