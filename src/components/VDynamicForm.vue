@@ -54,6 +54,8 @@ import VErrorSummary from './atomic/VErrorSummary';
 import VArray from './atomic/dynamic-form/VArray';
 import VDatePicker from './atomic/dynamic-form/VDatePicker';
 import VLogic from './atomic/dynamic-form/VLogic';
+import VDateRange from './atomic/dynamic-form/VDateRange';
+import VSubform from './atomic/dynamic-form/VSubform';
 
 export default {
     name: "VDynamicForm",
@@ -97,7 +99,9 @@ export default {
                 html: VWysiwyg,
                 array: VArray,
                 date: VDatePicker,
-                logic: VLogic
+                logic: VLogic,
+                daterange: VDateRange,
+                subform: VSubform
             },
             errors: {}
         }

@@ -3,7 +3,7 @@
         <v-form-label v-bind="labelProps">
             <div class="mt-1 flex rounded-md shadow-sm">
                 <v-vue-select class="w-full"
-                      label="display"
+                      label="name"
                       :options="selectOptions"
                       :clearable="true"
                       :loading="isLoading"
