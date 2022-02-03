@@ -6,7 +6,7 @@
                       label="name"
                       :options="selectOptions"
                       :clearable="true"
-                      :loading="loaded"
+                      :loading="loading"
                       :inputId="id"
                       :name="title"
                       :required="required"
@@ -36,6 +36,7 @@ export default {
         ...mapGetters('logics', [
             'logics',
             'loaded',
+            'loading'
         ]),
         selectOptions() {
             return this.logics;
