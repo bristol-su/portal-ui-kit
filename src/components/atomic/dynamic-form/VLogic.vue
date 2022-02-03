@@ -6,7 +6,7 @@
                       label="name"
                       :options="selectOptions"
                       :clearable="true"
-                      :loading="isLoading"
+                      :loading="loaded"
                       :inputId="id"
                       :name="title"
                       :required="required"
@@ -24,24 +24,19 @@
 <script>
 
 import FormInputMixin from './FormInputMixin';
+import { mapGetters } from 'vuex'
 
 export default {
     name: "VLogic",
     mixins: [FormInputMixin],
-    data() {
-        return {
-            logics: [],
-            isLoading: false
-        }
-    },
     mounted() {
-        this.isLoading = true;
-        this.$ui.logics()
-            .then(logics => this.logics = logics)
-            .catch(error => this.$notify.alert('Could not load logics: ' + error.message))
-            .then(() => this.isLoading = false);
+        this.$ui.loadLogics();
     },
     computed: {
+        ...mapGetters('logics', [
+            'logics',
+            'loaded',
+        ]),
         selectOptions() {
             return this.logics;
         }
