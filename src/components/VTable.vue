@@ -72,7 +72,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
                             v-if="(editable || deletable || viewable || actions) && (!row._table || !row._table.full)">
-                           <span class="flex justify-between">
+                           <span class="flex justify-center space-x-4">
                                 <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
                                    @click.prevent="$emit('edit', prepareRowForEvent(row))" @keydown.enter.prevent="$emit('edit', prepareRowForEvent(row))"
                                    @keydown.space.prevent="$emit('edit',  prepareRowForEvent(row))" role="button">
