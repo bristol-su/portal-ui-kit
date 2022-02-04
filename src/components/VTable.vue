@@ -50,12 +50,12 @@
                     </tbody>
                     <tbody class="bg-white divide-y divide-gray-200" v-else>
                     <tr v-for="row in filteredRows" :id="row.id">
-                        <td v-if="row._table && row._table.full" :colspan="columns.length">
+                        <td v-if="row._table && row._table.full" :colspan="columns.length" class="bg-gray-100 text-semibold">
                             <div class="flex justify-center p-5">
                                 <slot name="fullRow" v-bind:row="row"></slot>
                             </div>
                         </td>
-                        <td v-if="row._table && row._table.full" class="whitespace-nowrap text-right text-sm font-medium">
+                        <td v-if="row._table && row._table.full" class="whitespace-nowrap text-right text-sm font-medium bg-gray-100">
                             <slot name="fullRowActions" v-bind:row="row"></slot>
                         </td>
                         <td v-if="!row._table || !row._table.full" class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
