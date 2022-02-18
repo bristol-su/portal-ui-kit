@@ -5,6 +5,8 @@ import Select from '../fields/Select';
 import Switch from '../fields/Switch';
 import File from '../fields/File';
 import Text from '../fields/Text';
+import Logic from '../fields/Logic';
+import Subform from '../fields/Subform';
 
 export default class {
 
@@ -14,6 +16,14 @@ export default class {
 
     static radios(id) {
         return new Radios(id);
+    }
+
+    static logic(id) {
+        return new Logic(id);
+    }
+
+    static subform(id) {
+        return new Subform(id);
     }
 
     static checkbox(id) {

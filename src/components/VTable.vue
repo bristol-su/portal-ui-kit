@@ -20,7 +20,7 @@
                     </tr>
                     </thead>
                     <tbody v-if="busy">
-                    <td colspan="100">
+                    <td :colspan="colspan">
                         <div class="flex justify-center p-5">
                             <svg class="animate-spin h-5 w-5 mr-3 text-primary" xmlns="http://www.w3.org/2000/svg"
                                  fill="none"
@@ -35,7 +35,7 @@
                     </td>
                     </tbody>
                     <tbody v-else-if="filteredRows.length === 0">
-                    <td colspan="100" class="text-center">
+                    <td :colspan="colspan" class="text-center">
                         <div class="flex justify-center p-5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3 text-warning"
                                  viewBox="0 0 20 20" fill="currentColor">
@@ -50,7 +50,15 @@
                     </tbody>
                     <tbody class="bg-white divide-y divide-gray-200" v-else>
                     <tr v-for="row in filteredRows" :id="row.id">
-                        <td class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
+                        <td v-if="row._table && row._table.full" :colspan="columns.length" class="bg-gray-100 text-semibold">
+                            <div class="flex justify-center p-5">
+                                <slot name="fullRow" v-bind:row="row"></slot>
+                            </div>
+                        </td>
+                        <td v-if="row._table && row._table.full" class="whitespace-nowrap text-right text-sm font-medium bg-gray-100">
+                            <slot name="fullRowActions" v-bind:row="row"></slot>
+                        </td>
+                        <td v-if="!row._table || !row._table.full" class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
                             <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
                                 <slot name="cell()" v-bind:row="row" v-bind:column="column">
                                     <div class="text-sm text-gray-900" v-if="column.hasOwnProperty('truncateCell') && (dataGet(row, column.key) === null ? '' : dataGet(row, column.key)).length > column.truncateCell">
@@ -63,8 +71,8 @@
                             </slot>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                            v-if="editable || deletable || viewable">
-                           <span class="flex justify-between">
+                            v-if="(editable || deletable || viewable || actions) && (!row._table || !row._table.full)">
+                           <span class="flex justify-center space-x-4">
                                 <a v-if="editable" href="#" class="text-primary hover:text-primary-dark"
                                    @click.prevent="$emit('edit', prepareRowForEvent(row))" @keydown.enter.prevent="$emit('edit', prepareRowForEvent(row))"
                                    @keydown.space.prevent="$emit('edit',  prepareRowForEvent(row))" role="button">
@@ -165,12 +173,13 @@ export default {
         deletable: {type: Boolean, default: false},
         viewable: {type: Boolean, default: false},
         totalCount: {type: Number, required: false},
-        busy: {type: Boolean, required: false, default: false}
+        busy: {type: Boolean, required: false, default: false},
+        actions: {type: Boolean, required: false, default: false},
     },
     data() {
         return {
             page: 1,
-            pageSize: 5,
+            pageSize: 25,
             sort: {
                 dir: true,
                 by: ''
@@ -245,8 +254,10 @@ export default {
                 return this.totalCount;
             }
             return this.items.length;
+        },
+        colspan() {
+            return this.columns.length + (this.editable || this.deletable || this.viewable || this.actions ? 1 : 0);
         }
-
 
     }
 }

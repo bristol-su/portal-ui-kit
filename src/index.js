@@ -4,12 +4,16 @@ import VueTippy, { TippyComponent } from "vue-tippy";
 import Vue from 'vue';
 import VConfirmationModal from './components/atomic/VConfirmationModal';
 import VNotification from './components/atomic/VNotification';
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
 
 export default {
     install(VueInstance, options) {
 
         VueInstance.use(VueTippy);
         VueInstance.component('tippy', TippyComponent);
+
+        Vue.component('v-vue-select', vSelect);
 
         let eventBus = new Vue({});
 
@@ -28,6 +32,9 @@ export default {
         }
 
         VueInstance.prototype.$ui = {
+            userSearcher: options.hasOwnProperty('userSearcher') ? options.userSearcher : (search) => [],
+            logics: options.hasOwnProperty('logics') ? options.logics : () => [],
+            loadLogics: options.hasOwnProperty('loadLogics') ? options.loadLogics : () => [],
             errors: options.hasOwnProperty('errors') ? options.errors : {
                 all: () => {}, has: (key) => false, get: (key) => null
             },

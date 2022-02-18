@@ -1,6 +1,9 @@
 <template>
     <div role="tabpanel" :aria-labelledby="tabButtonId" :id="tabPanelId" :tabindex="(this.isActive ? 0 : -1)">
-        <div v-show="isActive">
+        <div v-if="keepAlive === false && isActive">
+            <slot></slot>
+        </div>
+        <div v-show="keepAlive === true && isActive">
             <slot></slot>
         </div>
     </div>
@@ -15,11 +18,34 @@ export default {
         title: {
             type: String,
             required: true
+        },
+        keepAlive: {
+            type: Boolean,
+            required: false,
+            default: true
+        },
+        badge: {
+            type: Number,
+            required: false,
+            default: null
+        },
+        icon: {
+            type: String,
+            required: false,
+            default: 'fas fa-edit'
         }
     },
     data () {
         return {
             isActive: false
+        }
+    },
+    watch: {
+        badge() {
+            this.$ui.eventBus.$emit('refreshTabs');
+        },
+        icon() {
+            this.$ui.eventBus.$emit('refreshTabs');
         }
     },
     created() {

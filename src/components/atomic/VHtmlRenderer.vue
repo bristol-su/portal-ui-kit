@@ -48,4 +48,7 @@ div.html-renderer >>> ol > li:not([style]), div.html-renderer >>> ol > li[style=
     @apply list-decimal;
 }
 
+div.html-renderer >>> a {
+    @apply underline
+}
 </style>
