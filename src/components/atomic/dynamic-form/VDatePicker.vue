@@ -21,10 +21,21 @@
 
 <script>
 import FormInputMixin from './FormInputMixin';
+import moment from 'moment';
 
 export default {
     name: "VDatePicker",
-    mixins: [FormInputMixin]
+    mixins: [FormInputMixin],
+    computed: {
+        dynamicFormattedValue: {
+            get() {
+                return moment(this.dynamicValue).format('YYYY-MM-DD');
+            },
+            set(value) {
+                this.dynamicValue = value;
+            }
+        }
+    }
 }
 </script>
 
