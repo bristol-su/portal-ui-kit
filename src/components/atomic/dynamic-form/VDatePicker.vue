@@ -7,7 +7,7 @@
                   type="date"
                   :name="name"
                   :id="id"
-                  v-model="dynamicValue"
+                  v-model="dynamicFormattedValue"
                   :aria-invalid="isInvalid"
                   :required="required"
                   @enter.prevent="$emit('enter', $event.target.value)"
