@@ -7,7 +7,7 @@
               :required="required"
               :aria-invalid="isInvalid"
               v-model="dynamicValue"
-              :api-key="apiKey"
+              :api-key="usableApiKey"
               :init="config"
               :class=componentStyling
             ></editor>
