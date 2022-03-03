@@ -25,7 +25,7 @@ export default {
         'editor': Editor
     },
     props: {
-        apiKey: {required: false, type: String, default: 'no-api-key'}
+        apiKey: {required: false, type: String, default: null}
     },
     data() {
         return {
@@ -41,6 +41,12 @@ export default {
         }
     },
     computed: {
+        usableApiKey() {
+            if(!this.apiKey) {
+                return this.$tinyMceApiKey;
+            }
+            return this.apiKey;
+        },
         config() {
             return {
                 menubar: this.menubar,
