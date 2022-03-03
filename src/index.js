@@ -31,6 +31,10 @@ export default {
             notificationModal.show();
         }
 
+        if(options.hasOwnProperty('tinyMceKey')) {
+            VueInstance.prototype.$tinyMceApiKey = options.tinyMceKey;
+        }
+
         VueInstance.prototype.$ui = {
             userSearcher: options.hasOwnProperty('userSearcher') ? options.userSearcher : (search) => [],
             logics: options.hasOwnProperty('logics') ? options.logics : () => [],
