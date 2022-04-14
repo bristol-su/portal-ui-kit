@@ -179,7 +179,7 @@ export default {
     data() {
         return {
             page: 1,
-            pageSize: 25,
+            pageSize: 5,
             sort: {
                 dir: true,
                 by: ''
