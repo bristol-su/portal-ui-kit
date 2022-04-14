@@ -3,7 +3,7 @@
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200" :aria-busy="busy">
-                    <thead class="bg-gray-50">
+                    <thead class="bg-gray-50 hidden md:table-header-group">
                     <tr>
                         <th v-for="column in fullColumns"
                             @click="setSort(column.key)"
@@ -49,7 +49,7 @@
                     </td>
                     </tbody>
                     <tbody class="bg-white divide-y divide-gray-200" v-else>
-                    <tr v-for="row in filteredRows" :id="row.id">
+                    <tr v-for="row in filteredRows" :id="row.id" class="flex flex-col md:table-row">
                         <td v-if="row._table && row._table.full" :colspan="columns.length" class="bg-gray-100 text-semibold">
                             <div class="flex justify-center p-5">
                                 <slot name="fullRow" v-bind:row="row"></slot>
@@ -59,6 +59,9 @@
                             <slot name="fullRowActions" v-bind:row="row"></slot>
                         </td>
                         <td v-if="!row._table || !row._table.full" class="px-6 py-4 whitespace-nowrap" v-for="column in fullColumns">
+                            <div class="table-cell md:hidden">
+                              {{ column.label }}
+                            </div>
                             <slot :name="'cell(' + column.key + ')'" v-bind:row="row" v-bind:column="column">
                                 <slot name="cell()" v-bind:row="row" v-bind:column="column">
                                     <div class="text-sm text-gray-900" v-if="column.hasOwnProperty('truncateCell') && (dataGet(row, column.key) === null ? '' : dataGet(row, column.key)).length > column.truncateCell">
