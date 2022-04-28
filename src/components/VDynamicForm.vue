@@ -140,6 +140,9 @@ export default {
                 return this.componentRegistration[type];
             }
             return type;
+        },
+        reset() {
+            this.$refs.form.reset();
         }
     },
     computed: {

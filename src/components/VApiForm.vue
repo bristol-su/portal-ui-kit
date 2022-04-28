@@ -79,6 +79,7 @@ export default {
         },
         reset() {
             this.formData = this.initialData;
+            this.$refs.form.reset();
         }
     }
 }
