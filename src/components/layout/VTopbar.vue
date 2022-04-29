@@ -65,6 +65,11 @@
                                    class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
                                    role="menuitem"><i class="fa fa-users"></i> Control</a>
                             </div>
+                            <div v-if="canAccessSettings">
+                                <a href="https://bristol-su.github.io/portal"
+                                   class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
+                                   role="menuitem"><i class="fa fa-question"></i> Help</a>
+                            </div>
                             <a href="#" @click.prevent="logout"
                                class="block px-4 py-1 my-1 text-sm text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blueGray-100 "
                                role="menuitem"><i class="fa fa-sign-out-alt"></i> Sign out</a>
